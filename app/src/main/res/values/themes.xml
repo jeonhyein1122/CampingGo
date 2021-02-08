@@ -16,10 +16,15 @@
 
     <style name="MyToolbar" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:background">#36BDFA</item>
-        <item name="titleTextColor">@color/white</item>
+        <item name="titleTextColor">@color/black</item>
     </style>
 
     <style name="ToolbarTheme">
-        <item name="colorControlNormal">@color/white</item>
+        <item name="colorControlNormal">@color/black</item>
+    </style>
+
+    <style name="Shoppingtoolbar" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:background">#FDFD00</item>
+        <item name="titleTextColor">@color/white</item>
     </style>
 </resources>
