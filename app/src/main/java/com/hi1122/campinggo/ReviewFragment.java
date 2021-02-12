@@ -1,9 +1,11 @@
 package com.hi1122.campinggo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,7 +19,7 @@ public class ReviewFragment extends Fragment {
     ArrayList<ReviewRecyclerItem> items=new ArrayList<>();
     RecyclerView recyclerView;
     ReviewRecyclerAdpter recyclerAdpter;
-//    Button btnadd;
+    Button btnadd;
 
 
     @Override
@@ -29,20 +31,21 @@ public class ReviewFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-       return inflater.inflate(R.layout.fragment_review,container,false);
+       View view=inflater.inflate(R.layout.fragment_review,container,false);
 
-//       btnadd=view.findViewById(R.id.addShopping);
-//
-//       btnadd.setOnClickListener(new View.OnClickListener() {
-//           @Override
-//           public void onClick(View v) {
-//               Intent intent=new Intent(ShoppingFragment.this,Shopping_add_Activity.class);
-//
-//               startActivity(intent);
-//
-//           }
-//       });
+       btnadd=view.findViewById(R.id.addreview);
 
+       btnadd.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               Intent intent=new Intent(getActivity(),Review_add_Activity.class);
+
+               startActivity(intent);
+
+           }
+       });
+
+       return view;
     }
 
     @Override

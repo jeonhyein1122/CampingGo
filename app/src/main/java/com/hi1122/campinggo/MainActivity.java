@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
                 if (fragments[1] != null) tran.hide(fragments[1]);
                 if (fragments[2] != null) tran.hide(fragments[2]);
                 if (fragments[3] != null) tran.hide(fragments[3]);
+                if (fragments[4] != null) tran.hide(fragments[4]);
 
                 switch (item.getItemId()) {
                     case R.id.home:
@@ -102,9 +103,17 @@ public class MainActivity extends AppCompatActivity {
                         tran.show(fragments[3]);
 
                         break;
-//
-//                    case R.id.mybeamin :
-//                        break;
+
+                    case R.id.mypage :
+
+                        if(fragments[4]==null){
+                            fragments[4]=new MypageFragment();
+                            tran.add(R.id.container,fragments[4]);
+                            getSupportActionBar().setTitle("마이페이지");
+                        }
+                        tran.show(fragments[4]);
+
+                        break;
                 }
                 tran.commit();
 
