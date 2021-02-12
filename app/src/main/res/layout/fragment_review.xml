@@ -13,7 +13,7 @@
             android:padding="16dp" />
 
         <Button
-            android:id="@+id/addShopping"
+            android:id="@+id/addreview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="글쓰기"

@@ -1,12 +1,9 @@
 package com.hi1122.campinggo;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,11 +12,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class ShoppingFragment extends Fragment {
+public class ReviewFragment extends Fragment {
 
-    ArrayList<ShoppingRecyclerItem> items=new ArrayList<>();
+    ArrayList<ReviewRecyclerItem> items=new ArrayList<>();
     RecyclerView recyclerView;
-    ShoppingRecyclerAdpter recyclerAdpter;
+    ReviewRecyclerAdpter recyclerAdpter;
 //    Button btnadd;
 
 
@@ -32,7 +29,7 @@ public class ShoppingFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-       return inflater.inflate(R.layout.fragment_shopping,container,false);
+       return inflater.inflate(R.layout.fragment_review,container,false);
 
 //       btnadd=view.findViewById(R.id.addShopping);
 //
@@ -53,19 +50,22 @@ public class ShoppingFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         recyclerView=view.findViewById(R.id.recycler);
-        recyclerAdpter=new ShoppingRecyclerAdpter(getActivity(),items);
+        recyclerAdpter=new ReviewRecyclerAdpter(getActivity(),items);
         recyclerView.setAdapter(recyclerAdpter);
     }
 
     void loadData(){
 
-        items.add(new ShoppingRecyclerItem());
-        items.add(new ShoppingRecyclerItem());
-        items.add(new ShoppingRecyclerItem());
-        items.add(new ShoppingRecyclerItem());
-        items.add(new ShoppingRecyclerItem());
-        items.add(new ShoppingRecyclerItem());
-        items.add(new ShoppingRecyclerItem());
+        items.add(new ReviewRecyclerItem());
+        items.add(new ReviewRecyclerItem());
+        items.add(new ReviewRecyclerItem());
+        items.add(new ReviewRecyclerItem());
+        items.add(new ReviewRecyclerItem());
+        items.add(new ReviewRecyclerItem());
+        items.add(new ReviewRecyclerItem());
+        items.add(new ReviewRecyclerItem());
+        items.add(new ReviewRecyclerItem());
+
 
     }
 

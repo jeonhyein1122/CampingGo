@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -64,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
                 if (fragments[0] != null) tran.hide(fragments[0]);
                 if (fragments[1] != null) tran.hide(fragments[1]);
                 if (fragments[2] != null) tran.hide(fragments[2]);
+                if (fragments[3] != null) tran.hide(fragments[3]);
 
                 switch (item.getItemId()) {
                     case R.id.home:
@@ -91,8 +93,15 @@ public class MainActivity extends AppCompatActivity {
 
                         break;
 
-//                    case R.id.orderlist :
-//                        break;
+                    case R.id.review :
+                        if(fragments[3]==null){
+                            fragments[3]=new ReviewFragment();
+                            tran.add(R.id.container,fragments[3]);
+                            getSupportActionBar().setTitle("리뷰");
+                        }
+                        tran.show(fragments[3]);
+
+                        break;
 //
 //                    case R.id.mybeamin :
 //                        break;
@@ -104,4 +113,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+
 }
