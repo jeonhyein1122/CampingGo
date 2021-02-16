@@ -9,14 +9,18 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.kakao.sdk.common.util.Utility;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,10 +34,16 @@ public class MainActivity extends AppCompatActivity {
     NavigationView navigationView;
     ActionBarDrawerToggle drawerToggle;
 
+    //drawerlayout Button
+    Button Btnlogin;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+//        String keyHash= Utility.INSTANCE.getKeyHash(this);
+//        Log.i("KeyHash",keyHash);
 
         //툴바 설정
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -41,14 +51,33 @@ public class MainActivity extends AppCompatActivity {
 
         bnv = findViewById(R.id.bnv);
 
-
         drawerLayout = findViewById(R.id.layout_drawer);
         navigationView = findViewById(R.id.naviV);
         navigationView.setItemIconTintList(null);
 
+        //drawer header button login화면 클릭
+        final View headerView= navigationView.getHeaderView(0);
+        headerView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Btnlogin=findViewById(R.id.loginbtn);
+                Btnlogin.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        Intent intent =new Intent(MainActivity.this,LoginActivity.class);
+                        startActivity(intent);
+                    }
+                });
+
+            }
+        });
+
+
         drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.app_name, R.string.app_name);
         drawerLayout.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
+
 
         fragmentManager = getSupportFragmentManager();
 
