@@ -33,7 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:background="#36BdFa"
+            style="@style/MyToolbar"
             app:menu="@menu/bottom_menu"
             app:itemTextColor="@color/bottom_item"
             app:itemIconTint="@color/bottom_item"/>
