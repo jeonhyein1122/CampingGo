@@ -15,7 +15,7 @@
     </style>
 
     <style name="MyToolbar" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="android:background">#36BDFA</item>
+        <item name="android:background">#D5F1FD</item>
         <item name="titleTextColor">@color/black</item>
     </style>
 
@@ -23,8 +23,4 @@
         <item name="colorControlNormal">@color/black</item>
     </style>
 
-    <style name="Shoppingtoolbar" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="android:background">#FDFD00</item>
-        <item name="titleTextColor">@color/white</item>
-    </style>
 </resources>

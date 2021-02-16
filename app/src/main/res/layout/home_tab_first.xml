@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/home_tab_first_bg">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -12,80 +13,109 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:weightSum="1">
 
-            <ImageView
-                android:id="@+id/iv"
+            <EditText
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:src="@drawable/adv"
-                android:adjustViewBounds="true"/>
+                android:layout_height="match_parent"
+                android:background="@drawable/tab1_tv_bg"
+                android:hint="우리 어디갈까?"
+                android:textColor="#ff333333"
+                android:textSize="16sp"
+                android:padding="16dp"
+                android:layout_gravity="center"
+                android:paddingTop="100dp"
+                android:layout_margin="16dp"
+                android:drawableLeft="@drawable/search"
+                android:inputType="text"
+                android:drawablePadding="8dp"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="400dp"
-                android:orientation="vertical"
-                android:background="#0F040000">
-
-                <TextView
+                <RelativeLayout
                     android:layout_width="match_parent"
+                    android:layout_height="500dp"
+                    android:layout_weight="1"
+                    android:paddingBottom="16dp">
+
+                  <Button
+                      android:id="@+id/btnall"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_marginLeft="48dp"
+                      android:text="전체"
+                      android:background="@drawable/home_tab_first_btnbg"
+                      android:layout_alignParentBottom="true" />
+
+                    <Button
+                        android:id="@+id/btncamping"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="24dp"
+                        android:text="캠핑장"
+                        android:background="@drawable/home_tab_first_btnbg"
+                        android:layout_alignParentBottom="true"
+                        android:layout_toRightOf="@+id/btnall"/>
+
+                    <Button
+                        android:id="@+id/btnglamping"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="24dp"
+                        android:text="글램핑"
+                        android:background="@drawable/home_tab_first_btnbg"
+                        android:layout_alignParentBottom="true"
+                        android:layout_toRightOf="@+id/btncamping"/>
+
+                </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+            <Button
+                android:id="@+id/btnmountain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="48dp"
+                android:text="산"
+                android:background="@drawable/home_tab_first_btnbg"
+                android:layout_alignParentBottom="true" />
+
+            <Button
+                android:id="@+id/btnriver"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp"
+                android:text="강"
+                android:background="@drawable/home_tab_first_btnbg"
+                android:layout_alignParentBottom="true"
+                android:layout_toRightOf="@+id/btnmountain"/>
+
+                <Button
+                    android:id="@+id/btnsea"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/tab1_tv_bg"
-                    android:text=" 먹고 싶은 메뉴, 가게 검색"
-                    android:textColor="#ff333333"
-                    android:textSize="16sp"
-                    android:padding="8dp"
-                    android:layout_margin="16dp"
-                    android:drawableLeft="@drawable/search"/>
+                    android:layout_marginLeft="24dp"
+                    android:text="바다"
+                    android:background="@drawable/home_tab_first_btnbg"
+                    android:layout_alignParentBottom="true"
+                    android:layout_toRightOf="@+id/btnriver"/>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:padding="16dp">
-
-                    <ImageView
-                        android:layout_width="60dp"
-                        android:layout_height="match_parent"
-                        android:src="@android:drawable/ic_dialog_info"/>
-
-                    <ImageView
-                        android:layout_width="60dp"
-                        android:layout_height="match_parent"
-                        android:src="@android:drawable/ic_dialog_info"/>
-
-                    <ImageView
-                        android:layout_width="60dp"
-                        android:layout_height="match_parent"
-                        android:src="@android:drawable/ic_dialog_info"/>
-
-                    <ImageView
-                        android:layout_width="60dp"
-                        android:layout_height="match_parent"
-                        android:src="@android:drawable/ic_dialog_info"/>
-
-                    <ImageView
-                        android:layout_width="60dp"
-                        android:layout_height="match_parent"
-                        android:src="@android:drawable/ic_dialog_info"/>
-                    <ImageView
-                        android:layout_width="60dp"
-                        android:layout_height="match_parent"
-                        android:src="@android:drawable/ic_dialog_info"/>
-
-                </LinearLayout>
-
-            </LinearLayout>
+            </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="16dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="우리동네 빠른 배달"
+                    android:text="추천 캠핑장"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
                     android:textSize="16sp" />
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -101,7 +131,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="우리동네 빠른 배달"
+                    android:text="새로 업데이트 된 캠핑장"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:paddingTop="16dp"
                     android:textSize="16sp" />
 
                 <androidx.recyclerview.widget.RecyclerView
