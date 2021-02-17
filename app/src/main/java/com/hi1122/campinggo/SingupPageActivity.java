@@ -15,9 +15,11 @@ public class SingupPageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_singup_page);
 
+//        Toolbar signuptoolbar=findViewById(R.id.signuptoolbar);
+//        setSupportActionBar(signuptoolbar);
+//        getActionBar().setDisplayHomeAsUpEnabled(true);
+
     }
-
-
 
     public void clickImage(View view) {
     }

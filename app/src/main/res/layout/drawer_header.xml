@@ -47,7 +47,7 @@
         android:id="@+id/signup"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:background="@drawable/signup"
+        android:background="@drawable/btn_bg_select_signup"
         android:layout_below="@+id/tv_nickname"
         android:layout_toRightOf="@+id/loginbtn"
         android:layout_marginLeft="80dp"
@@ -61,13 +61,13 @@
         android:textSize="12sp"
         android:textColor="@color/black"
         android:layout_below="@+id/signup"
-        android:layout_marginLeft="125dp"/>
+        android:layout_marginLeft="126dp"/>
 
     <Button
         android:id="@+id/mypage"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:background="@drawable/drawer_mypage"
+        android:background="@drawable/btn_bg_select_mypg"
         android:layout_below="@+id/profile"
         android:layout_toRightOf="@+id/signup"
         android:layout_marginLeft="85dp"
