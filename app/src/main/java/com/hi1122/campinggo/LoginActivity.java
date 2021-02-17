@@ -25,7 +25,7 @@ import kotlin.jvm.functions.Function2;
 public class LoginActivity extends AppCompatActivity {
     
     CircleImageView profile;
-    TextView tvNickname;
+    TextView tvnickname;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         profile=findViewById(R.id.profile);
-        tvNickname=findViewById(R.id.tv_nickname);
+        tvnickname=findViewById(R.id.tv_nickname);
 
        Toolbar logintoolbar=findViewById(R.id.logintoolbar);
        setSupportActionBar(logintoolbar);
@@ -71,9 +71,15 @@ public class LoginActivity extends AppCompatActivity {
                                 String nickname=user.getKakaoAccount().getProfile().getNickname();
                                 String profileImageUrl=user.getKakaoAccount().getProfile().getThumbnailImageUrl();
 
-                               tvNickname.setText(nickname);
+                                 tvnickname.setText(nickname);
 
-                                Glide.with(LoginActivity.this).load(profileImageUrl).into(profile);
+                              Glide.with(LoginActivity.this).load(profileImageUrl).into(profile);
+
+//                                Intent intent= getIntent();
+//                                intent.putExtra("tvnickname",nickname);
+//                                intent.putExtra("profileImageUrl",profileImageUrl);
+//                              setResult(RESULT_OK,intent);
+//                              finish();
 
                             }else {
                                 Toast.makeText(LoginActivity.this, "사용자 정보요청 실패"+throwable.getMessage(), Toast.LENGTH_SHORT).show();
@@ -87,6 +93,7 @@ public class LoginActivity extends AppCompatActivity {
                 return null;
             }
         });
+
 
 
 

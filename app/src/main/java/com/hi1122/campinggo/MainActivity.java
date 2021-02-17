@@ -1,6 +1,7 @@
 package com.hi1122.campinggo;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -16,11 +17,14 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.kakao.sdk.common.util.Utility;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
 
 //    TextView tv;
     Button loginBtn;
+    TextView tvnickname;
+    CircleImageView profile;
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
@@ -48,11 +54,15 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         bnv = findViewById(R.id.bnv);
-        loginBtn=findViewById(R.id.loginbtn);
+
 
         drawerLayout = findViewById(R.id.layout_drawer);
         navigationView = findViewById(R.id.naviV);
         navigationView.setItemIconTintList(null);
+
+        loginBtn=findViewById(R.id.loginbtn);
+        tvnickname=findViewById(R.id.tv_nickname);
+        profile=findViewById(R.id.profile);
 
 //        //drawer header button login화면 클릭
 
@@ -156,10 +166,30 @@ public class MainActivity extends AppCompatActivity {
     public void clickLoginBtn(View view){
 
         Intent intent=new Intent(this,LoginActivity.class);
+//        startActivityForResult(intent,11);
         startActivity(intent);
 
-
     }
+
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//
+//        switch (requestCode){
+//            case 11:
+//                if(resultCode==RESULT_OK){
+//                    String nickname=data.getStringExtra("tvnickname");
+//                    String profile=data.getStringExtra("profileImageUrl");
+//
+//                    tvnickname.setText(nickname);
+//
+//
+//                }else {
+//                    tvnickname.setText("실패");
+//                }
+//                break;
+//        }
+//    }
 
     public void clickSignupBtn(View view){
 
