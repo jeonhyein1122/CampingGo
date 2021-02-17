@@ -10,6 +10,7 @@ public class HomePagerAdapter extends FragmentPagerAdapter {
 
     Fragment[] pages=new Fragment[2];
     String[] titles=new String[]{"캠핑","캠핑의 모든것"};
+
     public HomePagerAdapter(@NonNull FragmentManager fm, int behavior) {
         super(fm, behavior);
         pages[0]=new Home_First_Fragment();

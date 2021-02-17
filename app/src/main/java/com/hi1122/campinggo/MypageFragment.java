@@ -31,17 +31,6 @@ public class MypageFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
        return inflater.inflate(R.layout.fragment_mypage,container,false);
 
-//       btnadd=view.findViewById(R.id.addShopping);
-//
-//       btnadd.setOnClickListener(new View.OnClickListener() {
-//           @Override
-//           public void onClick(View v) {
-//               Intent intent=new Intent(ShoppingFragment.this,Shopping_add_Activity.class);
-//
-//               startActivity(intent);
-//
-//           }
-//       });
 
     }
 

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.hi1122.campinggo">
-
-<!--    인터넷-->
+    <!-- 인터넷 -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -12,7 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CampingGo">
-        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".SingupPageActivity"></activity>
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".SignupPageFragment" />
         <activity android:name=".Review_add_Activity" />
         <activity android:name=".Shopping_add_Activity" />
         <activity android:name=".MainActivity">
@@ -22,19 +25,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <!-- Redirect URI: "kakao{NATIVE_APP_KEY}://oauth“ -->
-                <data android:host="oauth"
+                <data
+                    android:host="oauth"
                     android:scheme="kakaoea7e8ef6cbfca8a2e6f5b881598bc0863" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

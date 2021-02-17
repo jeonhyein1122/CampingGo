@@ -7,7 +7,7 @@
 
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/iv"
+        android:id="@+id/profile"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:padding="4dp"
@@ -22,16 +22,17 @@
         android:textColor="@color/white"
         android:textStyle="bold"
         android:padding="14dp"
-       android:layout_toRightOf="@+id/iv"/>
+       android:layout_toRightOf="@+id/profile"/>
 
     <Button
         android:id="@+id/loginbtn"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:background="@drawable/login"
-        android:layout_below="@+id/iv"
+        android:layout_below="@+id/profile"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"/>
+        android:background="@drawable/btn_bg_select"
+        android:layout_marginTop="8dp"
+        android:onClick="clickLoginBtn"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -50,7 +51,8 @@
         android:layout_below="@+id/tv_nickname"
         android:layout_toRightOf="@+id/loginbtn"
         android:layout_marginLeft="80dp"
-        android:layout_marginTop="8dp" />
+        android:layout_marginTop="8dp"
+        android:onClick="clickSignupBtn"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -66,10 +68,11 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:background="@drawable/drawer_mypage"
-        android:layout_below="@+id/iv"
+        android:layout_below="@+id/profile"
         android:layout_toRightOf="@+id/signup"
         android:layout_marginLeft="85dp"
-        android:layout_marginTop="8dp" />
+        android:layout_marginTop="8dp"
+        android:onClick="clickmypage"/>
 
     <TextView
         android:layout_width="wrap_content"

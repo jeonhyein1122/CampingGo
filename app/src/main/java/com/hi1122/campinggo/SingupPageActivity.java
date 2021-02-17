@@ -5,17 +5,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-public class LoginActivity extends AppCompatActivity {
+public class SingupPageActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_singup_page);
     }
 
-    public void clicklogin(View view) {
+    public void clickImage(View view) {
     }
 
-    public void clicksignup(View view) {
+    public void clickBtn(View view) {
     }
 }

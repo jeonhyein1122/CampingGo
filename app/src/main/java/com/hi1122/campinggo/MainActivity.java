@@ -6,21 +6,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
-import com.kakao.sdk.common.util.Utility;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,13 +27,11 @@ public class MainActivity extends AppCompatActivity {
     FragmentManager fragmentManager;
 
 //    TextView tv;
+    Button loginBtn;
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     ActionBarDrawerToggle drawerToggle;
-
-    //drawerlayout Button
-    Button Btnlogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,30 +46,32 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         bnv = findViewById(R.id.bnv);
+        loginBtn=findViewById(R.id.loginbtn);
 
         drawerLayout = findViewById(R.id.layout_drawer);
         navigationView = findViewById(R.id.naviV);
         navigationView.setItemIconTintList(null);
 
-        //drawer header button login화면 클릭
-        final View headerView= navigationView.getHeaderView(0);
-        headerView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Btnlogin=findViewById(R.id.loginbtn);
-                Btnlogin.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
+//        //drawer header button login화면 클릭
 
-                        Intent intent =new Intent(MainActivity.this,LoginActivity.class);
-                        startActivity(intent);
-                    }
-                });
+//        final View headerView= navigationView.getHeaderView(0);
+//        headerView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Btnlogin=findViewById(R.id.loginbtn);
+//                Btnlogin.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//
+////                        bnv.setSelectedItemId(R.id.mypage);
+//                        drawerLayout.closeDrawer(navigationView);
+//                    }
+//                });
+//
+//            }
+//        });
 
-            }
-        });
-
-
+//
         drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.app_name, R.string.app_name);
         drawerLayout.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
@@ -85,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
         fragments[0] = new HomeFragment();
         tran.add(R.id.container, fragments[0]);
         tran.commit();
+
 
         bnv.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -150,6 +149,26 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void clickLoginBtn(View view){
+
+        Intent intent=new Intent(this,LoginActivity.class);
+        startActivity(intent);
+
+
+    }
+
+    public void clickSignupBtn(View view){
+
+        Intent intent=new Intent(this,SingupPageActivity.class);
+        startActivity(intent);
+
+    }
+
+    public void clickmypage(View view){
+        bnv.setSelectedItemId(R.id.mypage);
+        drawerLayout.closeDrawer(navigationView);
     }
 
 
