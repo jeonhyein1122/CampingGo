@@ -47,7 +47,7 @@ public class CampingApi_Main extends AppCompatActivity {
             public void run() {
 
                 String address="http://api.visitkorea.or.kr/openapi/service/rest/GoCamping/basedList?ServiceKey="
-                +apiKey+"&MobileOS=AND"+"&MobileApp=campinggo";
+                +apiKey+"&MobileOS=AND"+"&MobileApp=campinggo"+"&numOfRows=200";
 
                 try {
                     URL url=new URL(address);
