@@ -70,14 +70,6 @@
 
             </LinearLayout>
 
-            <ImageView
-                android:id="@+id/iv"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:src="@drawable/adv"
-                android:adjustViewBounds="true"/>
-
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

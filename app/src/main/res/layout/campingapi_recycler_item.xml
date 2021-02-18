@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="250dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="16dp"
-    android:layout_marginTop="4dp"
+    android:padding="30dp"
     android:layout_marginBottom="4dp"
-    android:layout_marginRight="2dp"
-    android:layout_marginLeft="2dp">
+    android:layout_marginTop="4dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginBottom="8dp"
+        android:paddingBottom="8dp">
 
         <ImageView
             android:id="@+id/campingimg"
@@ -21,22 +22,24 @@
             android:src="@drawable/test" />
 
         <TextView
-            android:id="@+id/campingtitle"
+            android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_below="@+id/campingimg"
             android:text="성수동 캠핑장"
+            android:layout_marginLeft="14dp"
             android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/campingsubtitle"
+            android:id="@+id/lineintro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/campingtitle"
+            android:layout_below="@+id/name"
             android:layout_marginTop="8dp"
+            android:layout_marginLeft="14dp"
             android:text="오픈 api 메인. 클릭하면 디테일로 넘어감"
             android:textColor="#ff333333"
             android:textSize="16sp" />

@@ -46,10 +46,12 @@ public class CampingApiAdapter extends RecyclerView.Adapter{
         VH vh=(VH)holder;
 
         CampingApiRecyclerItem item=items.get(position);
-        vh.title.setText(item.title);
-        vh.subtitle.setText(item.subtitle);
+        vh.name.setText(item.name+"");
+        if (item.lineintro !=null) vh.lineintro.setText(item.lineintro+"");
+        else vh.lineintro.setText("설명이 없습니다");
 
-        Glide.with(context).load(item.campingimg).into(vh.campingimg); //load "http://www.naver.com"
+        if(item.campingimg!=null) Glide.with(context).load(item.campingimg).into(vh.campingimg); //load "http://www.naver.com"
+        else  Glide.with(context).load(R.drawable.noimage).into(vh.campingimg); //load "http://www.naver.com"
 
     }
 
@@ -60,16 +62,16 @@ public class CampingApiAdapter extends RecyclerView.Adapter{
 
     class VH extends RecyclerView.ViewHolder{
         ImageView campingimg;
-        TextView title;
-        TextView subtitle;
+        TextView name;
+        TextView lineintro;
 
 
         public VH(@NonNull View itemView) {
             super(itemView);
 
             campingimg=itemView.findViewById(R.id.campingimg);
-            title=itemView.findViewById(R.id.campingtitle);
-            subtitle=itemView.findViewById(R.id.campingsubtitle);
+            name=itemView.findViewById(R.id.name);
+            lineintro=itemView.findViewById(R.id.lineintro);
 
             //아이템뷰 클릭
             itemView.setOnClickListener(new View.OnClickListener() {
@@ -78,13 +80,13 @@ public class CampingApiAdapter extends RecyclerView.Adapter{
                     int position=getLayoutPosition();
 //                    Toast.makeText(context, "클릭됨", Toast.LENGTH_SHORT).show();
 
-                    String titleId=items.get(position).title;
-                    String subtitleId=items.get(position).subtitle;
-                    int campingimgId=items.get(position).campingimg;
+                    String nameId=items.get(position).name;
+                    String lineintroId=items.get(position).lineintro;
+                    String campingimgId=items.get(position).campingimg;
 
                     Intent intent=new Intent(context,CampingApi_DetailActivity.class);
-                    intent.putExtra("titleId",titleId);
-                    intent.putExtra("subtitleId",subtitleId);
+                    intent.putExtra("nameId",nameId);
+                    intent.putExtra("lineintroId",lineintroId);
                     intent.putExtra("campingimgId",campingimgId);
 
 

@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 public class Home_First_Tab_Btnall extends AppCompatActivity {
 
@@ -16,7 +15,7 @@ public class Home_First_Tab_Btnall extends AppCompatActivity {
     }
 
     public void Seoul(View view) {
-        Intent intent=new Intent(this,CampingApi.class);
+        Intent intent=new Intent(this, CampingApi_Main.class);
         startActivity(intent);
 
         finish();

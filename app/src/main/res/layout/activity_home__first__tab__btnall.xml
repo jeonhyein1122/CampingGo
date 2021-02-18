@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         style="@style/MyToolbar"
-        app:title="로그인"
+        app:title="전체"
         android:theme="@style/ToolbarTheme"/>
 
     <Button

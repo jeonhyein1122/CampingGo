@@ -41,7 +41,7 @@ public class Home_First_Fragment extends Fragment {
         Btnall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(getActivity(),Home_First_Tab_Btnall.class); //전체 버튼에 들어갈 클래스 만들기
+                Intent intent=new Intent(getActivity(),CampingApi_Main.class); //전체 버튼에 들어갈 클래스 만들기
                 startActivity(intent);
 
             }

@@ -13,12 +13,12 @@
         android:layout_height="wrap_content" />
 
     <TextView
-        android:id="@+id/detailtitle"
+        android:id="@+id/detailname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
     <TextView
-        android:id="@+id/detailsubtitle"
+        android:id="@+id/detaillineintro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 

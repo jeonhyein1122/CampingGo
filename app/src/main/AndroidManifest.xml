@@ -14,9 +14,10 @@
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.CampingGo">
+        android:theme="@style/Theme.CampingGo"
+        android:usesCleartextTraffic="true">
         <activity android:name=".CampingApi_DetailActivity"></activity>
-        <activity android:name=".CampingApi" android:launchMode="singleTop" />
+        <activity android:name=".CampingApi_Main" android:launchMode="singleTop" />
         <activity android:name=".Home_First_Tab_Btnall" />
         <activity android:name=".SingupPageActivity" />
         <activity android:name=".LoginActivity" />
