@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -20,6 +21,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.kakao.sdk.common.util.Utility;
@@ -63,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
         loginBtn=findViewById(R.id.loginbtn);
         tvnickname=findViewById(R.id.tv_nickname);
         profile=findViewById(R.id.profile);
+
+
 
 //        //drawer header button login화면 클릭
 
@@ -111,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.home:
                         tran.show(fragments[0]);
+                        getSupportActionBar().setTitle("campinggo");
 
                         break;
 
@@ -118,30 +123,28 @@ public class MainActivity extends AppCompatActivity {
                         if(fragments[1]==null){
                             fragments[1]=new MyAroundFragment();
                             tran.add(R.id.container,fragments[1]);
-                            getSupportActionBar().setTitle("내주변");
 
                         }
                         tran.show(fragments[1]);
+                        getSupportActionBar().setTitle("내주변");
                         break;
 
                     case R.id. shopping:
                         if(fragments[2]==null){
                             fragments[2]=new ShoppingFragment();
                             tran.add(R.id.container,fragments[2]);
-                            getSupportActionBar().setTitle("중고장터");
                         }
                         tran.show(fragments[2]);
-
+                        getSupportActionBar().setTitle("중고장터");
                         break;
 
                     case R.id.review :
                         if(fragments[3]==null){
                             fragments[3]=new ReviewFragment();
                             tran.add(R.id.container,fragments[3]);
-                            getSupportActionBar().setTitle("리뷰");
                         }
                         tran.show(fragments[3]);
-
+                        getSupportActionBar().setTitle("리뷰");
                         break;
 
                     case R.id.mypage :
@@ -161,6 +164,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+
+
     }
 
     public void clickLoginBtn(View view){
@@ -168,6 +174,12 @@ public class MainActivity extends AppCompatActivity {
         Intent intent=new Intent(this,LoginActivity.class);
 //        startActivityForResult(intent,11);
         startActivity(intent);
+
+//            intent = getIntent();
+//            String tvnicknameId = intent.getStringExtra("tvnicknameId");
+//            String profileImageUrlId = intent.getStringExtra("profileImageUrlId");
+//            tvnickname.setText(tvnicknameId);
+//            Glide.with(this).load(profileImageUrlId).into(profile);
 
     }
 
@@ -178,10 +190,17 @@ public class MainActivity extends AppCompatActivity {
 //        switch (requestCode){
 //            case 11:
 //                if(resultCode==RESULT_OK){
-//                    String nickname=data.getStringExtra("tvnickname");
-//                    String profile=data.getStringExtra("profileImageUrl");
+////                    String nickname=data.getStringExtra("tvnicknameId");
+////                    String profileurl=data.getStringExtra("profileImageUrlId");
+////
+////                    tvnickname.setText(nickname);
+////                    Glide.with(this).load(profileurl).into(profile);
 //
-//                    tvnickname.setText(nickname);
+//            String tvnicknameId = data.getStringExtra("tvnicknameId");
+//            String profileImageUrlId = data.getStringExtra("profileImageUrlId");
+//            tvnickname.setText(tvnicknameId);
+//            Glide.with(this).load(profileImageUrlId).into(profile);
+//
 //
 //
 //                }else {

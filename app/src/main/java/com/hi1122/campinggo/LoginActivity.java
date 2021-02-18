@@ -75,11 +75,12 @@ public class LoginActivity extends AppCompatActivity {
 
                               Glide.with(LoginActivity.this).load(profileImageUrl).into(profile);
 
-//                                Intent intent= getIntent();
-//                                intent.putExtra("tvnickname",nickname);
-//                                intent.putExtra("profileImageUrl",profileImageUrl);
+//                              Intent intent=new Intent(LoginActivity.this,MainActivity.class);
+//                              intent.putExtra("tvnicknameId",nickname);
+//                              intent.putExtra("profileImageUrlId",profileImageUrl);
 //                              setResult(RESULT_OK,intent);
 //                              finish();
+
 
                             }else {
                                 Toast.makeText(LoginActivity.this, "사용자 정보요청 실패"+throwable.getMessage(), Toast.LENGTH_SHORT).show();
@@ -89,14 +90,11 @@ public class LoginActivity extends AppCompatActivity {
                     });
                 }else {
                     Toast.makeText(LoginActivity.this, "로그인 실패"+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+
                 }
                 return null;
             }
         });
-
-
-
-
     }
 
     public void clicksignup(View view) {
