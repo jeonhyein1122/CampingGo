@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Home_First_Tab_Btnall">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/logintoolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        style="@style/MyToolbar"
+        app:title="로그인"
+        android:theme="@style/ToolbarTheme"/>
+
+    <Button
+        android:layout_width="130dp"
+        android:layout_height="50sp"
+        android:backgroundTint="#DDDDDD"
+        android:layout_margin="8dp"
+        android:text="서울특별시"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:onClick="Seoul"/>
+
+
+
+</LinearLayout>

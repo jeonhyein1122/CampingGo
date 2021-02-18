@@ -36,16 +36,17 @@ public class Home_First_Fragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.home_tab_first,container,false);
 
+        //open api 전체 버튼
         Btnall=view.findViewById(R.id.btnall);
         Btnall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(getActivity(),Review_add_Activity.class); //전체 버튼에 들어갈 클래스 만들기
+                Intent intent=new Intent(getActivity(),Home_First_Tab_Btnall.class); //전체 버튼에 들어갈 클래스 만들기
                 startActivity(intent);
+
             }
         });
         return view;
-
 
     }
 
