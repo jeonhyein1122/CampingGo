@@ -83,7 +83,6 @@ public class MainActivity extends AppCompatActivity {
 //                        drawerLayout.closeDrawer(navigationView);
 //                    }
 //                });
-//
 //            }
 //        });
 
@@ -91,6 +90,14 @@ public class MainActivity extends AppCompatActivity {
         drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.app_name, R.string.app_name);
         drawerLayout.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
+
+        Intent intent = getIntent();
+        String  tvnicknameId= intent.getStringExtra("tvnicknameId");
+//        if (tvnicknameId!=null)return;
+//        tvnickname.setText(tvnicknameId);
+
+
+        Toast.makeText(this,""+tvnicknameId, Toast.LENGTH_SHORT).show();
 
 
         fragmentManager = getSupportFragmentManager();
@@ -172,43 +179,9 @@ public class MainActivity extends AppCompatActivity {
     public void clickLoginBtn(View view){
 
         Intent intent=new Intent(this,LoginActivity.class);
-//        startActivityForResult(intent,11);
         startActivity(intent);
-
-//            intent = getIntent();
-//            String tvnicknameId = intent.getStringExtra("tvnicknameId");
-//            String profileImageUrlId = intent.getStringExtra("profileImageUrlId");
-//            tvnickname.setText(tvnicknameId);
-//            Glide.with(this).load(profileImageUrlId).into(profile);
-
     }
 
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//
-//        switch (requestCode){
-//            case 11:
-//                if(resultCode==RESULT_OK){
-////                    String nickname=data.getStringExtra("tvnicknameId");
-////                    String profileurl=data.getStringExtra("profileImageUrlId");
-////
-////                    tvnickname.setText(nickname);
-////                    Glide.with(this).load(profileurl).into(profile);
-//
-//            String tvnicknameId = data.getStringExtra("tvnicknameId");
-//            String profileImageUrlId = data.getStringExtra("profileImageUrlId");
-//            tvnickname.setText(tvnicknameId);
-//            Glide.with(this).load(profileImageUrlId).into(profile);
-//
-//
-//
-//                }else {
-//                    tvnickname.setText("실패");
-//                }
-//                break;
-//        }
-//    }
 
     public void clickSignupBtn(View view){
 

@@ -26,6 +26,7 @@ public class LoginActivity extends AppCompatActivity {
     
     CircleImageView profile;
     TextView tvnickname;
+    String nickname;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,12 +69,17 @@ public class LoginActivity extends AppCompatActivity {
                         public Unit invoke(User user, Throwable throwable) {
                             if(user !=null){
                                 long id=user.getId();
-                                String nickname=user.getKakaoAccount().getProfile().getNickname();
+                                nickname=user.getKakaoAccount().getProfile().getNickname();
                                 String profileImageUrl=user.getKakaoAccount().getProfile().getThumbnailImageUrl();
 
                                  tvnickname.setText(nickname);
 
                               Glide.with(LoginActivity.this).load(profileImageUrl).into(profile);
+
+                                Intent intent= new Intent(LoginActivity.this,MainActivity.class);
+                                intent.putExtra("tvnicknameId",nickname);
+                                startActivity(intent);
+
 
 //                              Intent intent=new Intent(LoginActivity.this,MainActivity.class);
 //                              intent.putExtra("tvnicknameId",nickname);

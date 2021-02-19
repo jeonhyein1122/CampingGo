@@ -30,7 +30,7 @@
         android:layout_height="40dp"
         android:layout_below="@+id/profile"
         android:layout_marginLeft="8dp"
-        android:background="@drawable/btn_bg_select"
+        android:background="@drawable/btn_bg_select_login"
         android:layout_marginTop="8dp"
         android:onClick="clickLoginBtn"/>
 
