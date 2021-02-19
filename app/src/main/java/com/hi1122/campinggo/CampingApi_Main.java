@@ -92,6 +92,26 @@ public class CampingApi_Main extends AppCompatActivity {
                                     String text= xpp.getText();
                                     if(item!=null) item.lineintro= text;
                                 }
+                                else if(tagName.equals("intro")){
+                                    xpp.next();
+                                    String text= xpp.getText();
+                                    if(item!=null) item.intro= text;
+
+                                } else if(tagName.equals("induty")){
+                                    xpp.next();
+                                    String text= xpp.getText();
+                                    if(item!=null) item.induty= text;
+
+                                } else if(tagName.equals("addr1")){
+                                    xpp.next();
+                                    String text= xpp.getText();
+                                    if(item!=null) item.addr1= text;
+                                } else if(tagName.equals("addr2")){
+                                    xpp.next();
+                                    String text= xpp.getText();
+                                    if(item!=null) item.addr2= text;
+                                }
+
                                 break;
 
                             case XmlPullParser.TEXT:

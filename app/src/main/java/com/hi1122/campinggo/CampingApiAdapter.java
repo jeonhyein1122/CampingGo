@@ -83,11 +83,20 @@ public class CampingApiAdapter extends RecyclerView.Adapter{
                     String nameId=items.get(position).name;
                     String lineintroId=items.get(position).lineintro;
                     String campingimgId=items.get(position).campingimg;
+                    String introId=items.get(position).intro;
+                    String indutyId=items.get(position).induty;
+                    String addr1Id=items.get(position).addr1;
+                    String addr2Id=items.get(position).addr2;
 
                     Intent intent=new Intent(context,CampingApi_DetailActivity.class);
                     intent.putExtra("nameId",nameId);
                     intent.putExtra("lineintroId",lineintroId);
                     intent.putExtra("campingimgId",campingimgId);
+                    intent.putExtra("introId",introId);
+                    intent.putExtra("indutyId",indutyId);
+                    intent.putExtra("addr1Id",addr1Id);
+                    intent.putExtra("addr2Id",addr2Id);
+
 
 
                     if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP){

@@ -18,14 +18,48 @@
 
     <TextView
         android:id="@+id/detailname"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:padding="8dp"
         android:text="detailname"/>
 
     <TextView
         android:id="@+id/detaillineintro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:textSize="14sp"
+        android:textColor="#ffDDDDDD"
         android:text="detaillineintro"/>
+
+    <TextView
+        android:id="@+id/detailintro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="detailintro"/>
+
+    <TextView
+        android:id="@+id/detailinduty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="detailinduty"/>
+
+    <TextView
+        android:id="@+id/detailaddr1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="detailaddr1"/>
+
+    <TextView
+        android:id="@+id/detailaddr2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="detailaddr2"/>
+
+
 
 </LinearLayout>
