@@ -42,12 +42,15 @@ public class CampingApi_Main extends AppCompatActivity {
         adapter=new CampingApiAdapter(this,items);
         recyclerView.setAdapter(adapter);
 
+
+
         Thread t=new Thread(){
             @Override
+
             public void run() {
 
                 String address="http://api.visitkorea.or.kr/openapi/service/rest/GoCamping/basedList?ServiceKey="
-                +apiKey+"&MobileOS=AND"+"&MobileApp=campinggo"+"&numOfRows=100";
+                +apiKey+"&MobileOS=AND"+"&MobileApp=campinggo";
 
                 try {
                     URL url=new URL(address);
@@ -111,6 +114,37 @@ public class CampingApi_Main extends AppCompatActivity {
                                     String text= xpp.getText();
                                     if(item!=null) item.addr2= text;
                                 }
+                                else if(tagName.equals("resveCl")){
+                                    xpp.next();
+                                    String text= xpp.getText();
+                                    if(item!=null) item.resveCl= text;
+                                }
+                                else if(tagName.equals("createdtime")){
+                                    xpp.next();
+                                    String text= xpp.getText();
+                                    if(item!=null) item.createdtime= text;
+                                }
+                                else if(tagName.equals("modifiedtime")){
+                                    xpp.next();
+                                    String text= xpp.getText();
+                                    if(item!=null) item.modifiedtime= text;
+                                }
+                                else if(tagName.equals("tel")){
+                                    xpp.next();
+                                    String text= xpp.getText();
+                                    if(item!=null) item.tel= text;
+                                }
+                                else if(tagName.equals("homepage")){
+                                    xpp.next();
+                                    String text= xpp.getText();
+                                    if(item!=null) item.homepage= text;
+                                }
+                                else if(tagName.equals("resveUrl")){
+                                    xpp.next();
+                                    String text= xpp.getText();
+                                    if(item!=null) item.resveUrl= text;
+                                }
+
 
                                 break;
 

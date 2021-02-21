@@ -48,7 +48,7 @@ public class CampingApiAdapter extends RecyclerView.Adapter{
         CampingApiRecyclerItem item=items.get(position);
         vh.name.setText(item.name+"");
         if (item.lineintro !=null) vh.lineintro.setText(item.lineintro+"");
-        else vh.lineintro.setText("설명이 없습니다");
+        else vh.lineintro.setText(" ");
 
         if(item.campingimg!=null) Glide.with(context).load(item.campingimg).into(vh.campingimg); //load "http://www.naver.com"
         else  Glide.with(context).load(R.drawable.noimage).into(vh.campingimg); //load "http://www.naver.com"
@@ -87,6 +87,12 @@ public class CampingApiAdapter extends RecyclerView.Adapter{
                     String indutyId=items.get(position).induty;
                     String addr1Id=items.get(position).addr1;
                     String addr2Id=items.get(position).addr2;
+                    String resveClId=items.get(position).resveCl;
+                    String createdtimeId=items.get(position).createdtime;
+                    String modifiedtimeId=items.get(position).modifiedtime;
+                    String telId=items.get(position).tel;
+                    String homepageId=items.get(position).homepage;
+                    String resveUrlId=items.get(position).resveUrl;
 
                     Intent intent=new Intent(context,CampingApi_DetailActivity.class);
                     intent.putExtra("nameId",nameId);
@@ -96,6 +102,12 @@ public class CampingApiAdapter extends RecyclerView.Adapter{
                     intent.putExtra("indutyId",indutyId);
                     intent.putExtra("addr1Id",addr1Id);
                     intent.putExtra("addr2Id",addr2Id);
+                    intent.putExtra("resveClId",resveClId);
+                    intent.putExtra("createdtimeId",createdtimeId);
+                    intent.putExtra("modifiedtimeId",modifiedtimeId);
+                    intent.putExtra("telId",telId);
+                    intent.putExtra("homepageId",homepageId);
+                    intent.putExtra("resveUrlId",resveUrlId);
 
 
 

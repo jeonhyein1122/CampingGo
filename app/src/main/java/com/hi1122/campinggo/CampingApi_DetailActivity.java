@@ -31,6 +31,13 @@ public class CampingApi_DetailActivity extends AppCompatActivity {
     TextView detailinduty;
     TextView detailaddr1;
     TextView detailaddr2;
+    TextView detailresveCl;
+    TextView detailmodifiedtime;
+    TextView detailcreatedtime;
+    TextView detailtel;
+    TextView detailhomepage;
+    TextView detailresveUrl;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +52,12 @@ public class CampingApi_DetailActivity extends AppCompatActivity {
         String indutyId=intent.getStringExtra("indutyId");
         String addr1Id=intent.getStringExtra("addr1Id");
         String addr2Id=intent.getStringExtra("addr2Id");
+        String resveClId=intent.getStringExtra("resveClId");
+        String detailmodifiedtimeId=intent.getStringExtra("detailmodifiedtimeId");
+        String detailcreatedtimeId=intent.getStringExtra("detailcreatedtimeId");
+        String detailtelId=intent.getStringExtra("detailtelId");
+        String detailhomepageId=intent.getStringExtra("detailhomepageId");
+        String detailresveUrlId=intent.getStringExtra("detailresveUrlId");
 
 //        getSupportActionBar().setTitle(titleId+"");
 
@@ -56,21 +69,33 @@ public class CampingApi_DetailActivity extends AppCompatActivity {
         detailinduty=findViewById(R.id.detailinduty);
         detailaddr1=findViewById(R.id.detailaddr1);
         detailaddr2=findViewById(R.id.detailaddr2);
+        detailresveCl=findViewById(R.id.detailresveCl);
+        detailmodifiedtime=findViewById(R.id.detailmodifiedtime);
+        detailcreatedtime=findViewById(R.id.detailcreatedtime);
+        detailtel=findViewById(R.id.detailtel);
+        detailhomepage=findViewById(R.id.detailhompage);
+        detailresveUrl=findViewById(R.id.detailresveUrl);
 
 
-
-//        if(item.campingimgId!=null) Glide.with(context).load(item.campingimg).into(vh.campingimg); //load "http://www.naver.com"
-//        else  Glide.with(context).load(R.drawable.noimage).into(vh.campingimg);
-
-
-        Glide.with(this).load(campingimgId).into(detailiv);
+        if (campingimgId==null) Glide.with(this).load(R.drawable.noimage).into(detailiv);
+        else Glide.with(this).load(campingimgId).into(detailiv);
+//        Glide.with(this).load(campingimgId).into(detailiv);
         detailname.setText(nameId);
         detaillineintro.setText(lineintroId);
         detailintro.setText(introId);
         detailinduty.setText(indutyId);
-        detailaddr1.setText(addr1Id);
+        detailaddr1.setText("주소 : "+addr1Id);
         detailaddr2.setText(addr2Id);
 
+        if (resveClId==null) detailresveCl.setText(resveClId);
+        else detailresveCl.setText("예약방법 : "+resveClId);
+
+        detailmodifiedtime.setText("수정일 : "+detailmodifiedtimeId);
+        detailcreatedtime.setText("등록일 : "+detailcreatedtimeId);
+        detailtel.setText("☎ "+detailtelId);
+//        Glide.with(this).load(detailhomepageId).into(detailhomepage);
+        detailhomepage.setText("홈페이지 주소 : "+detailhomepageId);
+        detailresveUrl.setText("예약 사이트 : "+detailresveUrlId);
 
 
         if (Build.VERSION.SDK_INT>Build.VERSION_CODES.LOLLIPOP){
