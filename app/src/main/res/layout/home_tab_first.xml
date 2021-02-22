@@ -113,7 +113,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="추천 캠핑장"
+                    android:text="인기많은 글"
                     android:textColor="@color/white"
                     android:textStyle="bold"
                     android:textSize="16sp" />
@@ -131,7 +131,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="새로 업데이트 된 캠핑장"
+                    android:text="추천 캠핑장"
                     android:textColor="@color/white"
                     android:textStyle="bold"
                     android:paddingTop="16dp"
