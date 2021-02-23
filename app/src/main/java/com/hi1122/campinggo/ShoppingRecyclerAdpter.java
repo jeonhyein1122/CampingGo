@@ -1,7 +1,13 @@
 package com.hi1122.campinggo;
 
+import android.app.Activity;
+import android.app.ActivityOptions;
+import android.content.ClipData;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Build;
 import android.util.Log;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,15 +44,15 @@ public class ShoppingRecyclerAdpter extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView= LayoutInflater.from(context).inflate(R.layout.shopping_recycler_item,parent,false);
-        VH vh=new VH(itemView);
-        return vh;
+        VH holder=new VH(itemView);
+        return holder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
         VH vh=(VH)holder;
-        //값 연결작업..
+
         ShoppingRecyclerItem item=items.get(position);
 
         ((VH) holder).tvTitle.setText(item.title);
@@ -83,6 +89,33 @@ public class ShoppingRecyclerAdpter extends RecyclerView.Adapter {
             tvTitle=itemView.findViewById(R.id.shopping_title);
             tvprice=itemView.findViewById(R.id.shopping_price);
             tbFavor=itemView.findViewById(R.id.tb_favor);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position=getLayoutPosition();
+                    Toast.makeText(context, "클릭됨", Toast.LENGTH_SHORT).show();
+
+                    String shoppingiv=items.get(position).shoppingiv;
+                    String title=items.get(position).title;
+                    String price=items.get(position).price;
+                    String detail=items.get(position).detail;
+
+                    Intent intent=new Intent(context,Shopping_DetailActivity.class);
+                    intent.putExtra("shoppingiv",shoppingiv);
+                    intent.putExtra("title",title);
+                    intent.putExtra("price",price);
+                    intent.putExtra("detail",detail);
+
+                    if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP){
+                        ActivityOptions options=ActivityOptions.makeSceneTransitionAnimation((Activity)context,new Pair<View,String>(iv,"shoppingimg"));
+                        context.startActivity(intent,options.toBundle());
+                    }else {
+                        context.startActivity(intent);
+                    }
+
+                }
+            });
 
             //좋아요 서버 체크
             tbFavor.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
