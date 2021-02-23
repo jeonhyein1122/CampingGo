@@ -55,7 +55,7 @@ public class ShoppingRecyclerAdpter extends RecyclerView.Adapter {
 
         ShoppingRecyclerItem item=items.get(position);
 
-        ((VH) holder).tvTitle.setText(item.title);
+        ((VH) holder).tvTitle.setText(item.title+"");
         ((VH) holder).tvprice.setText(item.price+"원");
 
         String imgUrl="http://jhyein1122.dothome.co.kr/Campinggo/"+item.file;

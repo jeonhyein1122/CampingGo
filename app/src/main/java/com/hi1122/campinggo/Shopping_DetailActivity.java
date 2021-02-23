@@ -31,15 +31,16 @@ public class Shopping_DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_shopping__detail);
 
         Intent intent=getIntent();
+
         String detailiv=intent.getStringExtra("shoppingiv");
         String detailtitle=intent.getStringExtra("title");
         String detailprice=intent.getStringExtra("price");
         String detaildetail=intent.getStringExtra("detail");
 
-        detailIv=findViewById(R.id.detailiv);
-        detailTitle=findViewById(R.id.detailtitle);
-        detailPrice=findViewById(R.id.detailprice);
-        detailDetail=findViewById(R.id.detaildetail);
+        detailIv=findViewById(R.id.shopping_detail_iv);
+        detailTitle=findViewById(R.id.shopping_detail_title);
+        detailPrice=findViewById(R.id.shopping_detail_price);
+        detailDetail=findViewById(R.id.shopping_detail_detail);
 
 
         if (detailiv==null) Glide.with(this).load(R.drawable.noimage).into(detailIv);
