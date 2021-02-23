@@ -51,4 +51,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     implementation "com.kakao.sdk:v2-user:2.3.0" // 카카오 로그인
+
+    //구글맵
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
 }

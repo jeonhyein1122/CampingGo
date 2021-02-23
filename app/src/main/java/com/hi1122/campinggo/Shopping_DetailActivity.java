@@ -4,10 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
@@ -37,6 +40,18 @@ public class Shopping_DetailActivity extends AppCompatActivity {
         detailTitle=findViewById(R.id.detailtitle);
         detailPrice=findViewById(R.id.detailprice);
         detailDetail=findViewById(R.id.detaildetail);
+
+
+        if (detailiv==null) Glide.with(this).load(R.drawable.noimage).into(detailIv);
+        else Glide.with(this).load(detailiv).into(detailIv);
+//        Glide.with(this).load(campingimgId).into(detailiv);
+        detailTitle.setText(detailtitle);
+        detailPrice.setText(detailprice+"원");
+        detailDetail.setText(detaildetail);
+
+        if (Build.VERSION.SDK_INT>Build.VERSION_CODES.LOLLIPOP){
+            detailIv.setTransitionName("shoppingimg");
+        }
 
     }
 }
