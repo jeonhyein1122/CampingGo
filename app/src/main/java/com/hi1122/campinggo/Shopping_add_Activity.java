@@ -122,7 +122,16 @@ public class Shopping_add_Activity extends AppCompatActivity {
 
 
     public void clickcancle(View view) {
+
+
     }
 
 
+    public void clickSelctImagebtn(View view) {
+
+        Intent intent=new Intent(Intent.ACTION_PICK);
+        intent.setType("image/*");
+        startActivityForResult(intent,10);
+
+    }
 }

@@ -11,10 +11,11 @@
 
    <ImageView
        android:id="@+id/shopping_add_iv"
-       android:layout_width="match_parent"
-       android:layout_height="120dp"
+       android:layout_width="150dp"
+       android:layout_height="150dp"
+       android:scaleType="fitStart"
        android:src="@drawable/noimage"
-       android:scaleType="centerCrop"/>
+       android:onClick="clickSelctImagebtn"/>
 
     <Button
         android:layout_width="wrap_content"

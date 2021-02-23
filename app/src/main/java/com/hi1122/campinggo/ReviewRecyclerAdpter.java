@@ -54,7 +54,7 @@ public class ReviewRecyclerAdpter extends RecyclerView.Adapter {
         ((VH) holder).tvdetail.setText(item.detail);
 
         String imgUrl="http://jhyein1122.dothome.co.kr/Campinggoreview/"+item.file;
-//        Log.i("taghi",imgUrl);
+        Log.i("taghi",imgUrl);
 
         Glide.with(context).load(imgUrl).into(((VH) holder).iv);
 
@@ -108,7 +108,7 @@ public class ReviewRecyclerAdpter extends RecyclerView.Adapter {
 
                         @Override
                         public void onFailure(Call<ReviewRecyclerItem> call, Throwable t) {
-                            Toast.makeText(context, "error:"+t.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, "error:Review Ad--"+t.getMessage(), Toast.LENGTH_SHORT).show();
 
                         }
                     });

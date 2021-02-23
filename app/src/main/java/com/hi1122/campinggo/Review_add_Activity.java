@@ -87,11 +87,11 @@ public class Review_add_Activity extends AppCompatActivity {
     public void clickok(View view) {
 
         String title=ettitle.getText().toString();
-        String date=etdate.getText().toString();
+        String loaddate=etdate.getText().toString();
         String detail=etdetail.getText().toString();
 
         Retrofit retrofit= RetrofitHelper.getRetrofitInstanceScalars();
-        RetrofitServiceReview retrofitService= retrofit.create(RetrofitServiceReview.class);
+        RetrofitServiceReview retrofitServicereview= retrofit.create(RetrofitServiceReview.class);
 
         MultipartBody.Part filePart= null;
         if(imgPath!=null){
@@ -102,10 +102,10 @@ public class Review_add_Activity extends AppCompatActivity {
 
         Map<String, String> dataPart= new HashMap<>();
         dataPart.put("title", title);
-        dataPart.put("date", date);
+        dataPart.put("loaddate",loaddate);
         dataPart.put("detail", detail);
 
-        Call<String> call= retrofitService.postDataToServer(dataPart, filePart);
+        Call<String> call= retrofitServicereview.postDataToServer(dataPart, filePart);
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
@@ -122,5 +122,12 @@ public class Review_add_Activity extends AppCompatActivity {
         //업로드가 완료되면 액티비티 종료
         finish();
 
+    }
+
+    public void clickSelctImagebtn(View view) {
+
+        Intent intent=new Intent(Intent.ACTION_PICK);
+        intent.setType("image/*");
+        startActivityForResult(intent,10);
     }
 }

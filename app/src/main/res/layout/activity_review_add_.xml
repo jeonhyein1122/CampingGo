@@ -15,11 +15,13 @@
 
         <ImageView
             android:id="@+id/review_add_iv"
-            android:layout_width="250dp"
-            android:layout_height="100dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:layout_marginLeft="14dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/test" />
+            android:adjustViewBounds="true"
+            android:src="@drawable/noimage"
+            android:onClick="clickSelctImagebtn"
+            android:paddingBottom="8dp"/>
 
         <Button
             android:layout_width="wrap_content"
@@ -66,7 +68,7 @@
     <EditText
         android:id="@+id/review_add_etdetail"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
+        android:layout_height="320dp"
         android:layout_below="@+id/review_add_ettitle"
         android:background="@drawable/bg_edit_review"
         android:layout_marginTop="8dp"
@@ -74,7 +76,7 @@
         android:textSize="16sp"
         android:gravity="start"
         android:padding="10dp"
-        android:inputType="text"
+        android:inputType="textMultiLine"
         android:hint="내용을 입력해주세요."/>
 
     <LinearLayout

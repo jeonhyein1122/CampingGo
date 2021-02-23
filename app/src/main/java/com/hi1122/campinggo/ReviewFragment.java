@@ -23,6 +23,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class ReviewFragment extends Fragment {
 
@@ -93,14 +94,9 @@ public class ReviewFragment extends Fragment {
 //        items.add(new ReviewRecyclerItem());
 //        items.add(new ReviewRecyclerItem());
 //        items.add(new ReviewRecyclerItem());
-//        items.add(new ReviewRecyclerItem());
-//        items.add(new ReviewRecyclerItem());
-//        items.add(new ReviewRecyclerItem());
-//        items.add(new ReviewRecyclerItem());
-//        items.add(new ReviewRecyclerItem());
-//        items.add(new ReviewRecyclerItem());
 
         Retrofit retrofit= RetrofitHelper.getRetrofitInstanceGson();
+
         RetrofitServiceReview retrofitServiceReview= retrofit.create(RetrofitServiceReview.class);
         Call<ArrayList<ReviewRecyclerItem>> call= retrofitServiceReview.loadDataFromServer();
         call.enqueue(new Callback<ArrayList<ReviewRecyclerItem>>() {
@@ -122,7 +118,7 @@ public class ReviewFragment extends Fragment {
 
             @Override
             public void onFailure(Call<ArrayList<ReviewRecyclerItem>> call, Throwable t) {
-                Toast.makeText(getActivity(), "error1:"+t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "error: ReviewFrag--"+t.getMessage(), Toast.LENGTH_SHORT).show();
 
             }
         });

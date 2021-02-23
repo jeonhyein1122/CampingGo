@@ -53,12 +53,9 @@ public class ShoppingRecyclerAdpter extends RecyclerView.Adapter {
         ((VH) holder).tvprice.setText(item.price+"원");
 
         String imgUrl="http://jhyein1122.dothome.co.kr/Campinggo/"+item.file;
-        Log.i("taghi",imgUrl);
+//        Log.i("taghi",imgUrl);
 
         Glide.with(context).load(imgUrl).into(((VH) holder).iv);
-
-
-
 
         if (item.favor==0) ((VH) holder).tbFavor.setChecked(false);
         else  ((VH) holder).tbFavor.setChecked(true);
@@ -107,7 +104,7 @@ public class ShoppingRecyclerAdpter extends RecyclerView.Adapter {
 
                         @Override
                         public void onFailure(Call<ShoppingRecyclerItem> call, Throwable t) {
-                            Toast.makeText(context, "error:"+t.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, "error:Sh Adpter --"+t.getMessage(), Toast.LENGTH_SHORT).show();
 
                         }
                     });

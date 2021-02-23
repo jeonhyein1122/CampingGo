@@ -123,7 +123,7 @@ public class ShoppingFragment extends Fragment {
 
             @Override
             public void onFailure(Call<ArrayList<ShoppingRecyclerItem>> call, Throwable t) {
-                Toast.makeText(getActivity(), "error:"+t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "error:ShoppingFragment--"+t.getMessage(), Toast.LENGTH_SHORT).show();
 
             }
         });
