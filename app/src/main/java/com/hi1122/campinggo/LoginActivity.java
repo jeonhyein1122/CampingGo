@@ -8,37 +8,51 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.kakao.sdk.auth.LoginClient;
 import com.kakao.sdk.auth.model.OAuthToken;
 import com.kakao.sdk.user.UserApiClient;
 import com.kakao.sdk.user.model.User;
 
-import de.hdodenhof.circleimageview.CircleImageView;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function2;
 
 public class LoginActivity extends AppCompatActivity {
     
-    CircleImageView profile;
-    TextView tvnickname;
+//    CircleImageView profile;
+//    TextView tvnickname;
     String nickname;
+    EditText login_eamil;
+    EditText login_password;
+    TextView login_button;
+    TextView login_signup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        profile=findViewById(R.id.profile);
-        tvnickname=findViewById(R.id.tv_nickname);
+//        profile=findViewById(R.id.profile);
+//        tvnickname=findViewById(R.id.tv_nickname);
+        login_eamil=findViewById(R.id.login_etemail);
+        login_password=findViewById(R.id.login_etpassword);
+        login_button=findViewById(R.id.login_login);
+        login_signup=findViewById(R.id.login_signup);
 
        Toolbar logintoolbar=findViewById(R.id.logintoolbar);
        setSupportActionBar(logintoolbar);
        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+       login_signup.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               Intent intent=new Intent(LoginActivity.this, SignupPageActivity.class);
+               startActivity(intent);
+           }
+       });
 
     }
 
@@ -72,20 +86,11 @@ public class LoginActivity extends AppCompatActivity {
                                 nickname=user.getKakaoAccount().getProfile().getNickname();
                                 String profileImageUrl=user.getKakaoAccount().getProfile().getThumbnailImageUrl();
 
-                                 tvnickname.setText(nickname);
-
-                              Glide.with(LoginActivity.this).load(profileImageUrl).into(profile);
-
+//                                 tvnickname.setText(nickname);
+//                              Glide.with(LoginActivity.this).load(profileImageUrl).into(profile);
                                 Intent intent= new Intent(LoginActivity.this,MainActivity.class);
                                 intent.putExtra("tvnicknameId",nickname);
                                 startActivity(intent);
-
-
-//                              Intent intent=new Intent(LoginActivity.this,MainActivity.class);
-//                              intent.putExtra("tvnicknameId",nickname);
-//                              intent.putExtra("profileImageUrlId",profileImageUrl);
-//                              setResult(RESULT_OK,intent);
-//                              finish();
 
 
                             }else {
@@ -105,7 +110,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public void clicksignup(View view) {
 
-        Intent intent= new Intent(this,SingupPageActivity.class);
+        Intent intent= new Intent(this, SignupPageActivity.class);
         startActivity(intent);
     }
 }

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".LoginActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -15,22 +16,64 @@
         android:theme="@style/ToolbarTheme"/>
 
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profile"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:background="@drawable/profilenull"
-        android:layout_above="@+id/tv_nickname"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="2dp"/>
+<!--    <de.hdodenhof.circleimageview.CircleImageView-->
+<!--        android:id="@+id/login_profile"-->
+<!--        android:layout_width="80dp"-->
+<!--        android:layout_height="80dp"-->
+<!--        android:background="@drawable/profilenull"-->
+<!--        android:layout_above="@+id/tv_nickname"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_marginBottom="2dp"/>-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/login_tv_nickname"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_above="@+id/imgbtn"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:paddingBottom="4dp" />-->
 
     <TextView
-        android:id="@+id/tv_nickname"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/imgbtn"
-        android:layout_centerHorizontal="true"
-        android:paddingBottom="4dp" />
+        android:text="LOGIN"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:layout_marginTop="30dp"
+        android:textStyle="bold"/>
+
+    <EditText
+        android:id="@+id/login_etemail"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:hint="sample@email.com"
+        android:textSize="16sp"
+        android:inputType="textEmailAddress"/>
+
+    <EditText
+        android:id="@+id/login_etpassword"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:hint="password"
+        android:textSize="16sp"
+        android:inputType="textPassword"/>
+
+    <TextView
+        android:id="@+id/login_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="로그인"
+        android:textSize="25sp"
+        android:background="@drawable/bg_edit"
+        android:gravity="center"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:padding="8dp"/>
 
 
     <ImageButton
@@ -38,19 +81,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/kakao_login_medium_narrow"
-        android:layout_centerInParent="true"
-        android:layout_centerHorizontal="true"
         android:background="@android:color/transparent"
-        android:onClick="clicklogin"/>
+        android:onClick="clicklogin"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="16dp"/>
 
 
     <LinearLayout
-        android:id="@+id/layout_signup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_below="@+id/imgbtn"
-        android:layout_marginTop="100dp">
+        android:layout_marginTop="50dp">
 
 
         <ImageView
@@ -65,7 +107,6 @@
 
 
         <TextView
-            android:id="@+id/tv_signup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="회원가입 하시겠습니까?"
@@ -78,17 +119,18 @@
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/signup"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/login_signup"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="회원가입 하러가기!"
-        android:backgroundTint="#5ECFDD"
-        android:layout_below="@+id/layout_signup"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="16dp"
-        android:textStyle="bold"
-        android:onClick="clicksignup"/>
+        android:text="회원가입"
+        android:textSize="25sp"
+        android:background="@drawable/bg_edit"
+        android:gravity="center"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="200dp"
+        android:layout_marginRight="15dp"
+        android:padding="8dp"/>
 
 
 
@@ -96,4 +138,4 @@
 
 
 
-</RelativeLayout>
+</LinearLayout>

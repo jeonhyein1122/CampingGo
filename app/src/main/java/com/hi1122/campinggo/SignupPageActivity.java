@@ -1,19 +1,16 @@
 package com.hi1122.campinggo;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 
-public class SingupPageActivity extends AppCompatActivity {
+public class SignupPageActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_singup_page);
+        setContentView(R.layout.activity_signup_page);
 
 //        Toolbar signuptoolbar=findViewById(R.id.signuptoolbar);
 //        setSupportActionBar(signuptoolbar);
@@ -21,9 +18,6 @@ public class SingupPageActivity extends AppCompatActivity {
 
     }
 
-    public void clickImage(View view) {
-    }
-
-    public void clickBtn(View view) {
+    public void click_signup_Profile(View view) {
     }
 }
