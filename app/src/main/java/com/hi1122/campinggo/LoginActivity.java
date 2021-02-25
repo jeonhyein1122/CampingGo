@@ -37,6 +37,7 @@ public class LoginActivity extends AppCompatActivity {
 
 //        profile=findViewById(R.id.profile);
 //        tvnickname=findViewById(R.id.tv_nickname);
+
         login_eamil=findViewById(R.id.login_etemail);
         login_password=findViewById(R.id.login_etpassword);
         login_button=findViewById(R.id.login_login);
@@ -86,11 +87,16 @@ public class LoginActivity extends AppCompatActivity {
                                 nickname=user.getKakaoAccount().getProfile().getNickname();
                                 String profileImageUrl=user.getKakaoAccount().getProfile().getThumbnailImageUrl();
 
+                                G.nickname=nickname;
+                                G.profile=profileImageUrl;
+
+                                setResult(RESULT_OK);
+                                finish();
 //                                 tvnickname.setText(nickname);
 //                              Glide.with(LoginActivity.this).load(profileImageUrl).into(profile);
-                                Intent intent= new Intent(LoginActivity.this,MainActivity.class);
-                                intent.putExtra("tvnicknameId",nickname);
-                                startActivity(intent);
+//                                Intent intent= new Intent(LoginActivity.this,MainActivity.class);
+//                                intent.putExtra("tvnicknameId",nickname);
+//                                startActivity(intent);
 
 
                             }else {

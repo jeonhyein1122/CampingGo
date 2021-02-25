@@ -1,6 +1,7 @@
 package com.hi1122.campinggo;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -89,9 +90,6 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String  tvnicknameId= intent.getStringExtra("tvnicknameId");
-//        if (tvnicknameId!=null)return;
-//        tvnickname.setText(tvnicknameId);
-
 
         Toast.makeText(this,""+tvnicknameId, Toast.LENGTH_SHORT).show();
 
@@ -156,9 +154,14 @@ public class MainActivity extends AppCompatActivity {
                             fragments[4]=new MypageFragment();
                             tran.add(R.id.container,fragments[4]);
                             getSupportActionBar().setTitle("마이페이지");
+                            tran.hide(fragments[4]);
                         }
-                        tran.show(fragments[4]);
-
+                        if (G.nickname !=null) {
+                            tran.show(fragments[4]);
+                        }else {
+                            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                            startActivityForResult(intent, 1122);
+                        }
                         break;
                 }
                 tran.commit();
@@ -191,5 +194,14 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout.closeDrawer(navigationView);
     }
 
-
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode){
+            case 1122:
+                if (resultCode==RESULT_OK) bnv.setSelectedItemId(R.id.mypage);
+                else Toast.makeText(this, "안됨, 실패", Toast.LENGTH_SHORT).show();
+                break;
+        }
+    }
 }
