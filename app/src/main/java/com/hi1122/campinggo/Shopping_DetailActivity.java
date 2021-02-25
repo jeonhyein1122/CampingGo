@@ -11,8 +11,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.maps.model.Circle;
 
 import java.util.ArrayList;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Shopping_DetailActivity extends AppCompatActivity {
 
@@ -24,6 +27,8 @@ public class Shopping_DetailActivity extends AppCompatActivity {
     TextView detailPrice;
     TextView detailDetail;
 
+    CircleImageView profile;
+    TextView nickname;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +46,9 @@ public class Shopping_DetailActivity extends AppCompatActivity {
         detailTitle=findViewById(R.id.shopping_detail_title);
         detailPrice=findViewById(R.id.shopping_detail_price);
         detailDetail=findViewById(R.id.shopping_detail_detail);
+
+        profile=findViewById(R.id.shopping_profile);
+        nickname=findViewById(R.id.shopping_nickname);
 
 
         if (detailiv==null) Glide.with(this).load(R.drawable.noimage).into(detailIv);

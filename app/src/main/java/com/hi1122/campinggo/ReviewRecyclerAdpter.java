@@ -1,7 +1,12 @@
 package com.hi1122.campinggo;
 
+import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Build;
 import android.util.Log;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -87,6 +92,34 @@ public class ReviewRecyclerAdpter extends RecyclerView.Adapter {
             tvdetail=itemView.findViewById(R.id.review_detail);
             tvdate=itemView.findViewById(R.id.review_date);
             tbFavor=itemView.findViewById(R.id.tb_favor);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position=getLayoutPosition();
+                    Toast.makeText(context, "클릭됨", Toast.LENGTH_SHORT).show();
+
+                    String reviewiv=items.get(position).reviewiv;
+                    String title=items.get(position).title;
+                    String loaddate=items.get(position).loaddate;
+                    String detail=items.get(position).detail;
+
+                    Intent intent=new Intent(context,Review_DetailActivity.class);
+                    intent.putExtra("reviewiv",reviewiv);
+                    intent.putExtra("title",title);
+                    intent.putExtra("loaddate",loaddate);
+                    intent.putExtra("detail",detail);
+
+                    if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP){
+                        ActivityOptions options=ActivityOptions.makeSceneTransitionAnimation((Activity)context,new Pair<View,String>(iv,"reviewimg"));
+                        context.startActivity(intent,options.toBundle());
+                    }else {
+                        context.startActivity(intent);
+                    }
+
+                }
+            });
+
 
             //좋아요 서버 체크
             tbFavor.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

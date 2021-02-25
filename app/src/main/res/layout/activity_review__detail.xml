@@ -37,13 +37,13 @@
             android:textStyle="bold"/>
 
         <TextView
-            android:id="@+id/review_detail_price"
+            android:id="@+id/review_detail_loaddate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="price"
+            android:text="date"
             android:textSize="26sp"
             android:gravity="right"
-            android:textColor="#ffff3333"
+            android:textColor="#6A6A6A"
             android:layout_marginRight="8dp"/>
 
         <TextView
@@ -53,7 +53,8 @@
             android:text="detail"
             android:textSize="20sp"
             android:textColor="#ff333333"
-            android:layout_marginLeft="8dp"/>
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="8dp"/>
 
 
 </LinearLayout>

@@ -50,9 +50,9 @@ public class ReviewFragment extends Fragment {
        btnadd.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               Intent intent=new Intent(getActivity(),Review_add_Activity.class);
 
-               startActivity(intent);
+               if (G.nickname !=null) startActivity(new Intent(getActivity(),Review_add_Activity.class));
+               else startActivity(new Intent(getActivity(),LoginActivity.class));
 
            }
        });

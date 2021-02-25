@@ -20,7 +20,7 @@ public class Review_DetailActivity extends AppCompatActivity {
 
     ImageView detailIv;
     TextView detailTitle;
-    TextView detailPrice;
+    TextView detailLoaddate;
     TextView detailDetail;
 
 
@@ -33,24 +33,24 @@ public class Review_DetailActivity extends AppCompatActivity {
 
         String detailiv=intent.getStringExtra("reviewiv");
         String detailtitle=intent.getStringExtra("title");
-        String detailprice=intent.getStringExtra("price");
+        String detailloaddate=intent.getStringExtra("loaddate");
         String detaildetail=intent.getStringExtra("detail");
 
-        detailIv=findViewById(R.id.shopping_detail_iv);
-        detailTitle=findViewById(R.id.shopping_detail_title);
-        detailPrice=findViewById(R.id.shopping_detail_price);
-        detailDetail=findViewById(R.id.shopping_detail_detail);
+        detailIv=findViewById(R.id.review_detail_iv);
+        detailTitle=findViewById(R.id.review_detail_title);
+        detailLoaddate=findViewById(R.id.review_detail_loaddate);
+        detailDetail=findViewById(R.id.review_detail_detail);
 
 
         if (detailiv==null) Glide.with(this).load(R.drawable.noimage).into(detailIv);
         else Glide.with(this).load(detailiv).into(detailIv);
 //        Glide.with(this).load(campingimgId).into(detailiv);
         detailTitle.setText(detailtitle);
-        detailPrice.setText(detailprice+"원");
+        detailLoaddate.setText("등록일"+detailloaddate);
         detailDetail.setText(detaildetail);
 
         if (Build.VERSION.SDK_INT>Build.VERSION_CODES.LOLLIPOP){
-            detailIv.setTransitionName("shoppingimg");
+            detailIv.setTransitionName("reviewimg");
         }
 
     }
