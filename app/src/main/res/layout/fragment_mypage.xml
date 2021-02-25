@@ -2,7 +2,51 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="16dp">
+
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/mypage_profile"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/profilenull"
+                    android:layout_centerHorizontal="true" />
+
+                <TextView
+                    android:id="@+id/mypage_nickname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" test "
+                    android:layout_below="@+id/mypage_profile"
+                    android:layout_marginTop="8dp"
+                    android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/Logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LOGOUT"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:layout_toRightOf="@+id/mypage_nickname"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/mypage_profile"
+        android:layout_marginLeft="80dp" />
+
+
+        <TextView
+            android:id="@+id/favor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="찜 목록"
+            android:textSize="30dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_below="@+id/mypage_nickname"/>
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler"
@@ -10,7 +54,9 @@
             android:layout_height="match_parent"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:orientation="vertical"
+            android:layout_below="@+id/favor"
             android:padding="16dp" />
+
 
 
 </RelativeLayout>
