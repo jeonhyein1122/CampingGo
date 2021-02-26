@@ -38,7 +38,6 @@ public class ShoppingFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-//        loadData();
     }
 
     @Nullable
@@ -92,14 +91,6 @@ public class ShoppingFragment extends Fragment {
     }
 
     void loadData(){
-//
-//        items.add(new ShoppingRecyclerItem());
-//        items.add(new ShoppingRecyclerItem());
-//        items.add(new ShoppingRecyclerItem());
-//        items.add(new ShoppingRecyclerItem());
-//        items.add(new ShoppingRecyclerItem());
-//        items.add(new ShoppingRecyclerItem());
-//        items.add(new ShoppingRecyclerItem());
 
         Retrofit retrofit= RetrofitHelper.getRetrofitInstanceGson();
         RetrofitService retrofitService= retrofit.create(RetrofitService.class);
@@ -123,7 +114,6 @@ public class ShoppingFragment extends Fragment {
 
             @Override
             public void onFailure(Call<ArrayList<ShoppingRecyclerItem>> call, Throwable t) {
-                Toast.makeText(getActivity(), "error:ShoppingFragment--"+t.getMessage(), Toast.LENGTH_SHORT).show();
 
             }
         });

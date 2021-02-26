@@ -22,6 +22,7 @@ public class CampingApi_Main extends AppCompatActivity {
     ArrayList<CampingApiRecyclerItem> items=new ArrayList<>();
     RecyclerView recyclerView;
     CampingApiAdapter adapter;
+    String tagName;
 
     CampingApiRecyclerItem item= null;
 
@@ -42,15 +43,13 @@ public class CampingApi_Main extends AppCompatActivity {
         adapter=new CampingApiAdapter(this,items);
         recyclerView.setAdapter(adapter);
 
-
-
         Thread t=new Thread(){
             @Override
 
             public void run() {
 
                 String address="http://api.visitkorea.or.kr/openapi/service/rest/GoCamping/basedList?ServiceKey="
-                +apiKey+"&MobileOS=AND"+"&MobileApp=campinggo";
+                +apiKey+"&MobileOS=AND"+"&MobileApp=campinggo&numOfRows=100";
 
                 try {
                     URL url=new URL(address);
@@ -74,7 +73,7 @@ public class CampingApi_Main extends AppCompatActivity {
                                 break;
 
                             case XmlPullParser.START_TAG:
-                                String tagName=xpp.getName();
+                                tagName=xpp.getName();
                                 if(tagName.equals("item")){
                                     item= new CampingApiRecyclerItem();
 

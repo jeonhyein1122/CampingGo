@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -27,7 +28,7 @@ public class Review_DetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_review__detail);
+        setContentView(R.layout.review__detail);
 
         Intent intent=getIntent();
 
@@ -42,11 +43,14 @@ public class Review_DetailActivity extends AppCompatActivity {
         detailDetail=findViewById(R.id.review_detail_detail);
 
 
-        if (detailiv==null) Glide.with(this).load(R.drawable.noimage).into(detailIv);
-        else Glide.with(this).load(detailiv).into(detailIv);
+        String imgUrl="http://jhyein1122.dothome.co.kr/Campinggoreview/"+detailiv;
+        Log.i("tagreview",imgUrl);
+
+        if (imgUrl==null) Glide.with(this).load(R.drawable.noimage).into(detailIv);
+        else Glide.with(this).load(imgUrl).into(detailIv);
 //        Glide.with(this).load(campingimgId).into(detailiv);
         detailTitle.setText(detailtitle);
-        detailLoaddate.setText("등록일"+detailloaddate);
+        detailLoaddate.setText("여행일 : "+detailloaddate);
         detailDetail.setText(detaildetail);
 
         if (Build.VERSION.SDK_INT>Build.VERSION_CODES.LOLLIPOP){

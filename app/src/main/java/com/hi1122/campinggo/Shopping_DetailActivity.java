@@ -6,12 +6,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.google.android.gms.maps.model.Circle;
 
 import java.util.ArrayList;
 
@@ -33,7 +31,7 @@ public class Shopping_DetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_shopping__detail);
+        setContentView(R.layout.shopping__detail);
 
         Intent intent=getIntent();
 
@@ -50,9 +48,10 @@ public class Shopping_DetailActivity extends AppCompatActivity {
         profile=findViewById(R.id.shopping_profile);
         nickname=findViewById(R.id.shopping_nickname);
 
+        String imgUrl="http://jhyein1122.dothome.co.kr/Campinggo/"+detailiv;
 
-        if (detailiv==null) Glide.with(this).load(R.drawable.noimage).into(detailIv);
-        else Glide.with(this).load(detailiv).into(detailIv);
+        if (imgUrl==null) Glide.with(this).load(R.drawable.noimage).into(detailIv);
+        else Glide.with(this).load(imgUrl).into(detailIv);
 //        Glide.with(this).load(campingimgId).into(detailiv);
         detailTitle.setText(detailtitle);
         detailPrice.setText(detailprice+"원");

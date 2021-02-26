@@ -40,7 +40,7 @@
        android:id="@+id/review_add_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="등록일"
+        android:hint="여행 다녀온 날짜"
         android:layout_marginLeft="4dp"
         android:background="@drawable/bg_edit_review"
         android:inputType="text"

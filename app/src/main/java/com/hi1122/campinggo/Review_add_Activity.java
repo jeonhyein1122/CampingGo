@@ -39,7 +39,7 @@ public class Review_add_Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_review_add_);
+        setContentView(R.layout.review_add_);
 
         etdate=findViewById(R.id.review_add_date);
         ettitle=findViewById(R.id.review_add_ettitle);

@@ -2,10 +2,12 @@ package com.hi1122.campinggo;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,6 +20,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
@@ -31,6 +34,7 @@ public class MyAroundFragment extends Fragment implements OnMapReadyCallback {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.fragment_myaround,container,false);
+
 
         MapView mapview=(MapView)view.findViewById(R.id.map);
         mapview.onCreate(savedInstanceState);
@@ -46,14 +50,13 @@ public class MyAroundFragment extends Fragment implements OnMapReadyCallback {
         super.onViewCreated(view, savedInstanceState);
 
 
-
-        //여기서 xml이 뷰들에 대한 find 작업
     }
 
-    //
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
 
     }
 
@@ -67,15 +70,6 @@ public class MyAroundFragment extends Fragment implements OnMapReadyCallback {
         LatLng seoul = new LatLng(37.562087, 127.035192);
         gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(seoul, 15)); //줌:1~25
 
-        //마커추가하기
-        MarkerOptions marker = new MarkerOptions();
-        marker.title("왕십리");
-        marker.snippet("왕십리역에 있는 미래능력개발교육원");
-        marker.position(seoul);
-        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_flag_36)); //아이콘이미지는 벡터이미지 안됨, .jpg or .png같은 픽셀이미지여야만 함
-        marker.anchor(0.5f, 1.0f);
-
-        gMap.addMarker(marker);
 
         //지도의 대표적인 설정들
         UiSettings settings = gMap.getUiSettings();
@@ -86,14 +80,36 @@ public class MyAroundFragment extends Fragment implements OnMapReadyCallback {
 
         //내위치를 요구해야 버튼 보여짐 (명시적 퍼미션 체크코드 필요)
         if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+
             return;
 
         }
-        gMap.setMyLocationEnabled(true);
 
-        //나머지 관련 내용을 개발자사이트의 가이드를 참고해서 시도해보세요~~
+        gMap.setMyLocationEnabled(true);
 
 
     }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        switch (requestCode){
+            case 0:
+//                if( grantResults[0]==PackageManager.PERMISSION_DENIED || grantResults[1]==PackageManager.PERMISSION_DENIED){
+//                    Toast.makeText(this, "이 앱의 내 위치 사용불가", Toast.LENGTH_SHORT).show();
+//                }
+                for(int i=0; i<grantResults.length; i++){
+                    if(grantResults[i]==PackageManager.PERMISSION_DENIED){
+                        Toast.makeText(getActivity(), "내 위치 사용불가", Toast.LENGTH_SHORT).show();
+                        break;
+                    }
+                }
+                break;
+        }
+    }
+
 }
 

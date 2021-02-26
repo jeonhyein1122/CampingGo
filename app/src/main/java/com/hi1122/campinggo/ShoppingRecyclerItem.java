@@ -1,5 +1,7 @@
 package com.hi1122.campinggo;
 
+import com.google.gson.annotations.SerializedName;
+
 public class ShoppingRecyclerItem {
 
     int no;
@@ -10,6 +12,7 @@ public class ShoppingRecyclerItem {
     int favor;
     String date;
     String file;
+
 
     public ShoppingRecyclerItem() {
     }
