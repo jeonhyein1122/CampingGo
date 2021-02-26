@@ -58,9 +58,9 @@ public class MypageFragment extends Fragment {
                 UserApiClient.getInstance().logout(new Function1<Throwable, Unit>() {
                     @Override
                     public Unit invoke(Throwable throwable) {
-                        if(throwable !=null)
-                            Toast.makeText(getActivity(), "로그아웃 실패", Toast.LENGTH_SHORT).show();
-                        else {
+                        if(throwable !=null) {
+                            logout.setEnabled(false);
+                        } else {
                             Toast.makeText(getActivity(), "로그아웃", Toast.LENGTH_SHORT).show();
 
                             //로그인 회원정보 화면들 모두 초기화

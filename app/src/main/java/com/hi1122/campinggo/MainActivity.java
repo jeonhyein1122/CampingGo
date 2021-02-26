@@ -22,11 +22,15 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.kakao.sdk.common.util.Utility;
+import com.kakao.sdk.user.UserApiClient;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -43,17 +47,16 @@ public class MainActivity extends AppCompatActivity {
     NavigationView navigationView;
     ActionBarDrawerToggle drawerToggle;
 
+    Button logoutBtn;
+    TextView tvlogin;
+    TextView tvlogout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.M){
-            if( checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_DENIED ){
-                String[] permissions= new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.WRITE_EXTERNAL_STORAGE};
-                requestPermissions(permissions, 0);
-            }
-        }
+
 
         String keyHash= Utility.INSTANCE.getKeyHash(this);
         Log.i("KeyHash",keyHash);
@@ -93,15 +96,11 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
-//
+
         drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.app_name, R.string.app_name);
         drawerLayout.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
 
-        Intent intent = getIntent();
-        String  tvnicknameId= intent.getStringExtra("tvnicknameId");
-
-        Toast.makeText(this,""+tvnicknameId, Toast.LENGTH_SHORT).show();
 
 
         fragmentManager = getSupportFragmentManager();
@@ -127,6 +126,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.home:
                         tran.show(fragments[0]);
                         getSupportActionBar().setTitle("campinggo");
+
 
                         break;
 
@@ -182,6 +182,14 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+        //지도 동적퍼미션
+        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.M){
+            if( checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_DENIED ){
+                String[] permissions= new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+                requestPermissions(permissions, 0);
+            }
+        }
+
 
     }
 
@@ -189,6 +197,13 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent=new Intent(this,LoginActivity.class);
         startActivity(intent);
+
+
+//        if (G.nickname==null){
+//            logoutBtn.setVisibility(View.VISIBLE);
+//            loginBtn.setVisibility(View.GONE);
+//
+//        }
     }
 
 
