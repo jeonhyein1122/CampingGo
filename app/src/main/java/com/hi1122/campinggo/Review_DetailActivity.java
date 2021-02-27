@@ -43,11 +43,15 @@ public class Review_DetailActivity extends AppCompatActivity {
         detailDetail=findViewById(R.id.review_detail_detail);
 
 
-        String imgUrl="http://jhyein1122.dothome.co.kr/Campinggoreview/"+detailiv;
-        Log.i("tagreview",imgUrl);
+        String imgurl="http://jhyein1122.dothome.co.kr/Campinggoreview/"+detailiv;
+        Log.i("tagred",imgurl);
 
-        if (imgUrl==null) Glide.with(this).load(R.drawable.noimage).into(detailIv);
-        else Glide.with(this).load(imgUrl).into(detailIv);
+//        if (imgurl==null) Glide.with(this).load(R.drawable.noimage).into(detailIv);
+//        else Glide.with(this).load(imgurl).into(detailIv);
+        if (imgurl==null) Glide.with(this).load(R.drawable.noimage).into(detailIv);
+        else Glide.with(this).load(imgurl).into(detailIv);
+
+
 //        Glide.with(this).load(campingimgId).into(detailiv);
         detailTitle.setText(detailtitle);
         detailLoaddate.setText("여행일 : "+detailloaddate);

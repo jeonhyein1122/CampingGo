@@ -59,7 +59,7 @@ public class ReviewRecyclerAdpter extends RecyclerView.Adapter {
         ((VH) holder).tvdetail.setText(item.detail);
 
         String imgUrl="http://jhyein1122.dothome.co.kr/Campinggoreview/"+item.file;
-        Log.i("taghi",imgUrl);
+        Log.i("tagread",imgUrl);
 
         Glide.with(context).load(imgUrl).into(((VH) holder).iv);
 
