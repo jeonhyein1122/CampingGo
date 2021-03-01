@@ -35,7 +35,7 @@
         android:onClick="click_signup_Profile"/>
 
     <EditText
-        android:id="@+id/signup_etemail"
+        android:id="@+id/signup_etid"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

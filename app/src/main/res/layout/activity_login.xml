@@ -80,12 +80,11 @@
         android:id="@+id/imgbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/kakao_login_medium_narrow"
-        android:background="@android:color/transparent"
-        android:onClick="clicklogin"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="50dp"
-        android:layout_marginLeft="16dp"/>
-
+        android:background="@android:color/transparent"
+        android:onClick="clickkakaologin"
+        android:src="@drawable/kakao_login_medium_narrow" />
 
     <LinearLayout
         android:layout_width="match_parent"
