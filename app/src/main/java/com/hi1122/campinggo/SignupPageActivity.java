@@ -59,8 +59,7 @@ public class SignupPageActivity extends AppCompatActivity {
                 String userID = et_id.getText().toString();
                 String userPass = et_pass.getText().toString();
                 String userName = et_nickname.getText().toString();
-//                int userAge = Integer.parseInt( et_age.getText().toString() );
-                String file=imgPath.getBytes().toString();
+                String file=profileimg.toString();
 
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override

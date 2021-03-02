@@ -140,6 +140,15 @@ public class MainActivity extends AppCompatActivity {
                         bnv.setSelectedItemId(R.id.review);
                         drawerLayout.closeDrawer(navigationView);
                         break;
+
+                    case R.id.tv_nickname :
+
+                        Intent intent = getIntent();
+                        String userName = intent.getStringExtra("userName");
+
+                        tvnickname.setText(userName);
+
+                        break;
                 }
 
                 return true;
@@ -214,7 +223,7 @@ public class MainActivity extends AppCompatActivity {
                             getSupportActionBar().setTitle("마이페이지");
                             tran.hide(fragments[4]);
                         }
-                        if (G.nickname !=null && G.userID !=null) {
+                        if (G.nickname !=null || G.userID !=null) {
                             tran.show(fragments[4]);
                         }else {
                             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
@@ -246,12 +255,12 @@ public class MainActivity extends AppCompatActivity {
         Intent intent=new Intent(this,LoginActivity.class);
         startActivity(intent);
 
+        if (G.userID !=null || G.nickname !=null){
+            loginBtn.setEnabled(false);
+        }
 
-//        if (G.nickname==null){
-//            logoutBtn.setVisibility(View.VISIBLE);
-//            loginBtn.setVisibility(View.GONE);
-//
-//        }
+
+
     }
 
 

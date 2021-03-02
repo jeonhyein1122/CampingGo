@@ -37,13 +37,13 @@
                     android:layout_weight="1"
                     android:paddingBottom="16dp">
 
-                  <Button
+                  <androidx.appcompat.widget.AppCompatButton
                       android:id="@+id/btnall"
-                      android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
+                      android:layout_width="80dp"
+                      android:layout_height="80dp"
                       android:layout_marginLeft="48dp"
                       android:text="전체"
-                      android:background="@drawable/home_tab_first_btnbg"
+                      android:background="@drawable/campingicon"
                       android:layout_alignParentBottom="true" />
 
                     <Button
@@ -73,13 +73,13 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1">
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnmountain"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:layout_marginLeft="48dp"
                 android:text="산"
-                android:background="@drawable/home_tab_first_btnbg"
+                android:background="@drawable/moutainicon"
                 android:layout_alignParentBottom="true" />
 
             <Button

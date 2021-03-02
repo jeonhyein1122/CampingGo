@@ -90,7 +90,7 @@ public class LoginActivity extends AppCompatActivity {
                                G.nickname=userName;
                                G.profile=file;
 
-                               Toast.makeText( getApplicationContext(), "환영합니다"+G.nickname+"님", Toast.LENGTH_SHORT ).show();
+                               Toast.makeText( getApplicationContext(), "환영합니다", Toast.LENGTH_SHORT ).show();
 
                                setResult(RESULT_OK);
                                finish();
@@ -144,7 +144,7 @@ public class LoginActivity extends AppCompatActivity {
             public Unit invoke(OAuthToken oAuthToken, Throwable throwable) {
                 
                 if(oAuthToken !=null){
-                    Toast.makeText( getApplicationContext(), "환영합니다"+G.nickname+"님", Toast.LENGTH_SHORT ).show();
+                    Toast.makeText( getApplicationContext(), "환영합니다", Toast.LENGTH_SHORT ).show();
 
 
                     UserApiClient.getInstance().me(new Function2<User, Throwable, Unit>() {

@@ -4,14 +4,21 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.loader.content.CursorLoader;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -32,7 +39,7 @@ public class Shopping_add_Activity extends AppCompatActivity {
 
     EditText ettitle,etprice,etdetail;
     ImageView iv;
-
+    TextView dialogtv;
     String imgPath;
 
     @Override
@@ -114,14 +121,48 @@ public class Shopping_add_Activity extends AppCompatActivity {
             }
         });
 
+        //소프트키
+        InputMethodManager imm=(InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),0);
+
         //업로드가 완료되면 액티비티 종료
         finish();
+
+
     }
 
 
 
 
+    AlertDialog dialog;
     public void clickcancle(View view) {
+
+        AlertDialog.Builder builder=new AlertDialog.Builder(this);
+
+        LayoutInflater inflater=getLayoutInflater();
+        LinearLayout layout=(LinearLayout)inflater.inflate(R.layout.dialog,null);
+
+        dialogtv=layout.findViewById(R.id.dialogtv);
+
+        builder.setView(layout);
+
+        builder.setPositiveButton("네", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                finish();
+            }
+        });
+        builder.setNegativeButton("아니오", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        dialog=builder.create();
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.show();
 
 
     }

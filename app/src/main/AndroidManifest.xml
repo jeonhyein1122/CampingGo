@@ -6,7 +6,6 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- 그래픽 라이브러리 -->
-
     <uses-feature
         android:glEsVersion="0x00020000"
         android:required="true" />
@@ -21,7 +20,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CampingGo"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Review_DetailActivity"></activity>
+        <activity android:name=".Home_Second_Detail"></activity>
+        <activity android:name=".Review_DetailActivity" />
         <activity android:name=".Shopping_DetailActivity" />
         <activity android:name=".CampingApi_DetailActivity" />
         <activity
@@ -54,14 +54,10 @@
         </activity> <!-- Google SDK 버전번호 명시 -->
         <meta-data
             android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
-
-        <!-- HTTP에 대한 설정 -->
+            android:value="@integer/google_play_services_version" /> <!-- HTTP에 대한 설정 -->
         <uses-library
             android:name="org.apache.http.legacy"
-            android:required="false" />
-
-        <!-- Google API key 등록 -->
+            android:required="false" /> <!-- Google API key 등록 -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDIgwYEICoxUOwBJ9uQMMvrYrOsCdcBrn8" />
