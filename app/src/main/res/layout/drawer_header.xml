@@ -32,6 +32,7 @@
         android:layout_marginLeft="8dp"
         android:background="@drawable/btn_bg_select_login"
         android:layout_marginTop="8dp"
+        android:backgroundTint="@null"
         android:visibility="visible"
         android:onClick="clickLoginBtn"/>
 

@@ -103,6 +103,50 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                item.setChecked(true);
+                drawerLayout.closeDrawers();
+
+                int id=item.getItemId();
+//                if (id==R.id.menu_all){
+//                    startActivity(new Intent(getApplicationContext(),CampingApi_Main.class));
+//                }
+
+                switch (item.getItemId()){
+                    case R.id.menu_all :
+                        startActivity(new Intent(getApplicationContext(),CampingApi_Main.class));
+                        drawerLayout.closeDrawer(navigationView);
+                        break;
+
+//                    case R.id.menu_mou :
+//                        bnv.setSelectedItemId(R.id.myaround);
+//                        drawerLayout.closeDrawer(navigationView);
+//                        break;
+
+                    case R.id.menu_mapicon :
+                        bnv.setSelectedItemId(R.id.myaround);
+                        drawerLayout.closeDrawer(navigationView);
+                        break;
+
+                    case R.id.menu_shop :
+                        bnv.setSelectedItemId(R.id.shopping);
+                        drawerLayout.closeDrawer(navigationView);
+                        break;
+
+                    case R.id.menu_review :
+                        bnv.setSelectedItemId(R.id.review);
+                        drawerLayout.closeDrawer(navigationView);
+                        break;
+                }
+
+                return true;
+            }
+        });
+
+
         fragmentManager = getSupportFragmentManager();
 
         FragmentTransaction tran = fragmentManager.beginTransaction();

@@ -1,18 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <group android:id="@+id/g1">
-        <item android:id="@+id/menu_kk"
-            android:title="전체"
-            android:icon="@mipmap/ic_launcher"/>
-        <item android:id="@+id/menu_ss"
-            android:title="캠핑장"
-            android:icon="@mipmap/ic_launcher"/>
+    <group android:id="@+id/camping">
+        <item android:id="@+id/menu_all"
+            android:icon="@drawable/campingicon"
+            android:title="모든 캠핑장" />
+
+        <item android:id="@+id/menu_mou"
+            android:title="산"
+            android:icon="@drawable/moutainicon"/>
     </group>
 
-    <item android:id="@+id/menu_gg"
-        android:title="리뷰"/>
+    <item android:id="@+id/menu_mapicon"
+        android:title="현재 내 위치"
+        android:icon="@drawable/mapicon"/>
 
+    <item android:id="@+id/menu_shop"
+        android:title="중고장터"
+        android:icon="@drawable/shoppingicon"/>
+
+    <item android:id="@+id/menu_review"
+        android:title="리뷰"
+        android:icon="@drawable/reviewicon"/>
 
 
 </menu>
