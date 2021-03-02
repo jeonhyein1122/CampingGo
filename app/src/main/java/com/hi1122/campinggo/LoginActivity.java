@@ -84,7 +84,17 @@ public class LoginActivity extends AppCompatActivity {
                                String userName = jsonObject.getString( "userName" );
                                String file = jsonObject.getString( "file" );
 
-                               Toast.makeText( getApplicationContext(), "로그인 성공", Toast.LENGTH_SHORT ).show();
+
+                               G.userID=userID;
+                               G.userpass=userPass;
+                               G.nickname=userName;
+                               G.profile=file;
+
+                               Toast.makeText( getApplicationContext(), "환영합니다"+G.nickname+"님", Toast.LENGTH_SHORT ).show();
+
+                               setResult(RESULT_OK);
+                               finish();
+
                                Intent intent = new Intent( LoginActivity.this, MainActivity.class );
 
                                intent.putExtra( "userID", userID );
@@ -93,6 +103,7 @@ public class LoginActivity extends AppCompatActivity {
                                intent.putExtra( "file", file );
 
                                startActivity( intent );
+
 
                            } else {//로그인 실패시
                                Toast.makeText( getApplicationContext(), "로그인 실패", Toast.LENGTH_SHORT ).show();
@@ -133,7 +144,8 @@ public class LoginActivity extends AppCompatActivity {
             public Unit invoke(OAuthToken oAuthToken, Throwable throwable) {
                 
                 if(oAuthToken !=null){
-                    Toast.makeText(LoginActivity.this, "로그인 성공", Toast.LENGTH_SHORT).show();
+                    Toast.makeText( getApplicationContext(), "환영합니다"+G.nickname+"님", Toast.LENGTH_SHORT ).show();
+
 
                     UserApiClient.getInstance().me(new Function2<User, Throwable, Unit>() {
                         @Override

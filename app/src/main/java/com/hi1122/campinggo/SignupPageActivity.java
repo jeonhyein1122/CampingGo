@@ -6,11 +6,13 @@ import androidx.loader.content.CursorLoader;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -24,14 +26,7 @@ import com.bumptech.glide.Glide;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.File;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URL;
-
-import okhttp3.MediaType;
-import okhttp3.MultipartBody;
-import okhttp3.RequestBody;
+import java.io.ByteArrayOutputStream;
 
 public class SignupPageActivity extends AppCompatActivity {
 
@@ -61,12 +56,11 @@ public class SignupPageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(SignupPageActivity.this, "클릭됨", Toast.LENGTH_SHORT).show();
                 String userID = et_id.getText().toString();
                 String userPass = et_pass.getText().toString();
                 String userName = et_nickname.getText().toString();
 //                int userAge = Integer.parseInt( et_age.getText().toString() );
-
+                String file=imgPath.getBytes().toString();
 
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
@@ -79,7 +73,7 @@ public class SignupPageActivity extends AppCompatActivity {
                             //회원가입 성공시
                             if(success) {
 
-                                Toast.makeText( getApplicationContext(), "회원가입 성공", Toast.LENGTH_SHORT ).show();
+                                Toast.makeText( getApplicationContext(), "회원가입에 성공했습니다.", Toast.LENGTH_SHORT ).show();
                                 Intent intent = new Intent( SignupPageActivity.this, LoginActivity.class );
                                 startActivity( intent );
 
@@ -97,9 +91,9 @@ public class SignupPageActivity extends AppCompatActivity {
                 };
 
                 //서버로 Volley를 이용해서 요청
-                RegisterRequest registerRequest = new RegisterRequest( userID, userPass, userName, responseListener);
+                SignupRequest signupRequest = new SignupRequest( userID, userPass, userName,file, responseListener);
                 RequestQueue queue = Volley.newRequestQueue( SignupPageActivity.this );
-                queue.add( registerRequest );
+                queue.add(signupRequest);
             }
         });
 

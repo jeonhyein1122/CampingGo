@@ -146,6 +146,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        if (G.userID!=null){
+
+        }
+
 
         fragmentManager = getSupportFragmentManager();
 
@@ -210,7 +214,7 @@ public class MainActivity extends AppCompatActivity {
                             getSupportActionBar().setTitle("마이페이지");
                             tran.hide(fragments[4]);
                         }
-                        if (G.nickname !=null) {
+                        if (G.nickname !=null && G.userID !=null) {
                             tran.show(fragments[4]);
                         }else {
                             Intent intent = new Intent(MainActivity.this, LoginActivity.class);

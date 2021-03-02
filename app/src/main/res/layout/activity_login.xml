@@ -39,7 +39,7 @@
         android:text="LOGIN"
         android:gravity="center"
         android:textSize="30sp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="50dp"
         android:textStyle="bold"/>
 
     <EditText
@@ -48,7 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
-        android:hint="sample@email.com"
+        android:hint="ID를 입력하세요"
         android:textSize="16sp"
         android:inputType="textEmailAddress"/>
 
@@ -62,29 +62,39 @@
         android:textSize="16sp"
         android:inputType="textPassword"/>
 
-    <TextView
-        android:id="@+id/login_login"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="로그인"
-        android:textSize="25sp"
-        android:background="@drawable/bg_edit"
-        android:gravity="center"
-        android:layout_marginTop="16dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:padding="8dp"/>
+        android:orientation="horizontal"
+        android:layout_marginTop="50dp">
 
 
-    <ImageButton
-        android:id="@+id/imgbtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="50dp"
-        android:background="@android:color/transparent"
-        android:onClick="clickkakaologin"
-        android:src="@drawable/kakao_login_medium_narrow" />
+        <ImageButton
+            android:id="@+id/imgbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:background="@android:color/transparent"
+            android:onClick="clickkakaologin"
+            android:src="@drawable/kakao_login_medium_narrow" />
+
+        <TextView
+            android:id="@+id/login_login"
+            android:layout_width="183dp"
+            android:layout_height="wrap_content"
+            android:text="로그인"
+            android:textSize="25sp"
+            android:background="@drawable/bg_edit"
+            android:gravity="center"
+            android:layout_gravity="right"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:padding="8dp"/>
+
+
+    </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
