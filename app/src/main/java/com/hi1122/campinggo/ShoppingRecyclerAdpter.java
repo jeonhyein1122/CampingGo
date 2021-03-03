@@ -133,7 +133,7 @@ public class ShoppingRecyclerAdpter extends RecyclerView.Adapter {
                     call.enqueue(new Callback<ShoppingRecyclerItem>() {
                         @Override
                         public void onResponse(Call<ShoppingRecyclerItem> call, Response<ShoppingRecyclerItem> response) {
-
+                            Toast.makeText(context, "찜하기 성공", Toast.LENGTH_SHORT).show();
                         }
                         @Override
                         public void onFailure(Call<ShoppingRecyclerItem> call, Throwable t) {

@@ -99,7 +99,7 @@ public class ReviewRecyclerAdpter extends RecyclerView.Adapter {
                     int position=getLayoutPosition();
                     Toast.makeText(context, "클릭됨", Toast.LENGTH_SHORT).show();
 
-                    String reviewiv=items.get(position).reviewiv;
+                    String reviewiv=items.get(position).file;
                     String title=items.get(position).title;
                     String loaddate=items.get(position).loaddate;
                     String detail=items.get(position).detail;
