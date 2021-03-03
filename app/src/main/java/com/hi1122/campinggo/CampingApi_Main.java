@@ -82,6 +82,11 @@ public class CampingApi_Main extends AppCompatActivity {
                                     String text= xpp.getText();
                                     if(item!=null) item.campingimg= text;
 
+
+//                                    if ("firstImageUrl"==null){
+//                                        break;
+//                                    }
+
                                 }else if(tagName.equals("facltNm")){
 //                                    xpp.next();
 //                                    item.addr+= xpp.getText();
@@ -192,6 +197,10 @@ public class CampingApi_Main extends AppCompatActivity {
             }
         };
         t.start();
+
+//        if ("firstImageUrl"==null){
+//
+//        }
 
 
     }
