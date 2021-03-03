@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_toRightOf="@+id/homese_img"
-            android:text="title"
+            android:text="캠핑 팁!"
             android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -44,9 +44,9 @@
             android:layout_below="@+id/homese_title"
             android:layout_marginTop="16dp"
             android:layout_toRightOf="@+id/homese_img"
-            android:text="detailcontent "
+            android:text=" #캠핑 #매듭 #매듭법 # 캠핑꿀팁 # 캠핑 노하우 "
             android:textColor="#ff333333"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
