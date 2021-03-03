@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".Review_add_Activity">
+
+    <RelativeLayout
+        android:id="@+id/relativelayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/review_add_iv"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginLeft="14dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/noimage"
+            android:onClick="clickSelctImagebtn"
+            android:paddingBottom="8dp"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="사진올리기"
+            android:layout_toRightOf="@+id/review_add_iv"
+            android:layout_marginBottom="6dp"
+            android:onClick="clickSelctImage"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="12dp"/>
+
+
+    </RelativeLayout>
+
+    <EditText
+       android:id="@+id/review_add_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="여행 다녀온 날짜"
+        android:layout_marginLeft="4dp"
+        android:background="@drawable/bg_edit_review"
+        android:inputType="text"
+        android:maxEms="15"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:padding="8dp"
+        android:gravity="start"/>
+
+    <EditText
+        android:id="@+id/review_add_ettitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="title 입력"
+        android:maxEms="16"
+        android:textSize="16sp"
+        android:inputType="text"
+        android:layout_marginLeft="4dp"
+        android:padding="8dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/black"
+        android:gravity="start"
+        android:background="@drawable/bg_edit_review"/>
+
+    <EditText
+        android:id="@+id/review_add_etdetail"
+        android:layout_width="match_parent"
+        android:layout_height="320dp"
+        android:layout_below="@+id/review_add_ettitle"
+        android:background="@drawable/bg_edit_review"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="4dp"
+        android:textSize="16sp"
+        android:gravity="start"
+        android:padding="10dp"
+        android:inputType="textMultiLine"
+        android:hint="내용을 입력해주세요."/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="14dp">
+
+        <Button
+            android:id="@+id/canclebtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="취소"
+            android:layout_weight="1"
+            android:layout_margin="4dp"
+            android:textColor="@color/black"
+            app:backgroundTint="@null"
+            android:background="@drawable/btn_bg_select"
+            android:onClick="clickcancle"/>
+
+        <Button
+            android:id="@+id/okbtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="확인"
+            android:textColor="@color/black"
+            android:layout_weight="1"
+            android:layout_margin="4dp"
+            app:backgroundTint="@null"
+            android:background="@drawable/btn_bg_select"
+            android:onClick="clickok"/>
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

@@ -17,14 +17,12 @@ public class Home_Second_Fragment extends Fragment {
     RecyclerView recyclerView;
     Home_Second_RecyclerAdpter recyclerAdpter;
 
-    ArrayList<Home_Second_RecyclerItem> items2=new ArrayList<>();
-    RecyclerView recyclerView2;
-    Home_Second_RecyclerAdpter recyclerAdpter2;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         loadData();
+   
     }
 
     @Nullable
@@ -42,9 +40,6 @@ public class Home_Second_Fragment extends Fragment {
         recyclerAdpter=new Home_Second_RecyclerAdpter(getActivity(),items);
         recyclerView.setAdapter(recyclerAdpter);
 
-        recyclerView2=view.findViewById(R.id.recycler2);
-        recyclerAdpter2=new Home_Second_RecyclerAdpter(getActivity(),items2);
-        recyclerView2.setAdapter(recyclerAdpter2);
     }
 
     void loadData(){
@@ -57,14 +52,6 @@ public class Home_Second_Fragment extends Fragment {
         items.add(new Home_Second_RecyclerItem());
 
 
-
-        items2.add(new Home_Second_RecyclerItem());
-        items2.add(new Home_Second_RecyclerItem());
-        items2.add(new Home_Second_RecyclerItem());
-        items2.add(new Home_Second_RecyclerItem());
-        items2.add(new Home_Second_RecyclerItem());
-        items2.add(new Home_Second_RecyclerItem());
-        items2.add(new Home_Second_RecyclerItem());
 
     }
 }

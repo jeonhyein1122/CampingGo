@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".CampingApi_DetailActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/detailresveCl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="resveCl-실시간 예약 구분"
+            android:padding="8dp"
+            android:textSize="16sp"
+            android:layout_marginLeft="16dp"
+            android:textColor="#E91E63"/>
+         <TextView
+            android:id="@+id/detailcreatedtime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="createdtime-등록일"
+            android:textSize="14sp"
+            android:textColor="#AAA5A5"
+            android:textStyle="bold"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="8dp"
+            android:layout_alignParentRight="true"/>
+
+        <TextView
+            android:id="@+id/detailmodifiedtime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="modifiedtime-수정일"
+            android:textColor="#AAA5A5"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="8dp"
+            android:layout_below="@+id/detailcreatedtime"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/detailname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:text="detailname"/>
+
+    <TextView
+        android:id="@+id/detailtel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="tel-전화번호"
+        android:layout_gravity="right"
+        android:layout_marginRight="8dp"
+        android:textColor="#A640A6"
+        android:textStyle="bold"
+        android:textSize="16sp"/>
+
+    <ImageView
+        android:id="@+id/detailiv"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:src="@drawable/test"
+        android:scaleType="centerCrop"
+        android:padding="8dp"
+        android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:id="@+id/detailinduty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="detailinduty"
+            android:textSize="20sp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="4dp"
+            android:textColor="#8C8888"/>
+
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/detailaddr1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="detailaddr1"
+        android:textSize="18sp"
+        android:layout_marginLeft="16dp"
+        android:textColor="#8C8888"/>
+
+    <TextView
+        android:id="@+id/detailaddr2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="2dp"
+        android:textSize="18sp"
+        android:text="detailaddr2"
+        android:textColor="#8C8888"/>
+
+</LinearLayout>
+
+
+    <TextView
+        android:id="@+id/detailintro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="detailintro"
+        android:textSize="14sp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="예약"
+        android:textSize="22sp"
+        android:textColor="@color/black"
+        android:layout_marginLeft="30dp" />
+
+    <TextView
+        android:id="@+id/detailhompage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="homepage"
+        android:layout_marginLeft="8dp"/>
+
+    <TextView
+        android:id="@+id/detailresveUrl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="resveUrl 홈피예약"
+        android:textSize="16sp"
+        android:layout_marginLeft="8dp"/>
+
+
+
+    <TextView
+        android:id="@+id/detaillineintro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textColor="#ffffffff"
+        android:text="detaillineintro"/>
+
+
+
+
+
+</LinearLayout>

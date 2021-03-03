@@ -1,6 +1,7 @@
 package com.hi1122.campinggo;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -9,14 +10,27 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.Manifest;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
-import android.view.Menu;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.kakao.sdk.common.util.Utility;
+import com.kakao.sdk.user.UserApiClient;
+
+import de.hdodenhof.circleimageview.CircleImageView;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,15 +39,27 @@ public class MainActivity extends AppCompatActivity {
     FragmentManager fragmentManager;
 
 //    TextView tv;
+    Button loginBtn;
+    TextView tvnickname;
+    CircleImageView profile;
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     ActionBarDrawerToggle drawerToggle;
 
+    Button logoutBtn;
+    TextView tvlogin;
+    TextView tvlogout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
+        String keyHash= Utility.INSTANCE.getKeyHash(this);
+        Log.i("KeyHash",keyHash);
 
         //툴바 설정
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -46,9 +72,93 @@ public class MainActivity extends AppCompatActivity {
         navigationView = findViewById(R.id.naviV);
         navigationView.setItemIconTintList(null);
 
+        loginBtn=findViewById(R.id.loginbtn);
+        tvnickname=findViewById(R.id.tv_nickname);
+        profile=findViewById(R.id.profile);
+
+
+
+//        //drawer header button login화면 클릭
+
+//        final View headerView= navigationView.getHeaderView(0);
+//        headerView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Btnlogin=findViewById(R.id.loginbtn);
+//                Btnlogin.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//
+////                        bnv.setSelectedItemId(R.id.mypage);
+//                        drawerLayout.closeDrawer(navigationView);
+//                    }
+//                });
+//            }
+//        });
+
+
         drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.app_name, R.string.app_name);
         drawerLayout.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
+
+
+
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                item.setChecked(true);
+                drawerLayout.closeDrawers();
+
+                int id=item.getItemId();
+//                if (id==R.id.menu_all){
+//                    startActivity(new Intent(getApplicationContext(),CampingApi_Main.class));
+//                }
+
+                switch (item.getItemId()){
+                    case R.id.menu_all :
+                        startActivity(new Intent(getApplicationContext(),CampingApi_Main.class));
+                        drawerLayout.closeDrawer(navigationView);
+                        break;
+
+//                    case R.id.menu_mou :
+//                        bnv.setSelectedItemId(R.id.myaround);
+//                        drawerLayout.closeDrawer(navigationView);
+//                        break;
+
+                    case R.id.menu_mapicon :
+                        bnv.setSelectedItemId(R.id.myaround);
+                        drawerLayout.closeDrawer(navigationView);
+                        break;
+
+                    case R.id.menu_shop :
+                        bnv.setSelectedItemId(R.id.shopping);
+                        drawerLayout.closeDrawer(navigationView);
+                        break;
+
+                    case R.id.menu_review :
+                        bnv.setSelectedItemId(R.id.review);
+                        drawerLayout.closeDrawer(navigationView);
+                        break;
+
+                    case R.id.tv_nickname :
+
+                        Intent intent = getIntent();
+                        String userName = intent.getStringExtra("userName");
+
+                        tvnickname.setText(userName);
+
+                        break;
+                }
+
+                return true;
+            }
+        });
+
+        if (G.userID!=null){
+
+        }
+
 
         fragmentManager = getSupportFragmentManager();
 
@@ -56,6 +166,7 @@ public class MainActivity extends AppCompatActivity {
         fragments[0] = new HomeFragment();
         tran.add(R.id.container, fragments[0]);
         tran.commit();
+
 
         bnv.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -71,6 +182,8 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.home:
                         tran.show(fragments[0]);
+                        getSupportActionBar().setTitle("campinggo");
+
 
                         break;
 
@@ -78,30 +191,28 @@ public class MainActivity extends AppCompatActivity {
                         if(fragments[1]==null){
                             fragments[1]=new MyAroundFragment();
                             tran.add(R.id.container,fragments[1]);
-                            getSupportActionBar().setTitle("내주변");
 
                         }
                         tran.show(fragments[1]);
+                        getSupportActionBar().setTitle("내주변");
                         break;
 
                     case R.id. shopping:
                         if(fragments[2]==null){
                             fragments[2]=new ShoppingFragment();
                             tran.add(R.id.container,fragments[2]);
-                            getSupportActionBar().setTitle("중고장터");
                         }
                         tran.show(fragments[2]);
-
+                        getSupportActionBar().setTitle("중고장터");
                         break;
 
                     case R.id.review :
                         if(fragments[3]==null){
                             fragments[3]=new ReviewFragment();
                             tran.add(R.id.container,fragments[3]);
-                            getSupportActionBar().setTitle("리뷰");
                         }
                         tran.show(fragments[3]);
-
+                        getSupportActionBar().setTitle("리뷰");
                         break;
 
                     case R.id.mypage :
@@ -110,9 +221,14 @@ public class MainActivity extends AppCompatActivity {
                             fragments[4]=new MypageFragment();
                             tran.add(R.id.container,fragments[4]);
                             getSupportActionBar().setTitle("마이페이지");
+                            tran.hide(fragments[4]);
                         }
-                        tran.show(fragments[4]);
-
+                        if (G.nickname !=null || G.userID !=null) {
+                            tran.show(fragments[4]);
+                        }else {
+                            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                            startActivityForResult(intent, 1122);
+                        }
                         break;
                 }
                 tran.commit();
@@ -121,7 +237,53 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+
+        //지도 동적퍼미션
+        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.M){
+            if( checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_DENIED ){
+                String[] permissions= new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+                requestPermissions(permissions, 0);
+            }
+        }
+
+
+    }
+
+    public void clickLoginBtn(View view){
+
+        Intent intent=new Intent(this,LoginActivity.class);
+        startActivity(intent);
+
+        if (G.userID !=null || G.nickname !=null){
+            loginBtn.setEnabled(false);
+        }
+
+
+
     }
 
 
+    public void clickSignupBtn(View view){
+
+        Intent intent=new Intent(this, SignupPageActivity.class);
+        startActivity(intent);
+
+    }
+
+    public void clickmypage(View view){
+        bnv.setSelectedItemId(R.id.mypage);
+        drawerLayout.closeDrawer(navigationView);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode){
+            case 1122:
+                if (resultCode==RESULT_OK) bnv.setSelectedItemId(R.id.mypage);
+                else Toast.makeText(this, "안됨, 실패", Toast.LENGTH_SHORT).show();
+                break;
+        }
+    }
 }

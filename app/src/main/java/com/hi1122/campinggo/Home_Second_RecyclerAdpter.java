@@ -11,7 +11,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Home_Second_RecyclerAdpter extends RecyclerView.Adapter {
 
@@ -35,9 +39,14 @@ public class Home_Second_RecyclerAdpter extends RecyclerView.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
         VH vh=(VH)holder;
-        //값 연결작업..
+
         Home_Second_RecyclerItem item=items.get(position);
-        //나머지는 알아서서
+//        vh.title.setText(item.title);
+//        vh.detial.setText(item.detail);
+//
+//        Glide.with(context).load(item.img).into(vh.img);
+//        Glide.with(context).load(item.detailimg)
+
     }
 
    @Override
@@ -48,14 +57,15 @@ public class Home_Second_RecyclerAdpter extends RecyclerView.Adapter {
     class  VH extends RecyclerView.ViewHolder{
 
 //        item.xml 안에 있는거 집어넣기
-        ImageView iv;
+        CircleImageView img;
         TextView title;
-        TextView msg;
-        RatingBar ratingBar; //별점
+        TextView detial;
 
 
         public VH(@NonNull View itemView) {
             super(itemView);
+
+//            img=itemView.findViewById(R.id.img);
         }
     }
 }

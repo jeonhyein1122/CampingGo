@@ -1,9 +1,11 @@
 package com.hi1122.campinggo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,6 +19,7 @@ public class Home_First_Fragment extends Fragment {
     ArrayList<Home_First_RecyclerItem> items=new ArrayList<>();
     RecyclerView recyclerView;
     Home_First_RecyclerAdpter recyclerAdpter;
+    Button Btnall;
 
     ArrayList<Home_First_RecyclerItem> items2=new ArrayList<>();
     RecyclerView recyclerView2;
@@ -31,7 +34,19 @@ public class Home_First_Fragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.home_tab_first,container,false);
+        View view= inflater.inflate(R.layout.home_tab_first,container,false);
+
+        //open api 전체 버튼
+        Btnall=view.findViewById(R.id.btnall);
+        Btnall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getActivity(),CampingApi_Main.class); //전체 버튼에 들어갈 클래스 만들기
+                startActivity(intent);
+
+            }
+        });
+        return view;
 
     }
 

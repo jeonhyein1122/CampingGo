@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".SignupPageActivity">
+
+        <androidx.appcompat.widget.Toolbar
+        android:id="@+id/signuptoolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        style="@style/MyToolbar"
+        app:title="회원가입"
+        android:theme="@style/ToolbarTheme"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SIGN UP"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:layout_marginTop="30dp"
+        android:textStyle="bold"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/signup_profile"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@drawable/profilenull"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="2dp"
+        android:onClick="click_signup_Profile"/>
+
+    <EditText
+        android:id="@+id/signup_etid"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:hint="sample@email.com"
+        android:textSize="16sp"
+        android:inputType="textEmailAddress"/>
+
+    <EditText
+        android:id="@+id/signup_etpassword"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:hint="password"
+        android:textSize="16sp"
+        android:inputType="textPassword"/>
+
+    <EditText
+        android:id="@+id/signup_etnickname"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:hint="nickname"
+        android:textSize="16sp"
+        android:inputType="text"/>
+
+    <TextView
+        android:id="@+id/signup_signup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="가입하기"
+        android:textSize="25sp"
+        android:background="@drawable/bg_edit"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:padding="8dp"/>
+
+</LinearLayout>
+
+

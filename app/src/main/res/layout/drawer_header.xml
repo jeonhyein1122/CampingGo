@@ -1,23 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="120dp"
+    android:layout_height="160dp"
     android:background="#E4E1E1"
     android:padding="8dp">
 
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/iv"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:id="@+id/profile"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:padding="4dp"
         android:src="@mipmap/ic_launcher"/>
+
+    <TextView
+        android:id="@+id/tv_nickname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="로그인을 하면 다양한 서비스를 \n 이용할 수 있습니다."
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:padding="14dp"
+       android:layout_toRightOf="@+id/profile"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/loginbtn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/profile"
+        android:layout_marginLeft="8dp"
+        android:background="@drawable/btn_bg_select_login"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@null"
+        android:visibility="visible"
+        android:onClick="clickLoginBtn"/>
+
+    <Button
+        android:id="@+id/logoutbtn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/profile"
+        android:layout_marginLeft="8dp"
+        android:background="@drawable/btn_bg_select_signup"
+        android:layout_marginTop="8dp"
+        android:visibility="gone"
+        android:onClick="clickLoginBtn"/>
+
+    <TextView
+        android:id="@+id/drawer_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="로그인"
+        android:textSize="12sp"
+        android:textColor="@color/black"
+        android:layout_below="@+id/loginbtn"
+        android:layout_marginLeft="12dp"/>
+
+    <TextView
+        android:id="@+id/drawer_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="로그아웃"
+        android:textSize="12sp"
+        android:textColor="@color/black"
+        android:visibility="gone"
+        android:layout_below="@+id/loginbtn"
+
+        android:layout_marginLeft="12dp"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/signup"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/signupicon"
+        android:layout_below="@+id/tv_nickname"
+        android:layout_toRightOf="@+id/loginbtn"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="10dp"
+        android:onClick="clickSignupBtn"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="로그인 해주세요"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-       android:layout_toRightOf="@+id/iv"/>
+        android:text="회원가입"
+        android:textSize="12sp"
+        android:textColor="@color/black"
+        android:layout_below="@+id/signup"
+        android:layout_marginLeft="126dp"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/mypage"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/mypageicon"
+        android:layout_below="@+id/profile"
+        android:layout_toRightOf="@+id/signup"
+        android:layout_marginLeft="85dp"
+        android:layout_marginTop="8dp"
+        android:onClick="clickmypage"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="마이페이지"
+        android:textSize="12sp"
+        android:textColor="@color/black"
+        android:layout_below="@+id/loginbtn"
+        android:layout_toRightOf="@+id/signup"
+        android:layout_marginLeft="80dp"/>
+
+
+
+
 
 </RelativeLayout>
