@@ -69,15 +69,15 @@
 
         android:layout_marginLeft="12dp"/>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/signup"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:background="@drawable/btn_bg_select_signup"
+        android:background="@drawable/signupicon"
         android:layout_below="@+id/tv_nickname"
         android:layout_toRightOf="@+id/loginbtn"
         android:layout_marginLeft="80dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="10dp"
         android:onClick="clickSignupBtn"/>
 
     <TextView
@@ -89,11 +89,11 @@
         android:layout_below="@+id/signup"
         android:layout_marginLeft="126dp"/>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/mypage"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:background="@drawable/btn_bg_select_mypg"
+        android:background="@drawable/mypageicon"
         android:layout_below="@+id/profile"
         android:layout_toRightOf="@+id/signup"
         android:layout_marginLeft="85dp"

@@ -9,7 +9,7 @@
 
         <item android:id="@+id/menu_mou"
             android:title="산"
-            android:icon="@drawable/moutainicon"/>
+            android:icon="@drawable/mountainicon"/>
     </group>
 
     <item android:id="@+id/menu_mapicon"

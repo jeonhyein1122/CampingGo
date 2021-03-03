@@ -33,7 +33,7 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="500dp"
+                    android:layout_height="350dp"
                     android:layout_weight="1"
                     android:paddingBottom="16dp">
 
@@ -43,26 +43,32 @@
                       android:layout_height="80dp"
                       android:layout_marginLeft="48dp"
                       android:text="전체"
+                      android:textStyle="bold"
+                      android:textColor="@color/white"
                       android:background="@drawable/campingicon"
                       android:layout_alignParentBottom="true" />
 
-                    <Button
+                    <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/btncamping"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
                         android:layout_marginLeft="24dp"
                         android:text="캠핑장"
-                        android:background="@drawable/home_tab_first_btnbg"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:background="@drawable/campingjangicon"
                         android:layout_alignParentBottom="true"
                         android:layout_toRightOf="@+id/btnall"/>
 
-                    <Button
+                    <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/btnglamping"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
                         android:layout_marginLeft="24dp"
                         android:text="글램핑"
-                        android:background="@drawable/home_tab_first_btnbg"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:background="@drawable/glampingicon"
                         android:layout_alignParentBottom="true"
                         android:layout_toRightOf="@+id/btncamping"/>
 
@@ -79,7 +85,9 @@
                 android:layout_height="80dp"
                 android:layout_marginLeft="48dp"
                 android:text="산"
-                android:background="@drawable/moutainicon"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:background="@drawable/mountainicon"
                 android:layout_alignParentBottom="true" />
 
             <Button
@@ -92,13 +100,15 @@
                 android:layout_alignParentBottom="true"
                 android:layout_toRightOf="@+id/btnmountain"/>
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btnsea"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
                     android:layout_marginLeft="24dp"
                     android:text="바다"
-                    android:background="@drawable/home_tab_first_btnbg"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:background="@drawable/seaicon"
                     android:layout_alignParentBottom="true"
                     android:layout_toRightOf="@+id/btnriver"/>
 

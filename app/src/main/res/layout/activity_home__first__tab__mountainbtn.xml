@@ -5,26 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Home_First_Tab_Btnall">
+    tools:context=".Home_First_Tab_mountainbtn">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/logintoolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         style="@style/MyToolbar"
-        app:title="전체"
+        app:title="산"
         android:theme="@style/ToolbarTheme"/>
 
-    <Button
-        android:layout_width="130dp"
-        android:layout_height="50sp"
-        android:backgroundTint="#DDDDDD"
-        android:layout_margin="8dp"
-        android:text="서울특별시"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:onClick="Seoul"/>
-
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclercampingapi"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:orientation="vertical" />
 
 
 </LinearLayout>

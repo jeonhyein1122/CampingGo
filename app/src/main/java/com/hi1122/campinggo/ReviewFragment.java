@@ -17,6 +17,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.ArrayList;
 
 import retrofit2.Call;
@@ -30,7 +32,7 @@ public class ReviewFragment extends Fragment {
     ArrayList<ReviewRecyclerItem> items=new ArrayList<>();
     RecyclerView recyclerView;
     ReviewRecyclerAdpter recyclerAdpter;
-    Button btnadd;
+    FloatingActionButton btnadd;
 
     SwipeRefreshLayout refreshLayout;
 

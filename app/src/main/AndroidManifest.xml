@@ -27,7 +27,7 @@
         <activity
             android:name=".CampingApi_Main"
             android:launchMode="singleTop" />
-        <activity android:name=".Home_First_Tab_Btnall" />
+        <activity android:name=".Home_First_Tab_mountainbtn" />
         <activity android:name=".SignupPageActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".Review_add_Activity" />
