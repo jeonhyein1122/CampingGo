@@ -153,7 +153,9 @@ public class CampingApi_Main extends AppCompatActivity {
                             case  XmlPullParser.END_TAG:
                                 String tagName2=xpp.getName();
                                 if (tagName2.equals("item")){
-                                    items.add(item);
+                                    if (item.campingimg!=null){
+                                        items.add(item);
+                                    }
                                     Log.i("tagtag",item.campingimg+"");
 //                                    runOnUiThread(new Runnable() {
 //                                        @Override

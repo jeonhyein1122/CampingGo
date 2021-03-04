@@ -50,8 +50,14 @@ public class CampingApiAdapter extends RecyclerView.Adapter{
         if (item.lineintro !=null) vh.lineintro.setText(item.lineintro+"");
         else vh.lineintro.setText(" ");
 
-        if(item.campingimg!=null) Glide.with(context).load(item.campingimg).into(vh.campingimg); //load "http://www.naver.com"
-        else  Glide.with(context).load(R.drawable.noimage).into(vh.campingimg); //load "http://www.naver.com"
+        if(item.campingimg!=null){
+//            vh.campingimg.setVisibility(View.VISIBLE);
+//            vh.itemView.setVisibility(View.VISIBLE);
+            Glide.with(context).load(item.campingimg).into(vh.campingimg);
+        }
+//        else  Glide.with(context).load(R.drawable.noimage).into(vh.campingimg);
+//       else vh.campingimg.setVisibility(View.GONE);
+//        else vh.itemView.setVisibility(View.GONE);
 
     }
 

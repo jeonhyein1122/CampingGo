@@ -32,7 +32,7 @@ public class Home_First_Fragment extends Fragment {
     RecyclerView recyclerView;
     ShoppingRecyclerAdpter recyclerAdpter;
     Button Btnall;
-    AppCompatButton Btnmountain;
+    Button Btnmountain;
 
     ArrayList<CampingApiRecyclerItem> items2=new ArrayList<>();
     RecyclerView recyclerView2;
@@ -61,7 +61,7 @@ public class Home_First_Fragment extends Fragment {
         });
 
 
-        Btnall=view.findViewById(R.id.btnmountain);
+        Btnmountain=view.findViewById(R.id.btnmountain);
         Btnmountain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,15 +94,6 @@ public class Home_First_Fragment extends Fragment {
     void loadData(){
 
 
-
-//        items.add(new ShoppingRecyclerItem());
-//        items.add(new ShoppingRecyclerItem());
-//        items.add(new ShoppingRecyclerItem());
-//        items.add(new ShoppingRecyclerItem());
-//        items.add(new ShoppingRecyclerItem());
-
-
-
         items2.add(new CampingApiRecyclerItem());
         items2.add(new CampingApiRecyclerItem());
         items2.add(new CampingApiRecyclerItem());
@@ -113,7 +104,7 @@ public class Home_First_Fragment extends Fragment {
 
         Retrofit retrofit= RetrofitHelper.getRetrofitInstanceGson();
         RetrofitService retrofitService= retrofit.create(RetrofitService.class);
-        Call<ArrayList<ShoppingRecyclerItem>> call= retrofitService.loadDataFromServer();
+        Call<ArrayList<ShoppingRecyclerItem>> call= retrofitService.loadDataFromServer1();
         call.enqueue(new Callback<ArrayList<ShoppingRecyclerItem>>() {
             @Override
             public void onResponse(Call<ArrayList<ShoppingRecyclerItem>> call, Response<ArrayList<ShoppingRecyclerItem>> response) {

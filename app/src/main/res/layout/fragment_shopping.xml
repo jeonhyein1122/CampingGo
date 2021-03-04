@@ -26,6 +26,8 @@
             android:src="@drawable/write"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
+            android:backgroundTint="#D5F1FD"
+            app:fabSize="auto"
             android:layout_margin="16dp"/>
 
 </RelativeLayout>

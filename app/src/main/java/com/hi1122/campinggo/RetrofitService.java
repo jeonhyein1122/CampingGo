@@ -30,8 +30,8 @@ public interface RetrofitService {
     @GET("/Campinggo/loadDB.php")
     Call<ArrayList<ShoppingRecyclerItem>> loadDataFromServer();
 
-//    @GET("/Campinggo/loadDBFavor.php")
-//    Call<ArrayList<MypageRecyclerItem>> loadDataFromServer1();
+    @GET("/Campinggo/loadDBFavor.php")
+    Call<ArrayList<ShoppingRecyclerItem>> loadDataFromServer1();
 
 
 
