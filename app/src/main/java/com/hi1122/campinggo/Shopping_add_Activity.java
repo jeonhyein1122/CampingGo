@@ -24,6 +24,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 
 import java.io.File;
+import java.sql.Struct;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -91,6 +92,8 @@ public class Shopping_add_Activity extends AppCompatActivity {
         String title=ettitle.getText().toString();
         String price=etprice.getText().toString();
         String detail=etdetail.getText().toString();
+        //todo: 데이터베이스에 컬럼 추가 (이름, 프로필), 값주는거 추가, 값 가져오는거 추가
+//        String name=G.nickname;
 
         Retrofit retrofit= RetrofitHelper.getRetrofitInstanceScalars();
         RetrofitService retrofitService= retrofit.create(RetrofitService.class);
