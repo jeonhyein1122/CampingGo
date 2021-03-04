@@ -29,6 +29,8 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class ReviewFragment extends Fragment {
 
+    //todo: 리뷰 좋아요버튼 추천 버튼으로 바꾸고 숫자 올라가는거 해서 main 리사이클러뷰에 붙이기 / 데이터 베이스에 이름,프로필 추가
+
     ArrayList<ReviewRecyclerItem> items=new ArrayList<>();
     RecyclerView recyclerView;
     ReviewRecyclerAdpter recyclerAdpter;

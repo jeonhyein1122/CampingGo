@@ -24,6 +24,8 @@ import kotlin.jvm.functions.Function1;
 
 public class MypageFragment extends Fragment {
 
+    //todo: 찜목록 - 캠핑장, 중고장터 올리기
+
     ArrayList<MypageRecyclerItem> items=new ArrayList<>();
     RecyclerView recyclerView;
     MypageRecyclerAdpter recyclerAdpter;
