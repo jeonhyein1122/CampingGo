@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="250dp"
+    android:layout_height="280dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="16dp"
     android:padding="30dp"
@@ -18,7 +18,7 @@
             android:id="@+id/campingimg"
             android:layout_width="match_parent"
             android:layout_height="160dp"
-            android:adjustViewBounds="true"
+            android:scaleType="center"
             android:src="@drawable/test" />
 
         <TextView
@@ -33,12 +33,38 @@
             android:textSize="24sp"
             android:textStyle="bold" />
 
+        <ToggleButton
+            android:id="@+id/tb_favor"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_below="@+id/campingimg"
+            android:layout_gravity="right"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/bg_favor_select"
+            android:textOff=" "
+            android:textOn="  " />
+
+        <ToggleButton
+            android:id="@+id/tb_recommend"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_below="@+id/campingimg"
+            android:layout_gravity="right"
+           android:layout_marginRight="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_toLeftOf="@id/tb_favor"
+            android:background="@drawable/bg_recommend_select"
+            android:textOff=" "
+            android:textOn="  " />
+
         <TextView
             android:id="@+id/lineintro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/name"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:layout_marginLeft="14dp"
             android:text="오픈 api 메인. 클릭하면 디테일로 넘어감"
             android:textColor="#ff333333"

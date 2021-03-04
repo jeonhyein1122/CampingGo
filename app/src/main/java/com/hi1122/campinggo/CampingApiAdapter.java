@@ -59,6 +59,7 @@ public class CampingApiAdapter extends RecyclerView.Adapter{
 //       else vh.campingimg.setVisibility(View.GONE);
 //        else vh.itemView.setVisibility(View.GONE);
 
+
     }
 
     @Override
@@ -115,7 +116,6 @@ public class CampingApiAdapter extends RecyclerView.Adapter{
                     intent.putExtra("homepageId",homepageId);
                     intent.putExtra("resveUrlId",resveUrlId);
 
-                    Log.i("tagtel",telId);
 
                     if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP){
                         ActivityOptions options=ActivityOptions.makeSceneTransitionAnimation((Activity)context,new Pair<View,String>(campingimg,"Campingimg"));

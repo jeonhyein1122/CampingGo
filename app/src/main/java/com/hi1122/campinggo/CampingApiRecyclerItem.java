@@ -16,10 +16,14 @@ public class CampingApiRecyclerItem {
     public String homepage;//수정일
     public String resveUrl;//수정일
 
+    int favor;
+    int recommend;
+    String userID;
+
     public CampingApiRecyclerItem() {
     }
 
-    public CampingApiRecyclerItem(String name, String lineintro, String campingimg, String intro, String induty, String addr1, String addr2, String resveCl, String createdtime, String modifiedtime, String tel, String homepage, String resveUrl) {
+    public CampingApiRecyclerItem(String name, String lineintro, String campingimg, String intro, String induty, String addr1, String addr2, String resveCl, String createdtime, String modifiedtime, String tel, String homepage, String resveUrl,int favor,int recommend,String userID) {
         this.name = name;
         this.lineintro = lineintro;
         this.campingimg = campingimg;
@@ -33,5 +37,8 @@ public class CampingApiRecyclerItem {
         this.tel = tel;
         this.homepage = homepage;
         this.resveUrl = resveUrl;
+        this.favor=favor;
+        this.recommend=recommend;
+        this.userID=userID;
     }
 }

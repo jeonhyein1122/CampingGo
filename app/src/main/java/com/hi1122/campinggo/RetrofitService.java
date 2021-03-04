@@ -34,7 +34,6 @@ public interface RetrofitService {
     Call<ArrayList<ShoppingRecyclerItem>> loadDataFromServer1();
 
 
-
     //"좋아요" 클릭으로 데이터의 변경을 시키는 작업을 해주는 php를 실행시키기
     @PUT("/Campinggo/{fileName}")
     Call<ShoppingRecyclerItem> updateData(@Path("fileName") String fileName,@Body ShoppingRecyclerItem item);
