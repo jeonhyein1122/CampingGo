@@ -9,6 +9,6 @@ public class Home_Second_Detail extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home__second__detail);
+        setContentView(R.layout.home__second__detail);
     }
 }

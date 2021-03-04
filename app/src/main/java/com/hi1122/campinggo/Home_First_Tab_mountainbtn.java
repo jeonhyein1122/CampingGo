@@ -11,7 +11,7 @@ public class Home_First_Tab_mountainbtn extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home__first__tab__mountainbtn);
+        setContentView(R.layout.home__first__tab__mountainbtn);
     }
 
     public void Seoul(View view) {

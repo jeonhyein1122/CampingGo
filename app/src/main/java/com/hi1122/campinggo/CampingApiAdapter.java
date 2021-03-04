@@ -5,13 +5,13 @@ import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
+import android.util.Log;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -34,7 +34,7 @@ public class CampingApiAdapter extends RecyclerView.Adapter{
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater=LayoutInflater.from(context);
 
-        View itemView=inflater.inflate(R.layout.campingapi_recycler_item,parent,false);
+        View itemView=inflater.inflate(R.layout.activity_campingapi_recycler_item,parent,false);
         VH holder=new VH(itemView);
 
         return holder;
@@ -55,7 +55,7 @@ public class CampingApiAdapter extends RecyclerView.Adapter{
 //            vh.itemView.setVisibility(View.VISIBLE);
             Glide.with(context).load(item.campingimg).into(vh.campingimg);
         }
-//        else  Glide.with(context).load(R.drawable.noimage).into(vh.campingimg);
+        else  Glide.with(context).load(R.drawable.noimage).into(vh.campingimg);
 //       else vh.campingimg.setVisibility(View.GONE);
 //        else vh.itemView.setVisibility(View.GONE);
 
@@ -115,7 +115,7 @@ public class CampingApiAdapter extends RecyclerView.Adapter{
                     intent.putExtra("homepageId",homepageId);
                     intent.putExtra("resveUrlId",resveUrlId);
 
-
+                    Log.i("tagtel",telId);
 
                     if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP){
                         ActivityOptions options=ActivityOptions.makeSceneTransitionAnimation((Activity)context,new Pair<View,String>(campingimg,"Campingimg"));

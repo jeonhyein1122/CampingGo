@@ -28,7 +28,7 @@ public class Home_Second_Fragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.home_tab_second,container,false);
+        return inflater.inflate(R.layout.home_second_tab,container,false);
 
     }
 

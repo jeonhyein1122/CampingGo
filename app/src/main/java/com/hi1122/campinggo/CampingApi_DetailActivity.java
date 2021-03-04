@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
@@ -53,13 +54,14 @@ public class CampingApi_DetailActivity extends AppCompatActivity {
         String addr1Id=intent.getStringExtra("addr1Id");
         String addr2Id=intent.getStringExtra("addr2Id");
         String resveClId=intent.getStringExtra("resveClId");
-        String detailmodifiedtimeId=intent.getStringExtra("detailmodifiedtimeId");
-        String detailcreatedtimeId=intent.getStringExtra("detailcreatedtimeId");
-        String detailtelId=intent.getStringExtra("detailtelId");
-        String detailhomepageId=intent.getStringExtra("detailhomepageId");
-        String detailresveUrlId=intent.getStringExtra("detailresveUrlId");
+        String detailmodifiedtimeId=intent.getStringExtra("modifiedtimeId");
+        String detailcreatedtimeId=intent.getStringExtra("createdtimeId");
+        String detailtelId=intent.getStringExtra("telId");
+        String detailhomepageId=intent.getStringExtra("homepageId");
+        String detailresveUrlId=intent.getStringExtra("resveUrlId");
 
 //        getSupportActionBar().setTitle(titleId+"");
+
 
 
         detailiv=findViewById(R.id.detailiv);
@@ -69,6 +71,7 @@ public class CampingApi_DetailActivity extends AppCompatActivity {
         detailinduty=findViewById(R.id.detailinduty);
         detailaddr1=findViewById(R.id.detailaddr1);
         detailaddr2=findViewById(R.id.detailaddr2);
+
         detailresveCl=findViewById(R.id.detailresveCl);
         detailmodifiedtime=findViewById(R.id.detailmodifiedtime);
         detailcreatedtime=findViewById(R.id.detailcreatedtime);

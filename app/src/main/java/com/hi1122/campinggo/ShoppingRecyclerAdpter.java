@@ -59,7 +59,7 @@ public class ShoppingRecyclerAdpter extends RecyclerView.Adapter {
         ((VH) holder).tvprice.setText(item.price+"원");
 
         String imgUrl="http://jhyein1122.dothome.co.kr/Campinggo/"+item.file;
-        Log.i("tagshad",imgUrl);
+//        Log.i("tagshad",imgUrl);
 
         Glide.with(context).load(imgUrl).into(((VH) holder).iv);
 
@@ -94,7 +94,7 @@ public class ShoppingRecyclerAdpter extends RecyclerView.Adapter {
                 @Override
                 public void onClick(View v) {
                     int position=getLayoutPosition();
-                    Toast.makeText(context, "클릭됨", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(context, "클릭됨", Toast.LENGTH_SHORT).show();
 
                     String shoppingiv=items.get(position).file;
                     String title=items.get(position).title;
@@ -103,7 +103,7 @@ public class ShoppingRecyclerAdpter extends RecyclerView.Adapter {
 
                     Intent intent=new Intent(context,Shopping_DetailActivity.class);
                     intent.putExtra("shoppingiv",shoppingiv);
-                    Log.i("tag1",shoppingiv+"");
+//                    Log.i("tag1",shoppingiv+"");
                     intent.putExtra("title",title);
                     intent.putExtra("price",price);
                     intent.putExtra("detail",detail);
