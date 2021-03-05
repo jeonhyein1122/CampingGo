@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,10 +24,10 @@ import retrofit2.Retrofit;
 public class Home_First_Fragment extends Fragment {
 
     Context context;
-    ArrayList<ShoppingRecyclerItem> items=new ArrayList<>();
+    ArrayList<ReviewRecyclerItem> items=new ArrayList<>();
 
     RecyclerView recyclerView;
-    ShoppingRecyclerAdpter recyclerAdpter;
+    ReviewRecyclerAdpter recyclerAdpter;
     Button Btnall;
     Button Btnmountain;
 
@@ -73,7 +74,7 @@ public class Home_First_Fragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         recyclerView=view.findViewById(R.id.recycler);
-        recyclerAdpter=new ShoppingRecyclerAdpter(getActivity(),items);
+        recyclerAdpter=new ReviewRecyclerAdpter(getActivity(),items);
         recyclerView.setAdapter(recyclerAdpter);
 
         recyclerView2=view.findViewById(R.id.recycler2);
@@ -99,19 +100,20 @@ public class Home_First_Fragment extends Fragment {
 
 
         Retrofit retrofit= RetrofitHelper.getRetrofitInstanceGson();
-        RetrofitService retrofitService= retrofit.create(RetrofitService.class);
-        Call<ArrayList<ShoppingRecyclerItem>> call= retrofitService.loadDataFromServer1();
-        call.enqueue(new Callback<ArrayList<ShoppingRecyclerItem>>() {
+
+        RetrofitServiceReview retrofitServiceReview= retrofit.create(RetrofitServiceReview.class);
+        Call<ArrayList<ReviewRecyclerItem>> call= retrofitServiceReview.loadDataFromServerreview();
+        call.enqueue(new Callback<ArrayList<ReviewRecyclerItem>>() {
             @Override
-            public void onResponse(Call<ArrayList<ShoppingRecyclerItem>> call, Response<ArrayList<ShoppingRecyclerItem>> response) {
+            public void onResponse(Call<ArrayList<ReviewRecyclerItem>> call, Response<ArrayList<ReviewRecyclerItem>> response) {
 
                 //기존데이터들 모두 제거
                 items.clear();
                 recyclerAdpter.notifyDataSetChanged();
 
-                //결과로 받아온 ArrayList<Item>을 items에 추가
-                ArrayList<ShoppingRecyclerItem> list= response.body();
-                for(ShoppingRecyclerItem item: list){
+                //결과로 받아온 ArrayList<MarketItem>을 items에 추가
+                ArrayList<ReviewRecyclerItem> list= response.body();
+                for(ReviewRecyclerItem item: list){
                     items.add(0, item);
                     recyclerAdpter.notifyItemInserted(0);
                 }
@@ -119,7 +121,8 @@ public class Home_First_Fragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<ArrayList<ShoppingRecyclerItem>> call, Throwable t) {
+            public void onFailure(Call<ArrayList<ReviewRecyclerItem>> call, Throwable t) {
+                Toast.makeText(getActivity(), "error: ReviewFrag--"+t.getMessage(), Toast.LENGTH_SHORT).show();
 
             }
         });

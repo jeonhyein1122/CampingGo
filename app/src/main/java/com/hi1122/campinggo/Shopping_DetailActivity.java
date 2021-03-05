@@ -26,7 +26,7 @@ public class Shopping_DetailActivity extends AppCompatActivity {
     TextView detailPrice;
     TextView detailDetail;
 
-    CircleImageView profile;
+    CircleImageView userprofile;
     TextView nickname;
 
     @Override
@@ -40,13 +40,15 @@ public class Shopping_DetailActivity extends AppCompatActivity {
         String detailtitle=intent.getStringExtra("title");
         String detailprice=intent.getStringExtra("price");
         String detaildetail=intent.getStringExtra("detail");
+        String detailnickname=intent.getStringExtra("nickname");
+//        String detailprofile=intent.getStringExtra("profile");
 
         detailIv=findViewById(R.id.shopping_detail_iv);
         detailTitle=findViewById(R.id.shopping_detail_title);
         detailPrice=findViewById(R.id.shopping_detail_price);
         detailDetail=findViewById(R.id.shopping_detail_detail);
 
-        profile=findViewById(R.id.shopping_profile);
+//        userprofile=findViewById(R.id.shopping_profile);
         nickname=findViewById(R.id.shopping_nickname);
 
         String imgUrl="http://jhyein1122.dothome.co.kr/Campinggo/"+detailiv;
@@ -58,6 +60,9 @@ public class Shopping_DetailActivity extends AppCompatActivity {
         detailTitle.setText(detailtitle);
         detailPrice.setText(detailprice+"원");
         detailDetail.setText(detaildetail);
+
+        nickname.setText(detailnickname);
+//        Glide.with(this).load(detailprofile).into(userprofile);
 
         if (Build.VERSION.SDK_INT>Build.VERSION_CODES.LOLLIPOP){
             detailIv.setTransitionName("shoppingimg");

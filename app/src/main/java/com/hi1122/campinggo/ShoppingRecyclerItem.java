@@ -12,6 +12,9 @@ public class ShoppingRecyclerItem {
     int favor;
     String date;
     String file;
+//    String userpro;
+    String nickname;
+
 
 
     public ShoppingRecyclerItem() {
@@ -19,7 +22,7 @@ public class ShoppingRecyclerItem {
 
 
 
-    public ShoppingRecyclerItem(int no, String shoppingiv, String title, String price, String detail, int favor, String date,String file) {
+    public ShoppingRecyclerItem(int no, String shoppingiv, String title, String price, String detail, int favor, String date,String file,String nickname) {
         this.no = no;
         this.shoppingiv = shoppingiv;
         this.title = title;
@@ -28,5 +31,8 @@ public class ShoppingRecyclerItem {
         this.favor = favor;
         this.date = date;
         this.file=file;
+//        this.userpro=userpro;
+        this.nickname=nickname;
+
     }
 }

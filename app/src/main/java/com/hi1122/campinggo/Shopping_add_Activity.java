@@ -92,8 +92,10 @@ public class Shopping_add_Activity extends AppCompatActivity {
         String title=ettitle.getText().toString();
         String price=etprice.getText().toString();
         String detail=etdetail.getText().toString();
+        String usernickname= G.nickname;
+//        String userpro= G.profile;
         //todo: 데이터베이스에 컬럼 추가 (이름, 프로필), 값주는거 추가, 값 가져오는거 추가
-//        String name=G.nickname;
+
 
         Retrofit retrofit= RetrofitHelper.getRetrofitInstanceScalars();
         RetrofitService retrofitService= retrofit.create(RetrofitService.class);
@@ -109,6 +111,9 @@ public class Shopping_add_Activity extends AppCompatActivity {
         dataPart.put("title", title);
         dataPart.put("price", price);
         dataPart.put("detail", detail);
+        dataPart.put("nickname",usernickname);
+//        dataPart.put("profile",userpro);
+
 
         Call<String> call= retrofitService.postDataToServer(dataPart, filePart);
         call.enqueue(new Callback<String>() {
