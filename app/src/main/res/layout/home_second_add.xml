@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".Home_Second_add">
+
+        <ImageView
+            android:id="@+id/tip_add_iv"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/noimage"
+            android:onClick="clickSelctImagebtn"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="사진 선택하기"
+            android:background="#F3DBDA"
+            app:backgroundTint="@null"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/black"
+            android:onClick="clickSelctImage"/>
+
+        <EditText
+            android:id="@+id/tip_add_ettitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="title 입력"
+            android:background="@drawable/bg_edit"
+            android:maxEms="16"
+            android:textSize="16sp"
+            android:padding="8dp"
+            android:layout_margin="4dp"
+            android:textColor="@color/black"
+            android:inputType="text"/>
+
+        <EditText
+            android:id="@+id/tip_add_etsubtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="#태그 #태그 # 태그"
+            android:maxEms="20"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:background="@drawable/bg_edit"
+            android:padding="8dp"
+            android:layout_margin="4dp"
+            android:inputType="number"/>
+
+        <EditText
+            android:id="@+id/tip_add_etdetail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxEms="500"
+            android:gravity="top"
+            android:layout_weight="1"
+            android:background="@drawable/bg_edit"
+            android:paddingTop="8dp"
+            android:layout_margin="4dp"
+            android:textColor="@color/black"
+            android:layout_marginLeft="8dp"
+            android:padding="8dp"
+            android:hint="내용을 입력해주세요."/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/canclebtn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="취소"
+                android:layout_weight="1"
+                android:layout_margin="4dp"
+                android:textColor="@color/white"
+                app:backgroundTint="@null"
+                android:background="@drawable/btn_bg_select"
+                android:onClick="clickcancle"/>
+
+            <Button
+                android:id="@+id/okbtn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="확인"
+                android:textColor="@color/white"
+                android:layout_weight="1"
+                android:layout_margin="4dp"
+                app:backgroundTint="@null"
+                android:background="@drawable/btn_bg_select"
+                android:onClick="clickok"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>

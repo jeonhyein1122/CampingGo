@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Home_Second_Detail">
+
+        <ImageView
+            android:id="@+id/tip_detail_iv"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:src="@drawable/noimage" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/tip_profile"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/profilenull"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="8dp"/>
+
+            <TextView
+                android:id="@+id/tip_nickname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="hihi"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="20dp"
+                android:textSize="16sp"
+                android:layout_toRightOf="@+id/tip_profile"/>
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#ffdddddd"
+            android:layout_marginTop="8dp"
+            android:layout_alignParentBottom="true"/>
+
+
+        <TextView
+            android:id="@+id/tip_detail_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="title"
+            android:textSize="40sp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/tip_detail_subtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="detail #태그"
+            android:textSize="20sp"
+            android:textColor="#ff333333"
+            android:layout_marginLeft="8dp"/>
+
+        <TextView
+            android:id="@+id/tip_detail_detail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="detail"
+            android:textSize="20sp"
+            android:textColor="#ff333333"
+            android:layout_marginLeft="8dp"/>
+
+    </LinearLayout>
+

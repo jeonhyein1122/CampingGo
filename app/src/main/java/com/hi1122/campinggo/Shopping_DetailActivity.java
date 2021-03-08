@@ -32,7 +32,7 @@ public class Shopping_DetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.shopping__detail);
+        setContentView(R.layout.shopping_detail);
 
         Intent intent=getIntent();
 

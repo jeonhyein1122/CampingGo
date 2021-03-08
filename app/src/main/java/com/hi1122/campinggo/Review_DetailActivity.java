@@ -28,7 +28,7 @@ public class Review_DetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.review__detail);
+        setContentView(R.layout.review_detail);
 
         Intent intent=getIntent();
 

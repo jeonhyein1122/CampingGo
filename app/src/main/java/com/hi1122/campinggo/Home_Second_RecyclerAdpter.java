@@ -1,6 +1,11 @@
 package com.hi1122.campinggo;
 
+import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Build;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,8 +36,8 @@ public class Home_Second_RecyclerAdpter extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView= LayoutInflater.from(context).inflate(R.layout.home_recycler_item_second,parent,false);
-        VH vh=new VH(itemView);
-        return vh;
+        VH holder=new VH(itemView);
+        return holder;
     }
 
     @Override
@@ -41,11 +46,16 @@ public class Home_Second_RecyclerAdpter extends RecyclerView.Adapter {
         VH vh=(VH)holder;
 
         Home_Second_RecyclerItem item=items.get(position);
-//        vh.title.setText(item.title);
-//        vh.detial.setText(item.detail);
-//
-//        Glide.with(context).load(item.img).into(vh.img);
-//        Glide.with(context).load(item.detailimg)
+
+        ((VH) holder).Title.setText(item.title+"");
+        ((VH) holder).Subtitle.setText(item.subtitle+"");
+//        ((VH) holder).Detail.setText(item.title+"");
+
+        String imgUrl="http://jhyein1122.dothome.co.kr/Campinggotip/"+item.file;
+//        Log.i("tagshad",imgUrl);
+
+        Glide.with(context).load(imgUrl).into(((VH) holder).iv);
+
 
     }
 
@@ -56,16 +66,48 @@ public class Home_Second_RecyclerAdpter extends RecyclerView.Adapter {
 
     class  VH extends RecyclerView.ViewHolder{
 
-//        item.xml 안에 있는거 집어넣기
-        CircleImageView img;
-        TextView title;
-        TextView detial;
+        ImageView iv;
+        TextView Title;
+        TextView Subtitle;
 
 
         public VH(@NonNull View itemView) {
             super(itemView);
 
-//            img=itemView.findViewById(R.id.img);
+
+            iv=itemView.findViewById(R.id.homese_img);
+            Title=itemView.findViewById(R.id.homese_title);
+            Subtitle=itemView.findViewById(R.id.homese_content);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position=getLayoutPosition();
+//                    Toast.makeText(context, "클릭됨", Toast.LENGTH_SHORT).show();
+
+                    String shoppingiv=items.get(position).file;
+                    String title=items.get(position).title;
+                    String price=items.get(position).subtitle;
+                    String detail=items.get(position).detail;
+
+                    Intent intent=new Intent(context,Shopping_DetailActivity.class);
+                    intent.putExtra("tipiv",shoppingiv);
+//                    Log.i("tag1",shoppingiv+"");
+                    intent.putExtra("title",title);
+                    intent.putExtra("subtitle",price);
+                    intent.putExtra("detail",detail);
+
+                    if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP){
+                        ActivityOptions options=ActivityOptions.makeSceneTransitionAnimation((Activity)context,new Pair<View,String>(iv,"tipimg"));
+                        context.startActivity(intent,options.toBundle());
+                    }else {
+                        context.startActivity(intent);
+                    }
+
+                }
+            });
+
+
         }
     }
 }

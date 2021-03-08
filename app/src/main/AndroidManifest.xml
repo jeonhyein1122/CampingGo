@@ -20,7 +20,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CampingGo"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Home_Second_Detail"></activity>
+        <activity android:name=".Home_Second_add"></activity>
+        <activity android:name=".Home_Second_Detail" />
         <activity android:name=".Review_DetailActivity" />
         <activity android:name=".Shopping_DetailActivity" />
         <activity android:name=".CampingApi_DetailActivity" />
