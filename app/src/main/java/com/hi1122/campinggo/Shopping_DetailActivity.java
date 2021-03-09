@@ -53,7 +53,7 @@ public class Shopping_DetailActivity extends AppCompatActivity {
 
         String imgUrl="http://jhyein1122.dothome.co.kr/Campinggo/"+detailiv;
 
-        Log.i("tagshod",imgUrl);
+
         if (imgUrl==null) Glide.with(this).load(R.drawable.noimage).into(detailIv);
         else Glide.with(this).load(imgUrl).into(detailIv);
 //        Glide.with(this).load(campingimgId).into(detailiv);

@@ -95,9 +95,6 @@ public class ReviewFragment extends Fragment {
 
     void loadData(){
 
-//        items.add(new ReviewRecyclerItem());
-//        items.add(new ReviewRecyclerItem());
-//        items.add(new ReviewRecyclerItem());
 
         Retrofit retrofit= RetrofitHelper.getRetrofitInstanceGson();
 

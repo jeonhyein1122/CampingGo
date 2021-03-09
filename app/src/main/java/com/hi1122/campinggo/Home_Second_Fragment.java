@@ -6,18 +6,15 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
-import com.google.android.material.snackbar.BaseTransientBottomBar;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 
@@ -31,24 +28,34 @@ public class Home_Second_Fragment extends Fragment {
     ArrayList<Home_Second_RecyclerItem> items=new ArrayList<>();
     RecyclerView recyclerView;
     Home_Second_RecyclerAdpter recyclerAdpter;
-    AppCompatButton tipbtn;
+    Button btnadd;
 
-
+    SwipeRefreshLayout refreshLayout;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         loadData();
-   
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.home_second_tab,container,false);
+        View view=inflater.inflate(R.layout.home_second_tab,container,false);
 
+        btnadd=view.findViewById(R.id.clicktip);
 
+        btnadd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                if (G.nickname !=null) startActivity(new Intent(getActivity(),Home_Second_add.class));
+                else startActivity(new Intent(getActivity(),LoginActivity.class));
+
+            }
+        });
+
+        return view;
     }
 
     @Override
@@ -59,12 +66,12 @@ public class Home_Second_Fragment extends Fragment {
         recyclerAdpter=new Home_Second_RecyclerAdpter(getActivity(),items);
         recyclerView.setAdapter(recyclerAdpter);
 
-        tipbtn=view.findViewById(R.id.clicktip);
-        tipbtn.setOnClickListener(new View.OnClickListener() {
+        refreshLayout= view.findViewById(R.id.layout_refresh);
+        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
-            public void onClick(View v) {
-                if (G.nickname!=null) startActivity(new Intent(getActivity(),Home_Second_add.class));
-                else Snackbar.make(getView(),"로그인이 필요한 서비스입니다.",Snackbar.LENGTH_SHORT).show();
+            public void onRefresh() {
+                loadData();
+                refreshLayout.setRefreshing(false);
             }
         });
 
@@ -72,7 +79,6 @@ public class Home_Second_Fragment extends Fragment {
         if( ActivityCompat.checkSelfPermission(getContext(), permissions[0]) == PackageManager.PERMISSION_DENIED ){
             ActivityCompat.requestPermissions(getActivity(), permissions, 100);
         }
-
     }
 
     @Override
@@ -85,8 +91,9 @@ public class Home_Second_Fragment extends Fragment {
 
 
         Retrofit retrofit= RetrofitHelper.getRetrofitInstanceGson();
-        RetrofitServiceTip retrofitServicetip= retrofit.create(RetrofitServiceTip.class);
-        Call<ArrayList<Home_Second_RecyclerItem>> call= retrofitServicetip.loadDataFromServer();
+
+        RetrofitServiceTip retrofitServiceTip= retrofit.create(RetrofitServiceTip.class);
+        Call<ArrayList<Home_Second_RecyclerItem>> call= retrofitServiceTip.loadDataFromServer();
         call.enqueue(new Callback<ArrayList<Home_Second_RecyclerItem>>() {
             @Override
             public void onResponse(Call<ArrayList<Home_Second_RecyclerItem>> call, Response<ArrayList<Home_Second_RecyclerItem>> response) {
@@ -106,10 +113,12 @@ public class Home_Second_Fragment extends Fragment {
 
             @Override
             public void onFailure(Call<ArrayList<Home_Second_RecyclerItem>> call, Throwable t) {
+                Toast.makeText(getActivity(), "error homefragment"+t, Toast.LENGTH_SHORT).show();
 
             }
         });
 
 
     }
+
 }

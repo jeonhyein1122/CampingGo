@@ -94,7 +94,6 @@ public class Shopping_add_Activity extends AppCompatActivity {
         String detail=etdetail.getText().toString();
         String usernickname= G.nickname;
 //        String userpro= G.profile;
-        //todo: 데이터베이스에 컬럼 추가 (이름, 프로필), 값주는거 추가, 값 가져오는거 추가
 
 
         Retrofit retrofit= RetrofitHelper.getRetrofitInstanceScalars();

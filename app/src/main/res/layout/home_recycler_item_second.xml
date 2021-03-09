@@ -14,7 +14,7 @@
         android:layout_height="match_parent">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/homese_img"
+            android:id="@+id/homesecond_img"
             android:layout_width="100dp"
             android:layout_height="100dp"
             app:cardCornerRadius="8dp"
@@ -27,31 +27,27 @@
         </de.hdodenhof.circleimageview.CircleImageView>
 
         <TextView
-            android:id="@+id/homese_title"
+            android:id="@+id/homesecond_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:layout_toRightOf="@+id/homese_img"
+            android:layout_toRightOf="@+id/homesecond_img"
             android:text="캠핑 팁!"
             android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/homese_content"
+            android:id="@+id/homesecond_subtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/homese_title"
+            android:layout_below="@+id/homesecond_title"
             android:layout_marginTop="16dp"
-            android:layout_toRightOf="@+id/homese_img"
+            android:layout_toRightOf="@+id/homesecond_img"
             android:text=" #캠핑 #매듭 #매듭법 # 캠핑꿀팁 # 캠핑 노하우 "
             android:textColor="#ff333333"
             android:textSize="20sp" />
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#ffdddddd"
-            android:layout_alignParentBottom="true"/>
+
 
 
     </RelativeLayout>

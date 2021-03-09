@@ -41,6 +41,7 @@ public class Home_Second_add extends AppCompatActivity {
     ImageView iv;
     TextView dialogtv;
     String imgPath;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,15 +94,15 @@ public class Home_Second_add extends AppCompatActivity {
     public void clickok(View view) {
 
         String title=ettitle.getText().toString();
-        String price=etsubtitle.getText().toString();
+        String subtitle=etsubtitle.getText().toString();
         String detail=etdetail.getText().toString();
-        String usernickname= G.nickname;
-//        String userpro= G.profile;
-        //todo: 데이터베이스에 컬럼 추가 (이름, 프로필), 값주는거 추가, 값 가져오는거 추가
+        String nickname= G.nickname;
+//        String profile= G.profile;
+
 
 
         Retrofit retrofit= RetrofitHelper.getRetrofitInstanceScalars();
-        RetrofitService retrofitService= retrofit.create(RetrofitService.class);
+        RetrofitServiceTip retrofitServicetip= retrofit.create(RetrofitServiceTip.class);
 
         MultipartBody.Part filePart= null;
         if(imgPath!=null){
@@ -112,13 +113,13 @@ public class Home_Second_add extends AppCompatActivity {
 
         Map<String, String> dataPart= new HashMap<>();
         dataPart.put("title", title);
-        dataPart.put("price", price);
+        dataPart.put("subtitle",subtitle);
         dataPart.put("detail", detail);
-        dataPart.put("nickname",usernickname);
-//        dataPart.put("profile",userpro);
+        dataPart.put("nickname",nickname);
+//        dataPart.put("profile",profile);
 
 
-        Call<String> call= retrofitService.postDataToServer(dataPart, filePart);
+        Call<String> call= retrofitServicetip.postDataToServer(dataPart, filePart);
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {

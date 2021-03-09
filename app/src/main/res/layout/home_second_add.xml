@@ -51,7 +51,7 @@
             android:background="@drawable/bg_edit"
             android:padding="8dp"
             android:layout_margin="4dp"
-            android:inputType="number"/>
+            android:inputType="text"/>
 
         <EditText
             android:id="@+id/tip_add_etdetail"
@@ -66,7 +66,8 @@
             android:textColor="@color/black"
             android:layout_marginLeft="8dp"
             android:padding="8dp"
-            android:hint="내용을 입력해주세요."/>
+            android:hint="내용을 입력해주세요."
+            android:inputType="textMultiLine"/>
 
 
         <LinearLayout
@@ -82,7 +83,6 @@
                 android:layout_weight="1"
                 android:layout_margin="4dp"
                 android:textColor="@color/white"
-                app:backgroundTint="@null"
                 android:background="@drawable/btn_bg_select"
                 android:onClick="clickcancle"/>
 
@@ -94,7 +94,6 @@
                 android:textColor="@color/white"
                 android:layout_weight="1"
                 android:layout_margin="4dp"
-                app:backgroundTint="@null"
                 android:background="@drawable/btn_bg_select"
                 android:onClick="clickok"/>
 

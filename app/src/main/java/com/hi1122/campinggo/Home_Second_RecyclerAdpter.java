@@ -47,9 +47,9 @@ public class Home_Second_RecyclerAdpter extends RecyclerView.Adapter {
 
         Home_Second_RecyclerItem item=items.get(position);
 
-        ((VH) holder).Title.setText(item.title+"");
-        ((VH) holder).Subtitle.setText(item.subtitle+"");
-//        ((VH) holder).Detail.setText(item.title+"");
+        ((VH) holder).Title.setText(item.title);
+        ((VH) holder).Subtitle.setText("#"+item.subtitle);
+
 
         String imgUrl="http://jhyein1122.dothome.co.kr/Campinggotip/"+item.file;
 //        Log.i("tagshad",imgUrl);
@@ -75,9 +75,9 @@ public class Home_Second_RecyclerAdpter extends RecyclerView.Adapter {
             super(itemView);
 
 
-            iv=itemView.findViewById(R.id.homese_img);
-            Title=itemView.findViewById(R.id.homese_title);
-            Subtitle=itemView.findViewById(R.id.homese_content);
+            iv=itemView.findViewById(R.id.homesecond_img);
+            Title=itemView.findViewById(R.id.homesecond_title);
+            Subtitle=itemView.findViewById(R.id.homesecond_subtitle);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -85,16 +85,16 @@ public class Home_Second_RecyclerAdpter extends RecyclerView.Adapter {
                     int position=getLayoutPosition();
 //                    Toast.makeText(context, "클릭됨", Toast.LENGTH_SHORT).show();
 
-                    String shoppingiv=items.get(position).file;
+                    String tipiv=items.get(position).file;
                     String title=items.get(position).title;
-                    String price=items.get(position).subtitle;
+                    String subtitle=items.get(position).subtitle;
                     String detail=items.get(position).detail;
 
-                    Intent intent=new Intent(context,Shopping_DetailActivity.class);
-                    intent.putExtra("tipiv",shoppingiv);
+                    Intent intent=new Intent(context,Home_Second_Detail.class);
+                    intent.putExtra("tipiv",tipiv);
 //                    Log.i("tag1",shoppingiv+"");
                     intent.putExtra("title",title);
-                    intent.putExtra("subtitle",price);
+                    intent.putExtra("subtitle",subtitle);
                     intent.putExtra("detail",detail);
 
                     if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP){
