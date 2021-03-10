@@ -97,7 +97,7 @@ public class ReviewRecyclerAdpter extends RecyclerView.Adapter {
                 @Override
                 public void onClick(View v) {
                     int position=getLayoutPosition();
-                    Toast.makeText(context, "클릭됨", Toast.LENGTH_SHORT).show();
+
 
                     String reviewiv=items.get(position).file;
                     String title=items.get(position).title;

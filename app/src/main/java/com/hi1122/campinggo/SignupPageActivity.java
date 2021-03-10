@@ -4,6 +4,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.loader.content.CursorLoader;
 
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -13,13 +14,13 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 
@@ -27,6 +28,18 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class SignupPageActivity extends AppCompatActivity {
 
@@ -34,6 +47,7 @@ public class SignupPageActivity extends AppCompatActivity {
     TextView btn_signup;
     ImageView profileimg;
     String imgPath;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,42 +71,42 @@ public class SignupPageActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 String userID = et_id.getText().toString();
-                String userPass = et_pass.getText().toString();
+                String userPassword = et_pass.getText().toString();
                 String userName = et_nickname.getText().toString();
-                String file=profileimg.toString();
 
-                Response.Listener<String> responseListener = new Response.Listener<String>() {
+                Retrofit retrofit= RetrofitHelper.getRetrofitInstanceScalars();
+                RetrofitServiceSignup retrofitServicesigup= retrofit.create(RetrofitServiceSignup.class);
+
+                MultipartBody.Part filePart= null;
+                if(imgPath!=null){
+                    File file= new File(imgPath);
+                    RequestBody requestBody= RequestBody.create(MediaType.parse("image/*"), file);
+                    filePart= MultipartBody.Part.createFormData("img", file.getName(), requestBody);
+                }
+
+                Map<String, String> dataPart= new HashMap<>();
+                dataPart.put("userID", userID);
+                dataPart.put("userPassword",userPassword);
+                dataPart.put("userName", userName);
+
+                Call<String> call= retrofitServicesigup.postDataToServer(dataPart, filePart);
+                call.enqueue(new Callback<String>() {
                     @Override
-                    public void onResponse(String response) {
+                    public void onResponse(Call<String> call, Response<String> response) {
+                        String s= response.body();
+                        Toast.makeText(SignupPageActivity.this, ""+s, Toast.LENGTH_SHORT).show();
+                    }
 
-                        try {
-                            JSONObject jsonObject = new JSONObject( response );
-                            boolean success = jsonObject.getBoolean( "success" );
-
-                            //회원가입 성공시
-                            if(success) {
-
-                                Toast.makeText( getApplicationContext(), "회원가입에 성공했습니다.", Toast.LENGTH_SHORT ).show();
-                                Intent intent = new Intent( SignupPageActivity.this, LoginActivity.class );
-                                startActivity( intent );
-
-                                //회원가입 실패시
-                            } else {
-                                Toast.makeText( getApplicationContext(), "실패", Toast.LENGTH_SHORT ).show();
-                                return;
-                            }
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
+                    @Override
+                    public void onFailure(Call<String> call, Throwable t) {
 
                     }
-                };
+                });
 
-                //서버로 Volley를 이용해서 요청
-                SignupRequest signupRequest = new SignupRequest( userID, userPass, userName,file, responseListener);
-                RequestQueue queue = Volley.newRequestQueue( SignupPageActivity.this );
-                queue.add(signupRequest);
+                //업로드가 완료되면 액티비티 종료
+                finish();
+
+
             }
         });
 

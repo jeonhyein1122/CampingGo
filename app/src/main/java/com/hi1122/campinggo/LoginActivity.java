@@ -14,7 +14,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 import com.kakao.sdk.auth.LoginClient;
 import com.kakao.sdk.auth.model.OAuthToken;
@@ -24,8 +23,14 @@ import com.kakao.sdk.user.model.User;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 import kotlin.Unit;
 import kotlin.jvm.functions.Function2;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class LoginActivity extends AppCompatActivity {
     
@@ -36,6 +41,8 @@ public class LoginActivity extends AppCompatActivity {
     EditText login_password;
     TextView login_button;
     TextView login_signup;
+    ArrayList<LoginItem> items=new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +56,8 @@ public class LoginActivity extends AppCompatActivity {
         login_password=findViewById(R.id.login_etpassword);
         login_button=findViewById(R.id.login_login);
         login_signup=findViewById(R.id.login_signup);
+
+
 
        Toolbar logintoolbar=findViewById(R.id.logintoolbar);
        setSupportActionBar(logintoolbar);
@@ -67,57 +76,36 @@ public class LoginActivity extends AppCompatActivity {
            public void onClick(View v) {
 //               Toast.makeText(LoginActivity.this, "클릭됨", Toast.LENGTH_SHORT).show();
                String userID = login_id.getText().toString();
-               String userPass = login_password.getText().toString();
+               String userPassword = login_password.getText().toString();
 
-               Response.Listener<String> responseListener = new Response.Listener<String>() {
+
+               Retrofit retrofit=RetrofitHelper.getRetrofitInstanceGson();
+               RetrofitServiceSignup retrofitServicesignup=retrofit.create(RetrofitServiceSignup.class);
+               Call<ArrayList<LoginItem>> call=retrofitServicesignup.loadDataFromServer();
+               call.enqueue(new Callback<ArrayList<LoginItem>>() {
                    @Override
-                   public void onResponse(String response) {
-                       try {
-                           JSONObject jsonObject = new JSONObject( response );
-                           boolean success = jsonObject.getBoolean( "success" );
+                   public void onResponse(Call<ArrayList<LoginItem>> call, Response<ArrayList<LoginItem>> response) {
 
-                           Log.i("login",response);
-                           if(success) {//로그인 성공시
+                       ArrayList<LoginItem> list=response.body();
 
-                               String userID = jsonObject.getString( "userID" );
-                               String userPass = jsonObject.getString( "userPassword" );
-                               String userName = jsonObject.getString( "userName" );
-                               String file = jsonObject.getString( "file" );
+                       for(LoginItem item: list) {
+                           items.add(0, item);
 
+                           if (items.equals(userID) && items.equals(userPassword)){
+                               Toast.makeText(LoginActivity.this, "로그인성공", Toast.LENGTH_SHORT).show();
+                               startActivity(new Intent(LoginActivity.this,MainActivity.class));
+                           }else Toast.makeText(LoginActivity.this, "로그인 실패", Toast.LENGTH_SHORT).show();
 
-                               G.userID=userID;
-                               G.userpass=userPass;
-                               G.nickname=userName;
-                               G.profile=file;
-
-                               Toast.makeText( getApplicationContext(), "환영합니다", Toast.LENGTH_SHORT ).show();
-
-                               setResult(RESULT_OK);
-                               finish();
-
-                               Intent intent = new Intent( LoginActivity.this, MainActivity.class );
-
-                               intent.putExtra( "userID", userID );
-                               intent.putExtra( "userPass", userPass );
-                               intent.putExtra( "userName", userName );
-                               intent.putExtra( "file", file );
-
-                               startActivity( intent );
-
-
-                           } else {//로그인 실패시
-                               Toast.makeText( getApplicationContext(), "로그인 실패", Toast.LENGTH_SHORT ).show();
-                               return;
-                           }
-
-                       } catch (JSONException e) {
-                           e.printStackTrace();
                        }
+                       
+
                    }
-               };
-               LoginRequest loginRequest = new LoginRequest( userID, userPass, responseListener );
-               RequestQueue queue = Volley.newRequestQueue( LoginActivity.this );
-               queue.add( loginRequest );
+
+                   @Override
+                   public void onFailure(Call<ArrayList<LoginItem>> call, Throwable t) {
+                       Toast.makeText(LoginActivity.this, "로그인 에러 ", Toast.LENGTH_SHORT).show();
+                   }
+               });
 
            }
        });

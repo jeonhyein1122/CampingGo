@@ -108,6 +108,7 @@ public class ReviewFragment extends Fragment {
                 items.clear();
                 recyclerAdpter.notifyDataSetChanged();
 
+
                 //결과로 받아온 ArrayList<MarketItem>을 items에 추가
                 ArrayList<ReviewRecyclerItem> list= response.body();
                 for(ReviewRecyclerItem item: list){
