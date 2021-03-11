@@ -113,7 +113,7 @@ public class Home_Second_Fragment extends Fragment {
 
             @Override
             public void onFailure(Call<ArrayList<Home_Second_RecyclerItem>> call, Throwable t) {
-                Toast.makeText(getActivity(), "error homefragment"+t, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(), "error homefragment"+t, Toast.LENGTH_SHORT).show();
 
             }
         });

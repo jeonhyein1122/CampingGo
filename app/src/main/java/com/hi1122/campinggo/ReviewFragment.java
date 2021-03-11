@@ -120,7 +120,7 @@ public class ReviewFragment extends Fragment {
 
             @Override
             public void onFailure(Call<ArrayList<ReviewRecyclerItem>> call, Throwable t) {
-                Toast.makeText(getActivity(), "error: ReviewFrag--"+t.getMessage(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(), "error: ReviewFrag--"+t.getMessage(), Toast.LENGTH_SHORT).show();
 
             }
         });

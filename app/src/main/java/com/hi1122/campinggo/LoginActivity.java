@@ -32,6 +32,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
+import static com.hi1122.campinggo.G.userID;
+import static com.hi1122.campinggo.G.userpass;
+
 public class LoginActivity extends AppCompatActivity {
     
 //    CircleImageView profile;
@@ -41,7 +44,9 @@ public class LoginActivity extends AppCompatActivity {
     EditText login_password;
     TextView login_button;
     TextView login_signup;
+
     ArrayList<LoginItem> items=new ArrayList<>();
+
 
 
     @Override
@@ -56,6 +61,7 @@ public class LoginActivity extends AppCompatActivity {
         login_password=findViewById(R.id.login_etpassword);
         login_button=findViewById(R.id.login_login);
         login_signup=findViewById(R.id.login_signup);
+
 
 
 
@@ -75,8 +81,8 @@ public class LoginActivity extends AppCompatActivity {
            @Override
            public void onClick(View v) {
 //               Toast.makeText(LoginActivity.this, "클릭됨", Toast.LENGTH_SHORT).show();
-               String userID = login_id.getText().toString();
-               String userPassword = login_password.getText().toString();
+               String eduserID = login_id.getText().toString();
+               String eduserPassword = login_password.getText().toString();
 
 
                Retrofit retrofit=RetrofitHelper.getRetrofitInstanceGson();
@@ -86,24 +92,20 @@ public class LoginActivity extends AppCompatActivity {
                    @Override
                    public void onResponse(Call<ArrayList<LoginItem>> call, Response<ArrayList<LoginItem>> response) {
 
-                       ArrayList<LoginItem> list=response.body();
-
-                       for(LoginItem item: list) {
-                           items.add(0, item);
-
-                           if (items.equals(userID) && items.equals(userPassword)){
-                               Toast.makeText(LoginActivity.this, "로그인성공", Toast.LENGTH_SHORT).show();
-                               startActivity(new Intent(LoginActivity.this,MainActivity.class));
-                           }else Toast.makeText(LoginActivity.this, "로그인 실패", Toast.LENGTH_SHORT).show();
-
+                       if (response.isSuccessful()){
+                           ArrayList<LoginItem> result=response.body();
+                           result.get(0);
                        }
-                       
+
+
+
+
 
                    }
 
                    @Override
                    public void onFailure(Call<ArrayList<LoginItem>> call, Throwable t) {
-                       Toast.makeText(LoginActivity.this, "로그인 에러 ", Toast.LENGTH_SHORT).show();
+                       Toast.makeText(LoginActivity.this, "로그인 에러 "+t, Toast.LENGTH_SHORT).show();
                    }
                });
 

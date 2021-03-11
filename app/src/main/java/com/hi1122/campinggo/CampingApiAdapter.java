@@ -2,6 +2,7 @@ package com.hi1122.campinggo;
 
 import android.app.Activity;
 import android.app.ActivityOptions;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -23,6 +24,7 @@ import java.util.ArrayList;
 public class CampingApiAdapter extends RecyclerView.Adapter{
     Context context;
     ArrayList<CampingApiRecyclerItem> items;
+    ProgressDialog progressDialog;
 
     public CampingApiAdapter(Context context, ArrayList<CampingApiRecyclerItem> items) {
         this.context = context;
@@ -36,6 +38,7 @@ public class CampingApiAdapter extends RecyclerView.Adapter{
 
         View itemView=inflater.inflate(R.layout.activity_campingapi_recycler_item,parent,false);
         VH holder=new VH(itemView);
+
 
         return holder;
     }

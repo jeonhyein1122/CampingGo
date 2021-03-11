@@ -1,9 +1,11 @@
 package com.hi1122.campinggo;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.loader.content.CursorLoader;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -33,6 +35,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -45,9 +48,9 @@ public class SignupPageActivity extends AppCompatActivity {
 
     EditText et_id, et_pass, et_nickname;
     TextView btn_signup;
-    ImageView profileimg;
+    CircleImageView profileimg;
     String imgPath;
-
+//    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +77,23 @@ public class SignupPageActivity extends AppCompatActivity {
                 String userPassword = et_pass.getText().toString();
                 String userName = et_nickname.getText().toString();
 
+//                if (userID.equals("") || userPassword.equals("") || userName.equals("")) {
+//                    Toast.makeText(SignupPageActivity.this, "모두 입력해주세요", Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
+//                if (userID.length()<=5 ){
+//                    Toast.makeText(SignupPageActivity.this, "ID는 6글자 이상 가능합니다.", Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
+//                if (userPassword.length()<=7 ){
+//                    Toast.makeText(SignupPageActivity.this, "비밀번호는 8글자 이상 가능합니다.", Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
+//                if (userName.length()<=1 ){
+//                    Toast.makeText(SignupPageActivity.this, "ID는 2글자 이상 가능합니다.", Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
+
                 Retrofit retrofit= RetrofitHelper.getRetrofitInstanceScalars();
                 RetrofitServiceSignup retrofitServicesigup= retrofit.create(RetrofitServiceSignup.class);
 
@@ -84,10 +104,12 @@ public class SignupPageActivity extends AppCompatActivity {
                     filePart= MultipartBody.Part.createFormData("img", file.getName(), requestBody);
                 }
 
+
                 Map<String, String> dataPart= new HashMap<>();
                 dataPart.put("userID", userID);
                 dataPart.put("userPassword",userPassword);
                 dataPart.put("userName", userName);
+
 
                 Call<String> call= retrofitServicesigup.postDataToServer(dataPart, filePart);
                 call.enqueue(new Callback<String>() {
@@ -99,7 +121,7 @@ public class SignupPageActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<String> call, Throwable t) {
-
+                       Toast.makeText(SignupPageActivity.this, "회원가입에 실패하였습니다.", Toast.LENGTH_SHORT).show();
                     }
                 });
 

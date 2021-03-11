@@ -5,11 +5,15 @@ import java.util.Map;
 
 import okhttp3.MultipartBody;
 import retrofit2.Call;
+import retrofit2.http.Body;
+import retrofit2.http.Field;
 import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Part;
 import retrofit2.http.PartMap;
+import retrofit2.http.Path;
 
 public interface RetrofitServiceSignup {
 
@@ -27,10 +31,16 @@ public interface RetrofitServiceSignup {
     @GET("/Campinggosignup/loadDB.php")
     Call<ArrayList<LoginItem>> loadDataFromServer();
 
-//    @GET("/Campinggotip/loadDBFavor.php")
-//    Call<ArrayList<ReviewRecyclerItem>> loadDataFromServerreview();
 
 //    //"좋아요" 클릭으로 데이터의 변경을 시키는 작업을 해주는 php를 실행시키기
-//    @PUT("/Campinggotip/{fileName}")
-//    Call<Home_Second_RecyclerItem> updateData(@Path("fileName") String fileName,@Body ReviewRecyclerItem item);
+//    @PUT("/Campinggosignup/{fileName}")
+//    Call<LoginItem> updateData(@Path("fileName") String userID,String userPassword,@Body LoginItem item);
+
+
+//    @POST("Campinggosignup/loadLogin.php")
+//    Call<LoginItem> login(@Field("userID") String userID,
+//                            @Field("userPassword") String userPassword);
+
+
+
 }

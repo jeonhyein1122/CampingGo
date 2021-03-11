@@ -141,7 +141,7 @@ public class ReviewRecyclerAdpter extends RecyclerView.Adapter {
 
                         @Override
                         public void onFailure(Call<ReviewRecyclerItem> call, Throwable t) {
-                            Toast.makeText(context, "error:Review Ad--"+t.getMessage(), Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(context, "error:Review Ad--"+t.getMessage(), Toast.LENGTH_SHORT).show();
 
                         }
                     });
