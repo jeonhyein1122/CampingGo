@@ -1,6 +1,7 @@
 package com.hi1122.campinggo;
 
 public class LoginItem {
+    int no;
     String userID;
     String userPassword;
     String userName;
@@ -9,7 +10,8 @@ public class LoginItem {
     public LoginItem() {
     }
 
-    public LoginItem(String userID, String userPassword, String userName, String file) {
+    public LoginItem(int no,String userID, String userPassword, String userName, String file) {
+        this.no=no;
         this.userID = userID;
         this.userPassword = userPassword;
         this.userName = userName;

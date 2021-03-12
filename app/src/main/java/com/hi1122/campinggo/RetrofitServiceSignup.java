@@ -7,6 +7,7 @@ import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
@@ -32,15 +33,14 @@ public interface RetrofitServiceSignup {
     Call<ArrayList<LoginItem>> loadDataFromServer();
 
 
-//    //"좋아요" 클릭으로 데이터의 변경을 시키는 작업을 해주는 php를 실행시키기
-//    @PUT("/Campinggosignup/{fileName}")
-//    Call<LoginItem> updateData(@Path("fileName") String userID,String userPassword,@Body LoginItem item);
+    //로그인 확인
 
+//    @FormUrlEncoded
+//    @POST("/Campinggosignup/loadLogin.php")
+//    Call<LoginItem> User(@Field("userID")String userID, @Field("userPasswrod") String userPassword);
 
-//    @POST("Campinggosignup/loadLogin.php")
-//    Call<LoginItem> login(@Field("userID") String userID,
-//                            @Field("userPassword") String userPassword);
-
-
+    @FormUrlEncoded
+    @POST("/Campinggosignup/loadLogin.php")
+    Call<LoginItem> User(@Field("userID")String userID, @Field("userPassword") String userPassword);
 
 }

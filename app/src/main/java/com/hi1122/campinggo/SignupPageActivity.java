@@ -77,22 +77,22 @@ public class SignupPageActivity extends AppCompatActivity {
                 String userPassword = et_pass.getText().toString();
                 String userName = et_nickname.getText().toString();
 
-//                if (userID.equals("") || userPassword.equals("") || userName.equals("")) {
-//                    Toast.makeText(SignupPageActivity.this, "모두 입력해주세요", Toast.LENGTH_SHORT).show();
-//                    return;
-//                }
-//                if (userID.length()<=5 ){
-//                    Toast.makeText(SignupPageActivity.this, "ID는 6글자 이상 가능합니다.", Toast.LENGTH_SHORT).show();
-//                    return;
-//                }
-//                if (userPassword.length()<=7 ){
-//                    Toast.makeText(SignupPageActivity.this, "비밀번호는 8글자 이상 가능합니다.", Toast.LENGTH_SHORT).show();
-//                    return;
-//                }
-//                if (userName.length()<=1 ){
-//                    Toast.makeText(SignupPageActivity.this, "ID는 2글자 이상 가능합니다.", Toast.LENGTH_SHORT).show();
-//                    return;
-//                }
+                if (userID.equals("") || userPassword.equals("") || userName.equals("")) {
+                    Toast.makeText(SignupPageActivity.this, "모두 입력해주세요", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (userID.length()<=5 ){
+                    Toast.makeText(SignupPageActivity.this, "ID는 6글자 이상 가능합니다.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (userPassword.length()<=7 ){
+                    Toast.makeText(SignupPageActivity.this, "비밀번호는 8글자 이상 가능합니다.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (userName.length()<=1 ){
+                    Toast.makeText(SignupPageActivity.this, "ID는 2글자 이상 가능합니다.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 Retrofit retrofit= RetrofitHelper.getRetrofitInstanceScalars();
                 RetrofitServiceSignup retrofitServicesigup= retrofit.create(RetrofitServiceSignup.class);

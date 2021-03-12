@@ -4,6 +4,6 @@ public class G {
     public static String profile;
     public static String nickname;
     public static String userID;
-    public static String userpass;
+
 
 }

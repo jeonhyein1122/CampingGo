@@ -6,22 +6,16 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.Volley;
 import com.kakao.sdk.auth.LoginClient;
 import com.kakao.sdk.auth.model.OAuthToken;
 import com.kakao.sdk.user.UserApiClient;
 import com.kakao.sdk.user.model.User;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -31,9 +25,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-
-import static com.hi1122.campinggo.G.userID;
-import static com.hi1122.campinggo.G.userpass;
 
 public class LoginActivity extends AppCompatActivity {
     
@@ -81,32 +72,38 @@ public class LoginActivity extends AppCompatActivity {
            @Override
            public void onClick(View v) {
 //               Toast.makeText(LoginActivity.this, "클릭됨", Toast.LENGTH_SHORT).show();
-               String eduserID = login_id.getText().toString();
-               String eduserPassword = login_password.getText().toString();
+               String userID = login_id.getText().toString();
+               String userPassword = login_password.getText().toString();
 
 
                Retrofit retrofit=RetrofitHelper.getRetrofitInstanceGson();
                RetrofitServiceSignup retrofitServicesignup=retrofit.create(RetrofitServiceSignup.class);
-               Call<ArrayList<LoginItem>> call=retrofitServicesignup.loadDataFromServer();
-               call.enqueue(new Callback<ArrayList<LoginItem>>() {
+               Call<LoginItem> call=retrofitServicesignup.User(userID,userPassword);
+               call.enqueue(new Callback<LoginItem>() {
                    @Override
-                   public void onResponse(Call<ArrayList<LoginItem>> call, Response<ArrayList<LoginItem>> response) {
+                   public void onResponse(Call<LoginItem> call, Response<LoginItem> response) {
 
-                       if (response.isSuccessful()){
-                           ArrayList<LoginItem> result=response.body();
-                           result.get(0);
-                       }
+                    LoginItem item=response.body();
 
+                     if (item!=null){
 
+                        G.userID=item.userID;
+                        G.nickname=item.userName;
+                        G.profile="http://jhyein1122.dothome.co.kr/Campinggosignup/"+item.file;
 
+                        startActivity(new Intent(LoginActivity.this,MainActivity.class));
+                        finish();
 
+                       } else Toast.makeText(LoginActivity.this, "아이디와 비밀번호를 확인하세요", Toast.LENGTH_SHORT).show();
 
                    }
 
                    @Override
-                   public void onFailure(Call<ArrayList<LoginItem>> call, Throwable t) {
-                       Toast.makeText(LoginActivity.this, "로그인 에러 "+t, Toast.LENGTH_SHORT).show();
+                   public void onFailure(Call<LoginItem> call, Throwable t) {
+                       Toast.makeText(LoginActivity.this, "서버 에러! 잠시후 다시 시도해 주세요", Toast.LENGTH_SHORT).show();
                    }
+
+
                });
 
            }
