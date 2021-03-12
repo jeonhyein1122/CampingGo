@@ -100,7 +100,6 @@ public class Home_First_Fragment extends Fragment {
 
 
         Retrofit retrofit= RetrofitHelper.getRetrofitInstanceGson();
-
         RetrofitServiceReview retrofitServiceReview= retrofit.create(RetrofitServiceReview.class);
         Call<ArrayList<ReviewRecyclerItem>> call= retrofitServiceReview.loadDataFromServerreview();
         call.enqueue(new Callback<ArrayList<ReviewRecyclerItem>>() {

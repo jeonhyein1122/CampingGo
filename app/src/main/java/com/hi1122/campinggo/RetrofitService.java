@@ -31,7 +31,7 @@ public interface RetrofitService {
     Call<ArrayList<ShoppingRecyclerItem>> loadDataFromServer();
 
     @GET("/Campinggo/loadDBFavor.php")
-    Call<ArrayList<ShoppingRecyclerItem>> loadDataFromServer1();
+    Call<ArrayList<ShoppingRecyclerItem>> loadDataFromServershopping();
 
 
     //"좋아요" 클릭으로 데이터의 변경을 시키는 작업을 해주는 php를 실행시키기
