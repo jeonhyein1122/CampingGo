@@ -104,9 +104,7 @@ public class MypageFragment extends Fragment {
         if (G.profile != null) Glide.with(this).load(G.profile).into(profile);
 
 
-
     }
-
 
     @Override
     public void onResume() {
