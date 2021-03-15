@@ -52,6 +52,7 @@ public class Shopping_DetailActivity extends AppCompatActivity {
         nickname=findViewById(R.id.shopping_nickname);
 
         String imgUrl="http://jhyein1122.dothome.co.kr/Campinggo/"+detailiv;
+        String nic="http://jhyein1122.dothome.co.kr/Campinggo/"+detailnickname;
 
 
         if (imgUrl==null) Glide.with(this).load(R.drawable.noimage).into(detailIv);
@@ -61,7 +62,7 @@ public class Shopping_DetailActivity extends AppCompatActivity {
         detailPrice.setText(detailprice+"원");
         detailDetail.setText(detaildetail);
 
-        nickname.setText(detailnickname);
+        nickname.setText(nic);
 //        Glide.with(this).load(detailprofile).into(userprofile);
 
         if (Build.VERSION.SDK_INT>Build.VERSION_CODES.LOLLIPOP){

@@ -56,10 +56,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
-        String keyHash= Utility.INSTANCE.getKeyHash(this);
-        Log.i("KeyHash",keyHash);
+//        String keyHash= Utility.INSTANCE.getKeyHash(this);
+//        Log.i("KeyHash",keyHash);
 
         //툴바 설정
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -155,10 +153,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        if (G.userID!=null){
-
-        }
-
 
         fragmentManager = getSupportFragmentManager();
 
@@ -248,18 +242,16 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
+        if (G.nickname !=null){
+            tvnickname.setText(G.nickname);
+
+        }
     }
 
     public void clickLoginBtn(View view){
 
         Intent intent=new Intent(this,LoginActivity.class);
         startActivity(intent);
-
-        if (G.userID !=null || G.nickname !=null){
-            loginBtn.setEnabled(false);
-        }
-
-
 
     }
 

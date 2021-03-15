@@ -93,7 +93,7 @@ public class Shopping_add_Activity extends AppCompatActivity {
         String price=etprice.getText().toString();
         String detail=etdetail.getText().toString();
         String usernickname= G.nickname;
-//        String userpro= G.profile;
+//        String userprofile= G.profile;
 
 
         Retrofit retrofit= RetrofitHelper.getRetrofitInstanceScalars();
@@ -111,7 +111,7 @@ public class Shopping_add_Activity extends AppCompatActivity {
         dataPart.put("price", price);
         dataPart.put("detail", detail);
         dataPart.put("nickname",usernickname);
-//        dataPart.put("profile",userpro);
+//        dataPart.put("profile",userprofile);
 
 
         Call<String> call= retrofitService.postDataToServer(dataPart, filePart);

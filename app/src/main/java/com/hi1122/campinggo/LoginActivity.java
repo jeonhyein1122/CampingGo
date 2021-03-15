@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -54,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
         login_signup=findViewById(R.id.login_signup);
 
 
-
+        loadData();
 
        Toolbar logintoolbar=findViewById(R.id.logintoolbar);
        setSupportActionBar(logintoolbar);
@@ -91,7 +92,17 @@ public class LoginActivity extends AppCompatActivity {
                         G.nickname=item.userName;
                         G.profile="http://jhyein1122.dothome.co.kr/Campinggosignup/"+item.file;
 
-                        startActivity(new Intent(LoginActivity.this,MainActivity.class));
+                         // SharedPreferences 에 저장 (내부저장소에 데이터를 영구히 저장하는 녀석)
+                         SharedPreferences pref= getSharedPreferences("account", MODE_PRIVATE);
+                         SharedPreferences.Editor editor= pref.edit();
+
+                         editor.putString("nickName", G.nickname);
+                         editor.putString("profile", G.profile);
+
+                         editor.commit();
+
+
+                         startActivity(new Intent(LoginActivity.this,MainActivity.class));
                         finish();
 
                        } else Toast.makeText(LoginActivity.this, "아이디와 비밀번호를 확인하세요", Toast.LENGTH_SHORT).show();
@@ -145,6 +156,14 @@ public class LoginActivity extends AppCompatActivity {
                                 G.nickname=nickname;
                                 G.profile=profileImageUrl;
 
+
+                                SharedPreferences pref= getSharedPreferences("account", MODE_PRIVATE);
+                                SharedPreferences.Editor editor= pref.edit();
+
+                                editor.putString("nickName", G.nickname);
+                                editor.putString("profileUrl", G.profile);
+
+                                editor.commit();
                                 setResult(RESULT_OK);
                                 finish();
 //                                 tvnickname.setText(nickname);
@@ -173,5 +192,11 @@ public class LoginActivity extends AppCompatActivity {
 
         Intent intent= new Intent(this, SignupPageActivity.class);
         startActivity(intent);
+    }
+
+    void loadData(){
+        SharedPreferences pref= getSharedPreferences("account", MODE_PRIVATE);
+        G.nickname= pref.getString("nickName", null);
+        G.profile= pref.getString("profileUrl", null);
     }
 }
