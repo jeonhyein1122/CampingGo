@@ -13,6 +13,7 @@ import retrofit2.http.PUT;
 import retrofit2.http.Part;
 import retrofit2.http.PartMap;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface RetrofitService {
 
@@ -33,6 +34,8 @@ public interface RetrofitService {
     @GET("/Campinggo/loadDBFavor.php")
     Call<ArrayList<ShoppingRecyclerItem>> loadDataFromServershopping();
 
+//    @GET("/Campinggo/loadprofile.php")
+//    Call<ArrayList<ShoppingRecyclerItem>> loadDataFromServerprofile(@Query("nickname") String nickname);
 
     //"좋아요" 클릭으로 데이터의 변경을 시키는 작업을 해주는 php를 실행시키기
     @PUT("/Campinggo/{fileName}")

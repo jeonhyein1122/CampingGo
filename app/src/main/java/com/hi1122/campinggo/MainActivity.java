@@ -16,6 +16,7 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -27,6 +28,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.kakao.sdk.common.util.Utility;
 import com.kakao.sdk.user.UserApiClient;
+import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import kotlin.Unit;
@@ -68,17 +70,32 @@ public class MainActivity extends AppCompatActivity {
 
         drawerLayout = findViewById(R.id.layout_drawer);
         navigationView = findViewById(R.id.naviV);
+
+//        profile=navigationView.findViewById(R.id.profile);
+
         navigationView.setItemIconTintList(null);
 
         loginBtn=findViewById(R.id.loginbtn);
         tvnickname=findViewById(R.id.tv_nickname);
+
         profile=findViewById(R.id.profile);
+//        drawer_header=findViewById(R.id.drawer_header);
+
+
+//        LayoutInflater inflater = getLayoutInflater().from(this);
+//        View header = inflater.inflate(R.layout.drawer_header,null  );
+//        profile = header.findViewById(R.id.profile);
+//        Log.i("profile",profile+"$$$$$$"+bnv);
+
 
 
 
 //        //drawer header button login화면 클릭
 
-//        final View headerView= navigationView.getHeaderView(0);
+        final View headerView= navigationView.getHeaderView(0);
+        CircleImageView iv=headerView.findViewById(R.id.profile);
+
+
 //        headerView.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -97,6 +114,7 @@ public class MainActivity extends AppCompatActivity {
 
         drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.app_name, R.string.app_name);
         drawerLayout.addDrawerListener(drawerToggle);
+
         drawerToggle.syncState();
 
 
@@ -247,6 +265,17 @@ public class MainActivity extends AppCompatActivity {
 //
 //        }
     }
+
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//////        Log.i("nickname",);
+////        if (G.profile !=null){
+////            Glide.with(this).load(G.profile).into(iv);
+////            Log.i("nickname",G.profile);
+//
+//        }
+//    }
 
     public void clickLoginBtn(View view){
 

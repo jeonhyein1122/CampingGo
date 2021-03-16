@@ -112,7 +112,7 @@ public class Shopping_add_Activity extends AppCompatActivity {
         dataPart.put("price", price);
         dataPart.put("detail", detail);
         dataPart.put("nickname",usernickname);
-        dataPart.put("profile",userprofile);
+        dataPart.put("userprofile",userprofile);
 
 
         Call<String> call= retrofitService.postDataToServer(dataPart, filePart);

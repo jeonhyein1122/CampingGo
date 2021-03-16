@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="160dp"
     android:background="#E4E1E1"
+    android:id="@+id/drawer_header"
     android:padding="8dp">
 
 
