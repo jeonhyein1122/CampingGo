@@ -28,7 +28,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.kakao.sdk.common.util.Utility;
 import com.kakao.sdk.user.UserApiClient;
-import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import kotlin.Unit;
@@ -76,9 +75,7 @@ public class MainActivity extends AppCompatActivity {
         navigationView.setItemIconTintList(null);
 
         loginBtn=findViewById(R.id.loginbtn);
-        tvnickname=findViewById(R.id.tv_nickname);
 
-        profile=findViewById(R.id.profile);
 //        drawer_header=findViewById(R.id.drawer_header);
 
 
@@ -93,7 +90,10 @@ public class MainActivity extends AppCompatActivity {
 //        //drawer header button login화면 클릭
 
         final View headerView= navigationView.getHeaderView(0);
-        CircleImageView iv=headerView.findViewById(R.id.profile);
+        CircleImageView userprofile=headerView.findViewById(R.id.drawer_profile);
+        TextView usernickname=headerView.findViewById(R.id.drawer_nickname);
+        if (G.nickname !=null) usernickname.setText(G.nickname);
+        if (G.profile != null) Glide.with(this).load(G.profile).into(userprofile);
 
 
 //        headerView.setOnClickListener(new View.OnClickListener() {
@@ -157,14 +157,6 @@ public class MainActivity extends AppCompatActivity {
                         drawerLayout.closeDrawer(navigationView);
                         break;
 
-                    case R.id.tv_nickname :
-
-                        Intent intent = getIntent();
-                        String userName = intent.getStringExtra("userName");
-
-                        tvnickname.setText(userName);
-
-                        break;
                 }
 
                 return true;

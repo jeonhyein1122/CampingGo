@@ -2,13 +2,19 @@ package com.hi1122.campinggo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -20,6 +26,7 @@ public class Shopping_DetailActivity extends AppCompatActivity {
 
     Context context;
     ArrayList<ShoppingRecyclerItem> items;
+    TextView dialogtv;
 
     ImageView detailIv;
     TextView detailTitle;
@@ -65,11 +72,48 @@ public class Shopping_DetailActivity extends AppCompatActivity {
 
         nickname.setText(detailnickname);
 
+
+
         Glide.with(this).load(detailprofile).into(userprofile);
 
         if (Build.VERSION.SDK_INT>Build.VERSION_CODES.LOLLIPOP){
             detailIv.setTransitionName("shoppingimg");
         }
 
+    }
+
+    AlertDialog dialog;
+    public void clickchatting(View view) {
+        AlertDialog.Builder builder=new AlertDialog.Builder(this);
+
+        LayoutInflater inflater=getLayoutInflater();
+        LinearLayout layout=(LinearLayout)inflater.inflate(R.layout.dialogchatting,null);
+
+        dialogtv=layout.findViewById(R.id.dialogchat);
+
+        builder.setView(layout);
+        if (G.nickname!=null) {
+
+            builder.setPositiveButton("네", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Intent intent = new Intent(Shopping_DetailActivity.this, Chatting_Activity.class);
+                    startActivity(intent);
+
+
+                }
+            });
+            builder.setNegativeButton("아니오", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    finish();
+                }
+            });
+
+            dialog = builder.create();
+            dialog.setCanceledOnTouchOutside(false);
+            dialog.show();
+        }else Toast.makeText(Shopping_DetailActivity.this, "로그인이 필요한 서비스 입니다.", Toast.LENGTH_SHORT).show();
+       
     }
 }

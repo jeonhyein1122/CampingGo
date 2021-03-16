@@ -16,8 +16,9 @@
         android:src="@drawable/noimage" />
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:onClick="clickchatting">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/shopping_profile"

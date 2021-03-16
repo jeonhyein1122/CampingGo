@@ -8,14 +8,14 @@
 
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profile"
+        android:id="@+id/drawer_profile"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:padding="4dp"
-        android:src="@mipmap/ic_launcher"/>
+        android:src="@drawable/profilenull"/>
 
     <TextView
-        android:id="@+id/tv_nickname"
+        android:id="@+id/drawer_nickname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="로그인을 하면 다양한 서비스를 \n 이용할 수 있습니다."
@@ -23,13 +23,13 @@
         android:textColor="@color/white"
         android:textStyle="bold"
         android:padding="14dp"
-       android:layout_toRightOf="@+id/profile"/>
+       android:layout_toRightOf="@+id/drawer_profile"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/loginbtn"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_below="@+id/profile"
+        android:layout_below="@+id/drawer_profile"
         android:layout_marginLeft="8dp"
         android:background="@drawable/btn_bg_select_login"
         android:layout_marginTop="8dp"
@@ -41,7 +41,7 @@
         android:id="@+id/logoutbtn"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_below="@+id/profile"
+        android:layout_below="@+id/drawer_profile"
         android:layout_marginLeft="8dp"
         android:background="@drawable/btn_bg_select_signup"
         android:layout_marginTop="8dp"
@@ -75,7 +75,7 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:background="@drawable/signupicon"
-        android:layout_below="@+id/tv_nickname"
+        android:layout_below="@+id/drawer_nickname"
         android:layout_toRightOf="@+id/loginbtn"
         android:layout_marginLeft="80dp"
         android:layout_marginTop="10dp"
@@ -95,7 +95,7 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:background="@drawable/mypageicon"
-        android:layout_below="@+id/profile"
+        android:layout_below="@+id/drawer_profile"
         android:layout_toRightOf="@+id/signup"
         android:layout_marginLeft="85dp"
         android:layout_marginTop="8dp"

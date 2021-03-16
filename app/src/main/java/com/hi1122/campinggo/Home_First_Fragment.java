@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -30,6 +31,7 @@ public class Home_First_Fragment extends Fragment {
     ReviewRecyclerAdpter recyclerAdpter;
     Button Btnall;
     Button Btnmountain;
+    TextView more;
 
     ArrayList<CampingApiRecyclerItem> items2=new ArrayList<>();
     RecyclerView recyclerView2;
@@ -65,7 +67,17 @@ public class Home_First_Fragment extends Fragment {
                 startActivity(new Intent(getActivity(),Home_First_Tab_mountainbtn.class));
             }
         });
+
+        more=view.findViewById(R.id.more);
+        more.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+              //todo : 인텐트하깅
+            }
+        });
         return view;
+
+
 
     }
 

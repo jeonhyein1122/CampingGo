@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "134052533117",
+    "project_id": "campinggo-3b583",
+    "storage_bucket": "campinggo-3b583.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:134052533117:android:9c3da547135732c12bb214",
+        "android_client_info": {
+          "package_name": "com.hi1122.campinggo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "134052533117-f1s2m3ag2nr70ft3jlvjtkgd40nenmqc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hi1122.campinggo",
+            "certificate_hash": "c37c7307b3ae4eaf752c3c138caef2855d8d536b"
+          }
+        },
+        {
+          "client_id": "134052533117-v032j5n39k7nh2rk01o7tbr7ja6k9uli.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hi1122.campinggo",
+            "certificate_hash": "7c5dacbbb8e1c7d81b2dda3b67ec3932c02ba617"
+          }
+        },
+        {
+          "client_id": "134052533117-n497s7fidtvq1hsmu2hgm3lrn8k4lgeb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBaJO_hv517YKeYmRnBCviC1yVYmoBoFK0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "134052533117-n497s7fidtvq1hsmu2hgm3lrn8k4lgeb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
