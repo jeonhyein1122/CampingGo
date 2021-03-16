@@ -55,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
         login_signup=findViewById(R.id.login_signup);
 
 
-        loadData();
+//        loadData();
 
        Toolbar logintoolbar=findViewById(R.id.logintoolbar);
        setSupportActionBar(logintoolbar);
@@ -92,16 +92,7 @@ public class LoginActivity extends AppCompatActivity {
                         G.nickname=item.userName;
                         G.profile="http://jhyein1122.dothome.co.kr/Campinggosignup/"+item.file;
 
-                         // SharedPreferences 에 저장 (내부저장소에 데이터를 영구히 저장하는 녀석)
-                         SharedPreferences pref= getSharedPreferences("account", MODE_PRIVATE);
-                         SharedPreferences.Editor editor= pref.edit();
-
-                         editor.putString("nickName", G.nickname);
-                         editor.putString("profile", G.profile);
-
-                         editor.commit();
-
-
+                         Toast.makeText(LoginActivity.this, "환영합니다.", Toast.LENGTH_SHORT).show();
                          startActivity(new Intent(LoginActivity.this,MainActivity.class));
                         finish();
 
@@ -156,14 +147,6 @@ public class LoginActivity extends AppCompatActivity {
                                 G.nickname=nickname;
                                 G.profile=profileImageUrl;
 
-
-                                SharedPreferences pref= getSharedPreferences("account", MODE_PRIVATE);
-                                SharedPreferences.Editor editor= pref.edit();
-
-                                editor.putString("nickName", G.nickname);
-                                editor.putString("profileUrl", G.profile);
-
-                                editor.commit();
                                 setResult(RESULT_OK);
                                 finish();
 //                                 tvnickname.setText(nickname);
@@ -194,9 +177,5 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    void loadData(){
-        SharedPreferences pref= getSharedPreferences("account", MODE_PRIVATE);
-        G.nickname= pref.getString("nickName", null);
-        G.profile= pref.getString("profileUrl", null);
-    }
+
 }

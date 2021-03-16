@@ -242,10 +242,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        if (G.nickname !=null){
-            tvnickname.setText(G.nickname);
-
-        }
+//        if (G.nickname !=null){
+//            tvnickname.setText(G.nickname);
+//
+//        }
     }
 
     public void clickLoginBtn(View view){

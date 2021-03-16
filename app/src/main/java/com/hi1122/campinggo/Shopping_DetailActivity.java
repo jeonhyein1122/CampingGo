@@ -41,18 +41,19 @@ public class Shopping_DetailActivity extends AppCompatActivity {
         String detailprice=intent.getStringExtra("price");
         String detaildetail=intent.getStringExtra("detail");
         String detailnickname=intent.getStringExtra("nickname");
-//        String detailprofile=intent.getStringExtra("profile");
+        String detailprofile=intent.getStringExtra("profile");
 
+//        Log.i("nic",detailnickname);
         detailIv=findViewById(R.id.shopping_detail_iv);
         detailTitle=findViewById(R.id.shopping_detail_title);
         detailPrice=findViewById(R.id.shopping_detail_price);
         detailDetail=findViewById(R.id.shopping_detail_detail);
 
-//        userprofile=findViewById(R.id.shopping_profile);
+        userprofile=findViewById(R.id.shopping_profile);
         nickname=findViewById(R.id.shopping_nickname);
 
         String imgUrl="http://jhyein1122.dothome.co.kr/Campinggo/"+detailiv;
-        String nic="http://jhyein1122.dothome.co.kr/Campinggo/"+detailnickname;
+
 
 
         if (imgUrl==null) Glide.with(this).load(R.drawable.noimage).into(detailIv);
@@ -62,8 +63,9 @@ public class Shopping_DetailActivity extends AppCompatActivity {
         detailPrice.setText(detailprice+"원");
         detailDetail.setText(detaildetail);
 
-        nickname.setText(nic);
-//        Glide.with(this).load(detailprofile).into(userprofile);
+        nickname.setText(detailnickname);
+
+        Glide.with(this).load(detailprofile).into(userprofile);
 
         if (Build.VERSION.SDK_INT>Build.VERSION_CODES.LOLLIPOP){
             detailIv.setTransitionName("shoppingimg");

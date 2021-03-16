@@ -100,6 +100,8 @@ public class ShoppingRecyclerAdpter extends RecyclerView.Adapter {
                     String title=items.get(position).title;
                     String price=items.get(position).price;
                     String detail=items.get(position).detail;
+                    String nickname=items.get(position).nickname;
+                    String profile=items.get(position).userprofile;
 
                     Intent intent=new Intent(context,Shopping_DetailActivity.class);
                     intent.putExtra("shoppingiv",shoppingiv);
@@ -107,6 +109,8 @@ public class ShoppingRecyclerAdpter extends RecyclerView.Adapter {
                     intent.putExtra("title",title);
                     intent.putExtra("price",price);
                     intent.putExtra("detail",detail);
+                    intent.putExtra("nickname",nickname);
+                    intent.putExtra("profile",profile);
 
                     if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP){
                         ActivityOptions options=ActivityOptions.makeSceneTransitionAnimation((Activity)context,new Pair<View,String>(iv,"shoppingimg"));

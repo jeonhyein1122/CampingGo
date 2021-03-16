@@ -12,6 +12,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -93,7 +94,7 @@ public class Shopping_add_Activity extends AppCompatActivity {
         String price=etprice.getText().toString();
         String detail=etdetail.getText().toString();
         String usernickname= G.nickname;
-//        String userprofile= G.profile;
+        String userprofile= G.profile;
 
 
         Retrofit retrofit= RetrofitHelper.getRetrofitInstanceScalars();
@@ -111,7 +112,7 @@ public class Shopping_add_Activity extends AppCompatActivity {
         dataPart.put("price", price);
         dataPart.put("detail", detail);
         dataPart.put("nickname",usernickname);
-//        dataPart.put("profile",userprofile);
+        dataPart.put("profile",userprofile);
 
 
         Call<String> call= retrofitService.postDataToServer(dataPart, filePart);
