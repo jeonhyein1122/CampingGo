@@ -39,11 +39,8 @@ public class MainActivity extends AppCompatActivity {
     Fragment[] fragments=new Fragment[5];
     FragmentManager fragmentManager;
 
-//    TextView tv;
-    Button loginBtn;
-    TextView tvnickname;
-    CircleImageView profile;
 
+    Button loginBtn;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     ActionBarDrawerToggle drawerToggle;
@@ -73,48 +70,15 @@ public class MainActivity extends AppCompatActivity {
 //        profile=navigationView.findViewById(R.id.profile);
 
         navigationView.setItemIconTintList(null);
-
-        loginBtn=findViewById(R.id.loginbtn);
-
-//        drawer_header=findViewById(R.id.drawer_header);
-
-
-//        LayoutInflater inflater = getLayoutInflater().from(this);
-//        View header = inflater.inflate(R.layout.drawer_header,null  );
-//        profile = header.findViewById(R.id.profile);
-//        Log.i("profile",profile+"$$$$$$"+bnv);
-
-
-
-
-//        //drawer header button login화면 클릭
-
-        final View headerView= navigationView.getHeaderView(0);
-        CircleImageView userprofile=headerView.findViewById(R.id.drawer_profile);
-        TextView usernickname=headerView.findViewById(R.id.drawer_nickname);
-        if (G.nickname !=null) usernickname.setText(G.nickname);
-        if (G.profile != null) Glide.with(this).load(G.profile).into(userprofile);
-
-
-//        headerView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Btnlogin=findViewById(R.id.loginbtn);
-//                Btnlogin.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
 //
-////                        bnv.setSelectedItemId(R.id.mypage);
-//                        drawerLayout.closeDrawer(navigationView);
-//                    }
-//                });
-//            }
-//        });
+//        loginBtn=findViewById(R.id.loginbtn);
+
+//        logoutBtn=findViewById(R.id.logoutbtn);
+
 
 
         drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.app_name, R.string.app_name);
         drawerLayout.addDrawerListener(drawerToggle);
-
         drawerToggle.syncState();
 
 
@@ -163,6 +127,46 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+
+        View headerView= navigationView.getHeaderView(0);
+        CircleImageView userprofile=headerView.findViewById(R.id.drawer_profile);
+        TextView usernickname=headerView.findViewById(R.id.drawer_nickname);
+        Button logoutbtn=headerView.findViewById(R.id.logoutbtn);
+        Button loginbtn=headerView.findViewById(R.id.loginbtn);
+        TextView drawer_login=headerView.findViewById(R.id.drawer_login);
+        TextView drawer_logout=headerView.findViewById(R.id.drawer_logout);
+
+
+        if (G.nickname !=null){
+        drawer_login.setVisibility(View.GONE);
+        drawer_logout.setVisibility(View.VISIBLE);
+        logoutbtn.setVisibility(View.VISIBLE);
+        loginbtn.setVisibility(View.GONE);
+
+         logoutbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                UserApiClient.getInstance().logout(new Function1<Throwable, Unit>() {
+                    @Override
+                    public Unit invoke(Throwable throwable) {
+                        if(throwable !=null) {
+                            logoutbtn.setEnabled(false);
+                        } else {
+                            Toast.makeText(MainActivity.this, "로그아웃", Toast.LENGTH_SHORT).show();
+
+                            //로그인 회원정보 화면들 모두 초기화
+                            usernickname.setText(" ");
+                            Glide.with(headerView).load(G.profile).into(userprofile);
+                            startActivity(new Intent(MainActivity.this,MainActivity.class));
+                        }
+                        return null;
+                    }
+                });
+            }
+         });
+        }
 
         fragmentManager = getSupportFragmentManager();
 
@@ -258,16 +262,22 @@ public class MainActivity extends AppCompatActivity {
 //        }
     }
 
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//////        Log.i("nickname",);
-////        if (G.profile !=null){
-////            Glide.with(this).load(G.profile).into(iv);
-////            Log.i("nickname",G.profile);
-//
-//        }
-//    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        View headerView= navigationView.getHeaderView(0);
+        CircleImageView userprofile=headerView.findViewById(R.id.drawer_profile);
+        TextView usernickname=headerView.findViewById(R.id.drawer_nickname);
+
+        if (G.nickname !=null) {
+            usernickname.setText(G.nickname+" 님");
+            Glide.with(this).load(G.profile).into(userprofile);
+
+        }
+
+    }
+
 
     public void clickLoginBtn(View view){
 
@@ -299,4 +309,6 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
     }
+
+
 }
