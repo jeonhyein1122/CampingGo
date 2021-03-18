@@ -11,8 +11,11 @@ import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,6 +23,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class CampingApiAdapter extends RecyclerView.Adapter{
     Context context;
@@ -74,6 +82,7 @@ public class CampingApiAdapter extends RecyclerView.Adapter{
         ImageView campingimg;
         TextView name;
         TextView lineintro;
+        ToggleButton tbFavor;
 
 
         public VH(@NonNull View itemView) {
@@ -82,6 +91,7 @@ public class CampingApiAdapter extends RecyclerView.Adapter{
             campingimg=itemView.findViewById(R.id.campingimg);
             name=itemView.findViewById(R.id.name);
             lineintro=itemView.findViewById(R.id.lineintro);
+            tbFavor=itemView.findViewById(R.id.tb_favor);
 
             //아이템뷰 클릭
             itemView.setOnClickListener(new View.OnClickListener() {
@@ -129,6 +139,69 @@ public class CampingApiAdapter extends RecyclerView.Adapter{
 
                 }
 
+            });
+
+            //좋아요 서버 체크
+            tbFavor.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    int position=getLayoutPosition();
+                    CampingApiRecyclerItem item=items.get(position);
+                    item.favor=isChecked? 1:0; //변수 값 변경
+
+                    if (item.favor==1){
+                        Retrofit retrofit=RetrofitHelper.getRetrofitInstanceScalars();
+                        RetrofitService retrofitService=retrofit.create(RetrofitService.class);
+                        Call<String> call = retrofitService.insertfavor(item.name,item.lineintro,item.campingimg);
+                        call.enqueue(new Callback<String>() {
+                            @Override
+                            public void onResponse(Call<String> call, Response<String> response) {
+                                Toast.makeText(context, ""+response.body(), Toast.LENGTH_SHORT).show();
+                            }
+
+                            @Override
+                            public void onFailure(Call<String> call, Throwable t) {
+                                Toast.makeText(context, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+                    }else {
+
+                        Retrofit retrofit=RetrofitHelper.getRetrofitInstanceScalars();
+                        RetrofitService retrofitService=retrofit.create(RetrofitService.class);
+                        Call<String> call = retrofitService.deletefavor(item.name);
+                        call.enqueue(new Callback<String>() {
+                            @Override
+                            public void onResponse(Call<String> call, Response<String> response) {
+                                Toast.makeText(context, ""+response.body(), Toast.LENGTH_SHORT).show();
+                            }
+
+                            @Override
+                            public void onFailure(Call<String> call, Throwable t) {
+                                Toast.makeText(context, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+
+                    }
+
+//                    //db update
+//                    Retrofit retrofit=RetrofitHelper.getRetrofitInstanceGson();
+//                    RetrofitService retrofitService=retrofit.create(RetrofitService.class);
+//                    Call<CampingApiRecyclerItem> call= retrofitService.updateDataapifavor("updateFavor.php", item);
+//                    call.enqueue(new Callback<CampingApiRecyclerItem>() {
+//                        @Override
+//                        public void onResponse(Call<CampingApiRecyclerItem> call, Response<CampingApiRecyclerItem> response) {
+//                            Toast.makeText(context, "찜하기 성공", Toast.LENGTH_SHORT).show();
+//                        }
+//                        @Override
+//                        public void onFailure(Call<CampingApiRecyclerItem> call, Throwable t) {
+//
+//
+//                        }
+//                    });
+
+                }
             });
 
         }

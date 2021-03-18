@@ -17,6 +17,8 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CampingApi_Main extends AppCompatActivity {
 
@@ -24,6 +26,7 @@ public class CampingApi_Main extends AppCompatActivity {
     RecyclerView recyclerView;
     CampingApiAdapter adapter;
     String tagName;
+    String img;
 
     CampingApiRecyclerItem item= null;
 
@@ -65,6 +68,7 @@ public class CampingApi_Main extends AppCompatActivity {
                     int eventType = xpp.getEventType();
 
                     //StringBuffer buffer=null;
+                    Map<String, String> dataPart= new HashMap<>();
 
 
                     while (eventType != XmlPullParser.END_DOCUMENT) {

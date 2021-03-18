@@ -31,13 +31,36 @@ public interface RetrofitService {
     @GET("/Campinggo/loadDB.php")
     Call<ArrayList<ShoppingRecyclerItem>> loadDataFromServer();
 
+    //클릭 된것만 뺴옴
     @GET("/Campinggo/loadDBFavor.php")
     Call<ArrayList<ShoppingRecyclerItem>> loadDataFromServershopping();
 
-//    @GET("/Campinggo/loadprofile.php")
-//    Call<ArrayList<ShoppingRecyclerItem>> loadDataFromServerprofile(@Query("nickname") String nickname);
+
 
     //"좋아요" 클릭으로 데이터의 변경을 시키는 작업을 해주는 php를 실행시키기
     @PUT("/Campinggo/{fileName}")
     Call<ShoppingRecyclerItem> updateData(@Path("fileName") String fileName,@Body ShoppingRecyclerItem item);
+
+
+    //api
+
+    @Multipart
+    @POST("/CampinggoApi/insertDB.php")
+    Call<String> postDataToServerapi(@PartMap Map<String, String> dataPart,
+                                     @Part MultipartBody.Part filePart);
+
+
+    @GET("/CampinggoApi/loadDB.php")
+    Call<ArrayList<CampingApiRecyclerItem>> loadDataFromServerapi();
+
+
+    @PUT("/CampinggoApi/{fileName}")
+    Call<CampingApiRecyclerItem> updateDataapifavor(@Path("fileName") String fileName,@Body CampingApiRecyclerItem item);
+
+    @GET("/CampinggoApi/favor.php")
+    Call<String> insertfavor(@Query("name") String name,@Query("lineintro") String lineintro,@Query("campingimg") String campingimg);
+
+    @GET("/CampinggoApi/deletefavor.php")
+    Call<String> deletefavor(@Query("name") String name);
+
 }

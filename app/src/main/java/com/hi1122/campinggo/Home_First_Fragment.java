@@ -102,15 +102,6 @@ public class Home_First_Fragment extends Fragment {
 
     void loadData(){
 
-
-        items2.add(new CampingApiRecyclerItem());
-        items2.add(new CampingApiRecyclerItem());
-        items2.add(new CampingApiRecyclerItem());
-        items2.add(new CampingApiRecyclerItem());
-        items2.add(new CampingApiRecyclerItem());
-
-
-
         Retrofit retrofit= RetrofitHelper.getRetrofitInstanceGson();
         RetrofitServiceReview retrofitServiceReview= retrofit.create(RetrofitServiceReview.class);
         Call<ArrayList<ReviewRecyclerItem>> call= retrofitServiceReview.loadDataFromServerreview();
@@ -138,6 +129,12 @@ public class Home_First_Fragment extends Fragment {
             }
         });
 
+
+        items2.add(new CampingApiRecyclerItem());
+        items2.add(new CampingApiRecyclerItem());
+        items2.add(new CampingApiRecyclerItem());
+        items2.add(new CampingApiRecyclerItem());
+        items2.add(new CampingApiRecyclerItem());
 
 
     }
