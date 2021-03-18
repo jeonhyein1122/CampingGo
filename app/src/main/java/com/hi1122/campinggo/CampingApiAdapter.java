@@ -83,6 +83,7 @@ public class CampingApiAdapter extends RecyclerView.Adapter{
         TextView name;
         TextView lineintro;
         ToggleButton tbFavor;
+        ToggleButton tbRecommend;
 
 
         public VH(@NonNull View itemView) {
@@ -92,6 +93,7 @@ public class CampingApiAdapter extends RecyclerView.Adapter{
             name=itemView.findViewById(R.id.name);
             lineintro=itemView.findViewById(R.id.lineintro);
             tbFavor=itemView.findViewById(R.id.tb_favor);
+            tbRecommend=itemView.findViewById(R.id.tb_recommend);
 
             //아이템뷰 클릭
             itemView.setOnClickListener(new View.OnClickListener() {
@@ -141,7 +143,7 @@ public class CampingApiAdapter extends RecyclerView.Adapter{
 
             });
 
-            //좋아요 서버 체크
+            //찜하기 서버 체크
             tbFavor.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -182,24 +184,53 @@ public class CampingApiAdapter extends RecyclerView.Adapter{
                             }
                         });
 
-
                     }
 
-//                    //db update
-//                    Retrofit retrofit=RetrofitHelper.getRetrofitInstanceGson();
-//                    RetrofitService retrofitService=retrofit.create(RetrofitService.class);
-//                    Call<CampingApiRecyclerItem> call= retrofitService.updateDataapifavor("updateFavor.php", item);
-//                    call.enqueue(new Callback<CampingApiRecyclerItem>() {
-//                        @Override
-//                        public void onResponse(Call<CampingApiRecyclerItem> call, Response<CampingApiRecyclerItem> response) {
-//                            Toast.makeText(context, "찜하기 성공", Toast.LENGTH_SHORT).show();
-//                        }
-//                        @Override
-//                        public void onFailure(Call<CampingApiRecyclerItem> call, Throwable t) {
-//
-//
-//                        }
-//                    });
+                }
+            });
+
+
+            //좋아요 서버 체크
+            tbRecommend.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    int position=getLayoutPosition();
+                    CampingApiRecyclerItem item=items.get(position);
+                    item.favor=isChecked? 1:0; //변수 값 변경
+
+                    Retrofit retrofit=RetrofitHelper.getRetrofitInstanceScalars();
+                    RetrofitService retrofitService=retrofit.create(RetrofitService.class);
+
+                    if (item.favor==1){
+                        Call<String> call = retrofitService.insertrecommend(item.name,item.lineintro,item.campingimg);
+                        call.enqueue(new Callback<String>() {
+                            @Override
+                            public void onResponse(Call<String> call, Response<String> response) {
+                                Toast.makeText(context, ""+response.body(), Toast.LENGTH_SHORT).show();
+                            }
+
+                            @Override
+                            public void onFailure(Call<String> call, Throwable t) {
+                                Toast.makeText(context, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+                    }else {
+
+                        Call<String> call = retrofitService.deleterecommend(item.name);
+                        call.enqueue(new Callback<String>() {
+                            @Override
+                            public void onResponse(Call<String> call, Response<String> response) {
+                                Toast.makeText(context, ""+response.body(), Toast.LENGTH_SHORT).show();
+                            }
+
+                            @Override
+                            public void onFailure(Call<String> call, Throwable t) {
+                                Toast.makeText(context, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+                    }
 
                 }
             });

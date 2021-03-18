@@ -42,25 +42,33 @@ public interface RetrofitService {
     Call<ShoppingRecyclerItem> updateData(@Path("fileName") String fileName,@Body ShoppingRecyclerItem item);
 
 
-    //api
-
-    @Multipart
-    @POST("/CampinggoApi/insertDB.php")
-    Call<String> postDataToServerapi(@PartMap Map<String, String> dataPart,
-                                     @Part MultipartBody.Part filePart);
-
-
-    @GET("/CampinggoApi/loadDB.php")
-    Call<ArrayList<CampingApiRecyclerItem>> loadDataFromServerapi();
-
-
-    @PUT("/CampinggoApi/{fileName}")
-    Call<CampingApiRecyclerItem> updateDataapifavor(@Path("fileName") String fileName,@Body CampingApiRecyclerItem item);
+    //api favor
+//
+//    @Multipart
+//    @POST("/CampinggoApi/insertDB.php")
+//    Call<String> postDataToServerapi(@PartMap Map<String, String> dataPart,
+//                                     @Part MultipartBody.Part filePart);
+//
+//
+//    @GET("/CampinggoApi/loadDB.php")
+//    Call<ArrayList<CampingApiRecyclerItem>> loadDataFromServerapi();
+//
+//
+//    @PUT("/CampinggoApi/{fileName}")
+//    Call<CampingApiRecyclerItem> updateDataapifavor(@Path("fileName") String fileName,@Body CampingApiRecyclerItem item);
 
     @GET("/CampinggoApi/favor.php")
     Call<String> insertfavor(@Query("name") String name,@Query("lineintro") String lineintro,@Query("campingimg") String campingimg);
 
     @GET("/CampinggoApi/deletefavor.php")
     Call<String> deletefavor(@Query("name") String name);
+
+
+    @GET("/CampinggoApiRecommend/favor.php")
+    Call<String> insertrecommend(@Query("name") String name,@Query("lineintro") String lineintro,@Query("campingimg") String campingimg);
+
+    @GET("/CampinggoApiRecommend/deletefavor.php")
+    Call<String> deleterecommend(@Query("name") String name);
+
 
 }
