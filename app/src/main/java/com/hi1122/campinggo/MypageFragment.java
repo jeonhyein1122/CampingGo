@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,16 +38,17 @@ public class MypageFragment extends Fragment {
     CircleImageView profile;
     TextView nickname;
     TextView logout;
+    Button favorlist;
 
     Context context;
-    ArrayList<ShoppingRecyclerItem> items=new ArrayList<>();
-    ShoppingRecyclerAdpter recyclerAdpter;
+//    ArrayList<ShoppingRecyclerItem> items=new ArrayList<>();
+//    ShoppingRecyclerAdpter recyclerAdpter;
 
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        loadData();
+//        loadData();
     }
 
     @Nullable
@@ -57,6 +59,7 @@ public class MypageFragment extends Fragment {
        //안돌아감..//
         profile=view.findViewById(R.id.mypage_profile);
         nickname=view.findViewById(R.id.mypage_nickname);
+        favorlist=view.findViewById(R.id.favorlist);
 
         if (G.nickname !=null) nickname.setText(G.nickname+" 님");
         if (G.profile != null) Glide.with(this).load(G.profile).into(profile);
@@ -86,6 +89,14 @@ public class MypageFragment extends Fragment {
             }
         });
 
+        favorlist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getActivity(),Mypage_Favorlist.class);
+                startActivity(intent);
+            }
+        });
+
         return view;
 
     }
@@ -94,9 +105,9 @@ public class MypageFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        recyclerView=view.findViewById(R.id.recycler);
-        recyclerAdpter=new ShoppingRecyclerAdpter(getActivity(),items);
-        recyclerView.setAdapter(recyclerAdpter);
+//        recyclerView=view.findViewById(R.id.recycler);
+//        recyclerAdpter=new ShoppingRecyclerAdpter(getActivity(),items);
+//        recyclerView.setAdapter(recyclerAdpter);
 
         profile=view.findViewById(R.id.mypage_profile);
         nickname=view.findViewById(R.id.mypage_nickname);
@@ -109,41 +120,42 @@ public class MypageFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        loadData();
+//        loadData();
     }
 
-    void loadData(){
+//    void loadData(){
+//
+//        Retrofit retrofit= RetrofitHelper.getRetrofitInstanceGson();
+//        RetrofitService retrofitService= retrofit.create(RetrofitService.class);
+//        Call<ArrayList<ShoppingRecyclerItem>> call= retrofitService.loadDataFromServershopping();
+//        call.enqueue(new Callback<ArrayList<ShoppingRecyclerItem>>() {
+//            @Override
+//            public void onResponse(Call<ArrayList<ShoppingRecyclerItem>> call, Response<ArrayList<ShoppingRecyclerItem>> response) {
+//
+//                //기존데이터들 모두 제거
+//                items.clear();
+//                recyclerAdpter.notifyDataSetChanged();
+//
+//                //결과로 받아온 ArrayList<MarketItem>을 items에 추가
+//                ArrayList<ShoppingRecyclerItem> list= response.body();
+//                for(ShoppingRecyclerItem item: list){
+//                    items.add(0, item);
+//                    recyclerAdpter.notifyItemInserted(0);
+//                }
+//
+//            }
+//
+//            @Override
+//            public void onFailure(Call<ArrayList<ShoppingRecyclerItem>> call, Throwable t) {
+////                Toast.makeText(getActivity(), "error: ReviewFrag--"+t.getMessage(), Toast.LENGTH_SHORT).show();
+//
+//            }
+//        });
+//
 
-        Retrofit retrofit= RetrofitHelper.getRetrofitInstanceGson();
-        RetrofitService retrofitService= retrofit.create(RetrofitService.class);
-        Call<ArrayList<ShoppingRecyclerItem>> call= retrofitService.loadDataFromServershopping();
-        call.enqueue(new Callback<ArrayList<ShoppingRecyclerItem>>() {
-            @Override
-            public void onResponse(Call<ArrayList<ShoppingRecyclerItem>> call, Response<ArrayList<ShoppingRecyclerItem>> response) {
-
-                //기존데이터들 모두 제거
-                items.clear();
-                recyclerAdpter.notifyDataSetChanged();
-
-                //결과로 받아온 ArrayList<MarketItem>을 items에 추가
-                ArrayList<ShoppingRecyclerItem> list= response.body();
-                for(ShoppingRecyclerItem item: list){
-                    items.add(0, item);
-                    recyclerAdpter.notifyItemInserted(0);
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<ArrayList<ShoppingRecyclerItem>> call, Throwable t) {
-//                Toast.makeText(getActivity(), "error: ReviewFrag--"+t.getMessage(), Toast.LENGTH_SHORT).show();
-
-            }
-        });
 
 
 
-    }
 
 
 }
