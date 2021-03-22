@@ -24,5 +24,9 @@
         android:title="리뷰"
         android:icon="@drawable/reviewicon"/>
 
+    <item android:id="@+id/menu_chatting"
+        android:title="채팅"
+        android:icon="@drawable/chatting"/>
+
 
 </menu>

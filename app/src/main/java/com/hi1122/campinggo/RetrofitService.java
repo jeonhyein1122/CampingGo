@@ -50,8 +50,12 @@ public interface RetrofitService {
 //                                     @Part MultipartBody.Part filePart);
 //
 //
-//    @GET("/CampinggoApi/loadDB.php")
-//    Call<ArrayList<CampingApiRecyclerItem>> loadDataFromServerapi();
+    @GET("/CampinggoApi/loadDB.php")
+    Call<ArrayList<CampingApiRecyclerItem>> loadDataFromServerapi();
+
+    @GET("/CampinggoApiRecommend/loadDB.php")
+    Call<ArrayList<CampingApiRecyclerItem>> loadDataFromServerapi1();
+
 //
 //
 //    @PUT("/CampinggoApi/{fileName}")

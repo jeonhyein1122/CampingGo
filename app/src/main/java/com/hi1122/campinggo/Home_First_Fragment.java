@@ -129,12 +129,32 @@ public class Home_First_Fragment extends Fragment {
             }
         });
 
+       RetrofitService retrofitService=retrofit.create(RetrofitService.class);
+       Call<ArrayList<CampingApiRecyclerItem>> call2=retrofitService.loadDataFromServerapi1();
+       call2.enqueue(new Callback<ArrayList<CampingApiRecyclerItem>>() {
+           @Override
+           public void onResponse(Call<ArrayList<CampingApiRecyclerItem>> call, Response<ArrayList<CampingApiRecyclerItem>> response) {
+               items2.clear();
+               recyclerAdpter2.notifyDataSetChanged();
 
-        items2.add(new CampingApiRecyclerItem());
-        items2.add(new CampingApiRecyclerItem());
-        items2.add(new CampingApiRecyclerItem());
-        items2.add(new CampingApiRecyclerItem());
-        items2.add(new CampingApiRecyclerItem());
+               ArrayList<CampingApiRecyclerItem> list=response.body();
+               for (CampingApiRecyclerItem item:list){
+                   items2.add(0,item);
+                   recyclerAdpter2.notifyItemInserted(0);
+               }
+           }
+
+           @Override
+           public void onFailure(Call<ArrayList<CampingApiRecyclerItem>> call, Throwable t) {
+
+           }
+       });
+
+//        items2.add(new CampingApiRecyclerItem());
+//        items2.add(new CampingApiRecyclerItem());
+//        items2.add(new CampingApiRecyclerItem());
+//        items2.add(new CampingApiRecyclerItem());
+//        items2.add(new CampingApiRecyclerItem());
 
 
     }

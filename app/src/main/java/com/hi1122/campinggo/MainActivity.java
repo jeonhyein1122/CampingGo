@@ -121,6 +121,10 @@ public class MainActivity extends AppCompatActivity {
                         drawerLayout.closeDrawer(navigationView);
                         break;
 
+                    case R.id.menu_chatting :
+                        startActivity(new Intent(MainActivity.this,Chatting_Activity.class));
+                        drawerLayout.closeDrawer(navigationView);
+                        break;
                 }
 
                 return true;

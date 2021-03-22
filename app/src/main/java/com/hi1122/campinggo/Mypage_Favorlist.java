@@ -38,7 +38,7 @@ public class Mypage_Favorlist extends AppCompatActivity {
 
 
         recyclerView = findViewById(R.id.recycler);
-        recyclerAdpter = new ShoppingRecyclerAdpter(Mypage_Favorlist.this, items);
+        recyclerAdpter = new ShoppingRecyclerAdpter(this, items);
         recyclerView.setAdapter(recyclerAdpter);
 
         spinner=findViewById(R.id.spinner);
@@ -47,12 +47,15 @@ public class Mypage_Favorlist extends AppCompatActivity {
         toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        getSupportActionBar().setTitle("찜한목록");
+
         adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(Mypage_Favorlist.this, ""+position, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(Mypage_Favorlist.this, ""+position, Toast.LENGTH_SHORT).show();
+
             }
 
             @Override
@@ -70,32 +73,32 @@ public class Mypage_Favorlist extends AppCompatActivity {
 
     void loadData() {
 
-        Retrofit retrofit = RetrofitHelper.getRetrofitInstanceGson();
-        RetrofitService retrofitService = retrofit.create(RetrofitService.class);
-        Call<ArrayList<ShoppingRecyclerItem>> call = retrofitService.loadDataFromServershopping();
-        call.enqueue(new Callback<ArrayList<ShoppingRecyclerItem>>() {
-            @Override
-            public void onResponse(Call<ArrayList<ShoppingRecyclerItem>> call, Response<ArrayList<ShoppingRecyclerItem>> response) {
+            Retrofit retrofit = RetrofitHelper.getRetrofitInstanceGson();
+            RetrofitService retrofitService = retrofit.create(RetrofitService.class);
+            Call<ArrayList<ShoppingRecyclerItem>> call = retrofitService.loadDataFromServershopping();
+            call.enqueue(new Callback<ArrayList<ShoppingRecyclerItem>>() {
+                @Override
+                public void onResponse(Call<ArrayList<ShoppingRecyclerItem>> call, Response<ArrayList<ShoppingRecyclerItem>> response) {
 
-                //기존데이터들 모두 제거
-                items.clear();
-                recyclerAdpter.notifyDataSetChanged();
+                    //기존데이터들 모두 제거
+                    items.clear();
+                    recyclerAdpter.notifyDataSetChanged();
 
-                //결과로 받아온 ArrayList<MarketItem>을 items에 추가
-                ArrayList<ShoppingRecyclerItem> list = response.body();
-                for (ShoppingRecyclerItem item : list) {
-                    items.add(0, item);
-                    recyclerAdpter.notifyItemInserted(0);
+                    //결과로 받아온 ArrayList<MarketItem>을 items에 추가
+                    ArrayList<ShoppingRecyclerItem> list = response.body();
+                    for (ShoppingRecyclerItem item : list) {
+                        items.add(0, item);
+                        recyclerAdpter.notifyItemInserted(0);
+                    }
+
                 }
 
-            }
-
-            @Override
-            public void onFailure(Call<ArrayList<ShoppingRecyclerItem>> call, Throwable t) {
+                @Override
+                public void onFailure(Call<ArrayList<ShoppingRecyclerItem>> call, Throwable t) {
 //                Toast.makeText(getActivity(), "error: ReviewFrag--"+t.getMessage(), Toast.LENGTH_SHORT).show();
 
-            }
-        });
+                }
+            });
 
     }
 }
