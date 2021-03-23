@@ -23,7 +23,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CampingGo"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Mypage_Setting_Message"></activity>
         <activity android:name=".Mypage_setting" />
         <activity android:name=".ChattingList" />
         <activity android:name=".Mypage_Favorlist" />
