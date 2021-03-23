@@ -79,6 +79,15 @@ public class Chatting_RecyclerAdapter extends RecyclerView.Adapter{
             othernick=itemView.findViewById(R.id.chatothernic);
             chatdate=itemView.findViewById(R.id.chatdate);
 
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position=getLayoutPosition();
+                    Intent intent=new Intent(context,Chatting_Activity.class);
+                   context.startActivity(intent);
+                }
+            });
+
         }
     }
 }

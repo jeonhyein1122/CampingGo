@@ -99,7 +99,7 @@ public class Shopping_DetailActivity extends AppCompatActivity {
             builder.setPositiveButton("네", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    Intent intent = new Intent(Shopping_DetailActivity.this, ChattingList.class);
+                    Intent intent = new Intent(Shopping_DetailActivity.this, Chatting_Activity.class);
                     intent.putExtra("detailnickname",detailnickname);
                     intent.putExtra("profile",detailprofile);
                     startActivity(intent);
