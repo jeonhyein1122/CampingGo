@@ -20,7 +20,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CampingGo"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Mypage_Favorlist"></activity>
+        <activity android:name=".ChattingList"></activity>
+        <activity android:name=".Mypage_Favorlist" />
         <activity android:name=".Chatting_Activity" />
         <activity android:name=".Home_Second_add" />
         <activity android:name=".Home_Second_Detail" />

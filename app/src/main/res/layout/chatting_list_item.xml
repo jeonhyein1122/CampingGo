@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:padding="16dp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/chatprofile"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/profilenull"/>
+
+    <TextView
+        android:id="@+id/chatothernic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="other nickname"
+        android:layout_toRightOf="@+id/chatprofile"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        android:textColor="#ff333333"
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="8dp"/>
+
+    <TextView
+        android:id="@+id/chatdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="시간"
+        android:layout_below="@+id/chatothernic"
+        android:layout_alignLeft="@+id/chatothernic"
+        android:layout_marginLeft="8dp"/>
+
+
+
+</RelativeLayout>

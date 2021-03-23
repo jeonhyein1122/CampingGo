@@ -123,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
 
                     case R.id.menu_chatting :
                         if(G.nickname !=null){
-                            startActivity(new Intent(MainActivity.this,Chatting_Activity.class));
+                            startActivity(new Intent(MainActivity.this,ChattingList.class));
                             drawerLayout.closeDrawer(navigationView);
                         }else Toast.makeText(MainActivity.this, "로그인이 필요한 서비스입니다.", Toast.LENGTH_SHORT).show();
                        

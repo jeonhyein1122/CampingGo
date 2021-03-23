@@ -35,6 +35,8 @@ public class Shopping_DetailActivity extends AppCompatActivity {
 
     CircleImageView userprofile;
     TextView nickname;
+    String detailnickname;
+    String detailprofile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +49,8 @@ public class Shopping_DetailActivity extends AppCompatActivity {
         String detailtitle=intent.getStringExtra("title");
         String detailprice=intent.getStringExtra("price");
         String detaildetail=intent.getStringExtra("detail");
-        String detailnickname=intent.getStringExtra("nickname");
-        String detailprofile=intent.getStringExtra("profile");
+        detailnickname=intent.getStringExtra("nickname");
+        detailprofile=intent.getStringExtra("profile");
 
 //        Log.i("nic",detailnickname);
         detailIv=findViewById(R.id.shopping_detail_iv);
@@ -97,7 +99,9 @@ public class Shopping_DetailActivity extends AppCompatActivity {
             builder.setPositiveButton("네", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    Intent intent = new Intent(Shopping_DetailActivity.this, Chatting_Activity.class);
+                    Intent intent = new Intent(Shopping_DetailActivity.this, ChattingList.class);
+                    intent.putExtra("detailnickname",detailnickname);
+                    intent.putExtra("profile",detailprofile);
                     startActivity(intent);
 
 
