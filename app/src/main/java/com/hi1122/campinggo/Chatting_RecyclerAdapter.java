@@ -44,8 +44,8 @@ public class Chatting_RecyclerAdapter extends RecyclerView.Adapter{
 
         Chatting_MessageItem item=items.get(position);
 
-        Intent intent=getIntent();
-        String detailnickname=intent.getStringExtra("nickname");
+//        Intent intent=getIntent();
+//        String detailnickname=intent.getStringExtra("nickname");
 
 
 //        ((VH) holder).othernick.setText(item.name);

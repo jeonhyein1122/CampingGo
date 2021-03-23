@@ -39,6 +39,7 @@ public class MypageFragment extends Fragment {
     TextView nickname;
     TextView logout;
     Button favorlist;
+    Button setting;
 
     Context context;
 //    ArrayList<ShoppingRecyclerItem> items=new ArrayList<>();
@@ -60,6 +61,7 @@ public class MypageFragment extends Fragment {
         profile=view.findViewById(R.id.mypage_profile);
         nickname=view.findViewById(R.id.mypage_nickname);
         favorlist=view.findViewById(R.id.favorlist);
+        setting=view.findViewById(R.id.setting);
 
         if (G.nickname !=null) nickname.setText(G.nickname+" 님");
         if (G.profile != null) Glide.with(this).load(G.profile).into(profile);
@@ -94,6 +96,13 @@ public class MypageFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent=new Intent(getActivity(),Mypage_Favorlist.class);
                 startActivity(intent);
+            }
+        });
+
+        setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(),Mypage_setting.class));
             }
         });
 
