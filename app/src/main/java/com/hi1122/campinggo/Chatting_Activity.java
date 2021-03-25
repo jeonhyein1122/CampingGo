@@ -47,7 +47,7 @@ public class Chatting_Activity extends AppCompatActivity {
         //'chat'노드에 MessageItem 들을 저장 [ 'chat'이라는 이름만 별도로 지정하면 여러 채팅방 개설도 가능함]
 
 
-            chatRef= firebaseDatabase.getReference("chat");
+        chatRef= firebaseDatabase.getReference("chat");
 
 
         //먼저 send 버튼으로 저장하는 코드부터 작성해보기..

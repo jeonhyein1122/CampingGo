@@ -69,6 +69,31 @@
         android:textStyle="bold"
         android:textSize="16sp"/>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/mapicon"
+            android:onClick="detailmap"/>
+
+        <TextView
+            android:id="@+id/mapx1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="mapx"/>
+
+        <TextView
+            android:id="@+id/mapy1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="mapy"/>
+    </LinearLayout>
+
+
     <ImageView
         android:id="@+id/detailiv"
         android:layout_width="match_parent"

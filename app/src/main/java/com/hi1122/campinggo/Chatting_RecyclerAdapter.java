@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.hi1122.campinggo.Chatting_MessageItem;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -20,11 +21,16 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class Chatting_RecyclerAdapter extends RecyclerView.Adapter{
 
     Context context;
+
+    ArrayList<Integer> serverNum;
     ArrayList<Chatting_MessageItem> items;
 
-    public Chatting_RecyclerAdapter(Context context, ArrayList<Chatting_MessageItem> items) {
+
+
+    public Chatting_RecyclerAdapter(ChattingList context, ArrayList<Chatting_MessageItem> items, ArrayList<Integer> serverNum) {
         this.context = context;
         this.items = items;
+        this.serverNum = serverNum;
     }
 
     @NonNull
@@ -82,9 +88,14 @@ public class Chatting_RecyclerAdapter extends RecyclerView.Adapter{
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    int position=getLayoutPosition();
                     Intent intent=new Intent(context,Chatting_Activity.class);
-                   context.startActivity(intent);
+                    int position=getLayoutPosition();
+                    if (serverNum.get(position)==1){
+                        intent.putExtra("server", G.nickname + "&&" + items.get(position));
+                    } else if (serverNum.get(position)==0){
+                        intent.putExtra("server", items.get(position) + "&&" +G.nickname );
+                    }
+                    context.startActivity(intent);
                 }
             });
 

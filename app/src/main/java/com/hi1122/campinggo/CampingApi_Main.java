@@ -140,6 +140,18 @@ public class CampingApi_Main extends AppCompatActivity {
                                     xpp.next();
                                     String text = xpp.getText();
                                     if (item != null) item.resveUrl = text;
+                                }else if (tagName.equals("mapX")) {
+                                    xpp.next();
+//                                    xpp.getText();
+                                    if (item != null) item.mapX =xpp.getText();
+                                }else if (tagName.equals("mapY")) {
+                                    xpp.next();
+//                                    String text = xpp.getText();
+                                    if (item != null) item.mapY =xpp.getText();
+                                }else if (tagName.equals("contentId")) {
+                                    xpp.next();
+                                    String text = xpp.getText();
+                                    if (item != null) item.contentId = text;
                                 }
 
 
@@ -151,7 +163,7 @@ public class CampingApi_Main extends AppCompatActivity {
                             case XmlPullParser.END_TAG:
                                 String tagName2 = xpp.getName();
                                 if (tagName2.equals("item")) {
-                                    if (item.campingimg != null) {
+                                    if (item.campingimg != null && item.campingimg !=null) {
                                         items.add(item);
                                     }
 

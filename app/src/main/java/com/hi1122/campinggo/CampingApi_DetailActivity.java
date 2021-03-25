@@ -9,9 +9,11 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -39,6 +41,11 @@ public class CampingApi_DetailActivity extends AppCompatActivity {
     TextView detailhomepage;
     TextView detailresveUrl;
 
+    TextView detailmax;
+    TextView detailmay;
+
+    String mapx;
+    String mapy;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +66,11 @@ public class CampingApi_DetailActivity extends AppCompatActivity {
         String detailtelId=intent.getStringExtra("telId");
         String detailhomepageId=intent.getStringExtra("homepageId");
         String detailresveUrlId=intent.getStringExtra("resveUrlId");
+        mapx=intent.getStringExtra("mapX");
+        mapy=intent.getStringExtra("mapY");
+        String detailcontenId=intent.getStringExtra("contentID");
+
+
 
 //        getSupportActionBar().setTitle(titleId+"");
 
@@ -78,6 +90,9 @@ public class CampingApi_DetailActivity extends AppCompatActivity {
         detailtel=findViewById(R.id.detailtel);
         detailhomepage=findViewById(R.id.detailhompage);
         detailresveUrl=findViewById(R.id.detailresveUrl);
+
+        detailmax=findViewById(R.id.mapx1);
+        detailmay=findViewById(R.id.mapy1);
 
 
         if (campingimgId==null) Glide.with(this).load(R.drawable.noimage).into(detailiv);
@@ -100,6 +115,11 @@ public class CampingApi_DetailActivity extends AppCompatActivity {
         detailhomepage.setText("홈페이지 주소 : "+detailhomepageId);
         detailresveUrl.setText("예약 사이트 : "+detailresveUrlId);
 
+        Log.i(mapx,"maxxxx");
+
+        detailmax.setText("mapx"+mapx);
+        detailmay.setText("mapx"+mapy);
+
 
         if (Build.VERSION.SDK_INT>Build.VERSION_CODES.LOLLIPOP){
             detailiv.setTransitionName("campingimg");
@@ -117,5 +137,15 @@ public class CampingApi_DetailActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void detailmap(View view) {
+
+        Intent intent=new Intent(CampingApi_DetailActivity.this,CampingApi_Detailmap.class);
+        intent.putExtra("mapx",mapx);
+        intent.putExtra("mapy",mapy);
+        startActivity(intent);
+
+
     }
 }

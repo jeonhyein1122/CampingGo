@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.hi1122.campinggo">
+    package="com.hi1122.campinggo" >
     <!-- 인터넷 -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -22,7 +22,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CampingGo"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true" >
+        <activity android:name=".CampingApi_Detailmap" >
+        </activity>
         <activity android:name=".Mypage_setting" />
         <activity android:name=".ChattingList" />
         <activity android:name=".Mypage_Favorlist" />
@@ -40,22 +42,22 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".Review_add_Activity" />
         <activity android:name=".Shopping_add_Activity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-<!--        FCM메세지 수신 서비스 -->
+        </activity> <!-- FCM메세지 수신 서비스 -->
         <service
             android:name=".Mypage_Setting_MyFCMService"
-            android:exported="false">
+            android:exported="false" >
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-        <activity android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity">
+
+        <activity android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 

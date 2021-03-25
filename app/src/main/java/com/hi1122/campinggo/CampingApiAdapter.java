@@ -115,6 +115,8 @@ public class CampingApiAdapter extends RecyclerView.Adapter{
                     String telId=items.get(position).tel;
                     String homepageId=items.get(position).homepage;
                     String resveUrlId=items.get(position).resveUrl;
+                    String mapX=items.get(position).mapX;
+                    String mapY=items.get(position).mapY;
 
                     Intent intent=new Intent(context,CampingApi_DetailActivity.class);
                     intent.putExtra("nameId",nameId);
@@ -130,6 +132,9 @@ public class CampingApiAdapter extends RecyclerView.Adapter{
                     intent.putExtra("telId",telId);
                     intent.putExtra("homepageId",homepageId);
                     intent.putExtra("resveUrlId",resveUrlId);
+                    intent.putExtra("mapX",mapX);
+                    intent.putExtra("mapY",mapY);
+
 
 
                     if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP){
