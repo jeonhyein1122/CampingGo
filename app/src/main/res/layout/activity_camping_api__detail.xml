@@ -58,16 +58,6 @@
         android:layout_marginTop="8dp"
         android:text="detailname"/>
 
-    <TextView
-        android:id="@+id/detailtel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="tel-전화번호"
-        android:layout_gravity="right"
-        android:layout_marginRight="8dp"
-        android:textColor="#A640A6"
-        android:textStyle="bold"
-        android:textSize="16sp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -81,16 +71,16 @@
             android:onClick="detailmap"/>
 
         <TextView
-            android:id="@+id/mapx1"
+            android:id="@+id/detailtel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="mapx"/>
+            android:text="tel-전화번호"
+            android:layout_gravity="right"
+            android:layout_marginRight="8dp"
+            android:textColor="#A640A6"
+            android:textStyle="bold"
+            android:textSize="16sp"/>
 
-        <TextView
-            android:id="@+id/mapy1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="mapy"/>
     </LinearLayout>
 
 

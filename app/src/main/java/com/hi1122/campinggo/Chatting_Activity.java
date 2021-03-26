@@ -3,73 +3,65 @@ package com.hi1122.campinggo;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 public class Chatting_Activity extends AppCompatActivity {
-
-    ArrayList<Chatting_MessageItem> messageItems= new ArrayList<>();
     ListView listView;
-    ChattingAdapter chatAdapter;
+    EditText et_chat;
 
-    EditText etMsg;
+    ArrayList<Chatting_MessageItem> items;
+    ChattingAdapter adapter;
 
-    FirebaseDatabase firebaseDatabase;
-    DatabaseReference chatRef;
+    DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.chatting_activity);
+        listView = findViewById(R.id.listview);
+        et_chat = findViewById(R.id.et);
 
-        etMsg= findViewById(R.id.et);
+        items = new ArrayList<>();
+        adapter = new ChattingAdapter(this, items);
+        listView.setAdapter(adapter);
 
-        listView= findViewById(R.id.listview);
-        chatAdapter= new ChattingAdapter(this, messageItems);
-        listView.setAdapter(chatAdapter);
-
-        //Firebase Database 에 저장되어 있는 메세지들 읽어오기
-        firebaseDatabase= FirebaseDatabase.getInstance();
-        //'chat'노드에 MessageItem 들을 저장 [ 'chat'이라는 이름만 별도로 지정하면 여러 채팅방 개설도 가능함]
+//        Toast.makeText(this, G.othernickname+"&&"+G.userID, Toast.LENGTH_SHORT).show();
 
 
-        chatRef= firebaseDatabase.getReference("chat");
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference("chat").child(G.othernickname+"&&"+G.nickname);
+        if (getIntent().getStringExtra("server") != null){
+            databaseReference = firebaseDatabase.getReference("chat").child(getIntent().getStringExtra("server"));
 
-
-        //먼저 send 버튼으로 저장하는 코드부터 작성해보기..
-
-        //'chat'노드의 값이 변경되는 것을 듣는 리스너
-        //addValueEventListener()는 노드 아래 자식 1개가 추가되어도
-        //전체 데이터들을 모두 읽어들임. 그래서 이전 데이터들이 중복됨
-        //addChildEventListener : chat노드의 자식이 변경되었을 때 그 하나만 읽어들임
-        chatRef.addChildEventListener(new ChildEventListener() {
+        }
+        databaseReference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-                // 새로 추가된 데이터값 ( DataSnapshot 이 촬영한 값 )
-                Chatting_MessageItem item= snapshot.getValue(Chatting_MessageItem.class);
-
-                // 읽어들인 메세지를 리스트뷰가 보여주는 대량의 데이터에 추가
-                messageItems.add(item);
-
-                //리스트뷰 갱신 - 리스트뷰가 보여줄 뷰를 만들어내는 아답터에게 요청
-                chatAdapter.notifyDataSetChanged();
-                listView.setSelection(messageItems.size()-1);//리스트뷰의 마지막 위치로 스크롤 이동
-
+                Chatting_MessageItem item = snapshot.getValue(Chatting_MessageItem.class);
+                items.add(item);
+                adapter.notifyDataSetChanged();
+                listView.setSelection(items.size()-1);
             }
 
             @Override
@@ -92,31 +84,26 @@ public class Chatting_Activity extends AppCompatActivity {
 
             }
         });
-
     }
 
     public void clickSend(View view) {
+        String message = et_chat.getText().toString(); //data
+        String time = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()); //child
+        String visualTime = new SimpleDateFormat("HH : mm").format(new Date()); //time
 
-        //firebase DB에 저장할 데이터들( 닉네임, 메세제, 프로필이미지URL, 작성시간 )
-        String nickName= G.nickname;
-        String message= etMsg.getText().toString();
-        String profileUrl= G.profile;
+        if (message.equals("")) return;
 
-        //메세지 작성 시간을 문자열...(시:분)
-        Calendar calendar= Calendar.getInstance();  //현재시간 객체
-        String time= calendar.get(Calendar.HOUR_OF_DAY)+":"+calendar.get(Calendar.MINUTE);
+//        G.userID, message, visualTime
 
-        //firebase DB에 MessageItem 객체를 통으로 저장하기..
-        Chatting_MessageItem item= new Chatting_MessageItem(nickName, message, time, profileUrl);
+        databaseReference.child(time).setValue(new Chatting_MessageItem(G.nickname,message,visualTime,G.profile)).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                et_chat.setText("");
 
-        //'chat'노드에 MessageItem 통째로 값 추가(push)
-        chatRef.push().setValue(item);
 
-        //다음 메세지 입력이 수월하도록..
-        etMsg.setText("");
 
-        //소프트 키패드 안보이도록..
-        InputMethodManager imm= (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+            }
+        });
+
     }
 }

@@ -11,7 +11,7 @@
         android:src="@drawable/profilenull"/>
 
     <TextView
-        android:id="@+id/chatothernic"
+        android:id="@+id/chat_othernick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="other nickname"
@@ -27,8 +27,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="시간"
-        android:layout_below="@+id/chatothernic"
-        android:layout_alignLeft="@+id/chatothernic"
+        android:layout_below="@+id/chat_othernick"
+        android:layout_alignLeft="@+id/chat_othernick"
         android:layout_marginLeft="8dp"/>
 
 

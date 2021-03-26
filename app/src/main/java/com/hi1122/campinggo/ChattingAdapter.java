@@ -15,21 +15,23 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ChattingAdapter extends BaseAdapter {
     Context context;
-    ArrayList<Chatting_MessageItem> messageItems;
+    ArrayList<Chatting_MessageItem> items;
 
-    public ChattingAdapter(Context context, ArrayList<Chatting_MessageItem> messageItems) {
+    public ChattingAdapter(Context context, ArrayList<Chatting_MessageItem> items) {
         this.context = context;
-        this.messageItems = messageItems;
+        this.items = items;
     }
+
+
 
     @Override
     public int getCount() {
-        return messageItems.size();
+        return items.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return messageItems.get(position);
+        return items.get(position);
     }
 
     @Override
@@ -41,7 +43,7 @@ public class ChattingAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         //현재 보여줄 번째(position)의 데이터 얻어오기
-        Chatting_MessageItem item= messageItems.get(position);
+        Chatting_MessageItem item= items.get(position);
 
         //재활용할 뷰[convertView]는 사용하지 않을 것임
         View itemView= null;
@@ -62,7 +64,7 @@ public class ChattingAdapter extends BaseAdapter {
 
         tvName.setText(item.name);
         tvMsg.setText(item.message);
-        tvTime.setText(item.time);
+        tvTime.setText(item.visualtime);
 
         Glide.with(context).load(item.profileUrl).into(civ);
 

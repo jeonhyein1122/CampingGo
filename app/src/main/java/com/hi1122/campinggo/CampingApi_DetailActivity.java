@@ -91,8 +91,6 @@ public class CampingApi_DetailActivity extends AppCompatActivity {
         detailhomepage=findViewById(R.id.detailhompage);
         detailresveUrl=findViewById(R.id.detailresveUrl);
 
-        detailmax=findViewById(R.id.mapx1);
-        detailmay=findViewById(R.id.mapy1);
 
 
         if (campingimgId==null) Glide.with(this).load(R.drawable.noimage).into(detailiv);

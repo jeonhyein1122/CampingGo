@@ -6,4 +6,7 @@ public class G {
     public static String userID;
 
 
+    public static String othernickname;
+    public static String otherprofile;
+
 }

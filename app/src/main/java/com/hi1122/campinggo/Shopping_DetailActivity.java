@@ -1,3 +1,5 @@
+
+
 package com.hi1122.campinggo;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -6,6 +8,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,8 +27,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Shopping_DetailActivity extends AppCompatActivity {
 
-    Context context;
-    ArrayList<ShoppingRecyclerItem> items;
+    //ChattingVO items = new ChattingVO();
     TextView dialogtv;
 
     ImageView detailIv;
@@ -37,6 +39,9 @@ public class Shopping_DetailActivity extends AppCompatActivity {
     TextView nickname;
     String detailnickname;
     String detailprofile;
+
+//    boolean isFirst=true;
+//    boolean isChanged=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +79,8 @@ public class Shopping_DetailActivity extends AppCompatActivity {
 
         nickname.setText(detailnickname);
 
+        G.othernickname=detailnickname;
+        G.otherprofile=detailprofile;
 
 
         Glide.with(this).load(detailprofile).into(userprofile);
@@ -82,7 +89,19 @@ public class Shopping_DetailActivity extends AppCompatActivity {
             detailIv.setTransitionName("shoppingimg");
         }
 
+        //sharedPreferences 에 저장되있는 프사,닉네임 읽어오기
+//        loadData();
+//        if (G.nickname!=null){
+//            isFirst=false;
+//        }
+
     }
+//    void loadData(){
+//        SharedPreferences pref=getSharedPreferences("account",MODE_PRIVATE);
+//        G.nickname=pref.getString("nickName",null);
+//        G.profile=pref.getString("profileUrl",null);
+//
+//    }
 
     AlertDialog dialog;
     public void clickchatting(View view) {
@@ -99,11 +118,12 @@ public class Shopping_DetailActivity extends AppCompatActivity {
             builder.setPositiveButton("네", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
+//                    if (isFirst|| isChanged){
+////                        saveData();
+//                    }else {
                     Intent intent = new Intent(Shopping_DetailActivity.this, Chatting_Activity.class);
-                    intent.putExtra("detailnickname",detailnickname);
-                    intent.putExtra("profile",detailprofile);
                     startActivity(intent);
-
+//                    }
 
                 }
             });
@@ -118,6 +138,7 @@ public class Shopping_DetailActivity extends AppCompatActivity {
             dialog.setCanceledOnTouchOutside(false);
             dialog.show();
         }else Toast.makeText(Shopping_DetailActivity.this, "로그인이 필요한 서비스 입니다.", Toast.LENGTH_SHORT).show();
-       
+
     }
 }
+

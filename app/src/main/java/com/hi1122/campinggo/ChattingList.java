@@ -1,9 +1,10 @@
 package com.hi1122.campinggo;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import android.content.Context;
 import android.os.Bundle;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -16,9 +17,9 @@ import java.util.Arrays;
 public class ChattingList extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    Chatting_RecyclerAdapter recyclerAdapter;
-    ArrayList<Integer>serverNum;
-    ArrayList<Chatting_MessageItem> items;
+    ArrayList<String> items;
+    ArrayList<Integer> serverNum;
+    Chatting_RecyclerAdapter adapter;
 
 
     @Override
@@ -26,44 +27,42 @@ public class ChattingList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.chatting_list);
 
-//        item.add(new Chatting_MessageItem("hi","nice","33",null));
-//        item.add(new Chatting_MessageItem("hi","nice","33",null));
-
-        recyclerView=findViewById(R.id.recycler);
+        recyclerView = findViewById(R.id.chattinglistview);
+        recyclerView.setLayoutManager(new LinearLayoutManagerWrapper(this, LinearLayoutManager.VERTICAL, false));
         items = new ArrayList<>();
         serverNum = new ArrayList<>();
-        recyclerAdapter = new Chatting_RecyclerAdapter(this, items, serverNum);
-        recyclerView.setAdapter(recyclerAdapter);
-
+        adapter = new Chatting_RecyclerAdapter(this, items, serverNum);
+        recyclerView.setAdapter(adapter);
 
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-//        loadChattingData();
+        loadChattingData();
     }
 
-//    public void loadChattingData(){
-//        items.clear();
-//        serverNum.clear();
-//        FirebaseDatabase.getInstance().getReference("chat").get().addOnSuccessListener(new OnSuccessListener<DataSnapshot>() {
-//            @Override
-//            public void onSuccess(DataSnapshot dataSnapshot) {
-//                for (DataSnapshot ds : dataSnapshot.getChildren()){
-//                    String[] chatNames = ds.getKey().split("&&");
-//                    ArrayList<String> chatNameArray = new ArrayList<>(Arrays.asList(chatNames));
-//                    int index = chatNameArray.indexOf(G.nickname);
-//                    if (index == 0){
-//                        items.add(chatNameArray.get(1));
-//                        serverNum.add(1);
-//                    }else if (index == 1){
-//                        items.add(chatNameArray.get(0));
-//                        serverNum.add(0);
-//                    }
-//                }
-//                recyclerAdapter.notifyDataSetChanged();
-//            }
-//        });
-//    }
+    public void loadChattingData() {
+        items.clear();
+        serverNum.clear();
+        FirebaseDatabase.getInstance().getReference("chat").get().addOnSuccessListener(new OnSuccessListener<DataSnapshot>() {
+            @Override
+            public void onSuccess(DataSnapshot dataSnapshot) {
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    String[] chatNames = ds.getKey().split("&&");
+                    ArrayList<String> chatNamesArray = new ArrayList<>(Arrays.asList(chatNames));
+                    int index = chatNamesArray.indexOf(G.nickname);
+                    if (index == 0) {
+                        items.add(chatNamesArray.get(1));
+                        serverNum.add(1);
+                    } else if (index == 1) {
+                        items.add(chatNamesArray.get(0));
+                        serverNum.add(0);
+                    }
+                    adapter.notifyItemInserted(items.size() - 1);
+                }
+            }
+        });
+
+    }
 }

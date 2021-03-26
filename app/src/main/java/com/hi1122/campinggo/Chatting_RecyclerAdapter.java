@@ -1,3 +1,5 @@
+
+
 package com.hi1122.campinggo;
 
 import android.content.Context;
@@ -11,23 +13,20 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.hi1122.campinggo.Chatting_MessageItem;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class Chatting_RecyclerAdapter extends RecyclerView.Adapter{
+public class Chatting_RecyclerAdapter extends RecyclerView.Adapter<Chatting_RecyclerAdapter.VH>{
 
     Context context;
-
+    ArrayList<String> items;
     ArrayList<Integer> serverNum;
-    ArrayList<Chatting_MessageItem> items;
 
 
-
-    public Chatting_RecyclerAdapter(ChattingList context, ArrayList<Chatting_MessageItem> items, ArrayList<Integer> serverNum) {
+    public Chatting_RecyclerAdapter(Context context, ArrayList<String> items, ArrayList<Integer> serverNum) {
         this.context = context;
         this.items = items;
         this.serverNum = serverNum;
@@ -35,70 +34,57 @@ public class Chatting_RecyclerAdapter extends RecyclerView.Adapter{
 
     @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView= LayoutInflater.from(context).inflate(R.layout.chatting_list_item,parent,false);
-        VH holder=new VH(itemView);
+    public VH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new VH(LayoutInflater.from(context).inflate(R.layout.chatting_list_item, parent ,false));
 
-
-        return holder;
     }
-
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull VH holder, int position) {
+        holder.chatnic.setText(items.get(position) + "님 과의 대화방");
+//        holder.chatdate.setText(items.get(position)+"에 채팅옴");
 
-        VH vh=(VH)holder;
-
-        Chatting_MessageItem item=items.get(position);
-
-//        Intent intent=getIntent();
-//        String detailnickname=intent.getStringExtra("nickname");
-
-
-//        ((VH) holder).othernick.setText(item.name);
-        ( (VH)  holder).othernick.setText(item.name+"님과의 채팅방");
-        ( (VH)  holder).chatdate.setText(item.time+"에 채팅이 왔습니다.");
-
-
-
-        //상대방 사진
-        Glide.with(context).load(item.profileUrl).into(((VH) holder).chativ);
-
-
+//        Glide.with(context).load(items.get(position)).into(((VH)holder).chatprofile);
     }
-
     @Override
     public int getItemCount() {
         return items.size();
     }
 
-    class  VH extends RecyclerView.ViewHolder {
+    class VH extends RecyclerView.ViewHolder {
 
-        CircleImageView chativ;
-        TextView othernick;
+        TextView chatnic;
         TextView chatdate;
-
-
+        CircleImageView chatprofile;
 
         public VH(@NonNull View itemView) {
             super(itemView);
-            chativ=itemView.findViewById(R.id.chatprofile);
-            othernick=itemView.findViewById(R.id.chatothernic);
-            chatdate=itemView.findViewById(R.id.chatdate);
+            chatnic = itemView.findViewById(R.id.chat_othernick);
+            chatdate= itemView.findViewById(R.id.chatdate);
+            chatprofile=itemView.findViewById(R.id.chatprofile);
+
+            chatnic.setText("");
+//            chatdate.setText("");
+
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent=new Intent(context,Chatting_Activity.class);
-                    int position=getLayoutPosition();
-                    if (serverNum.get(position)==1){
-                        intent.putExtra("server", G.nickname + "&&" + items.get(position));
-                    } else if (serverNum.get(position)==0){
-                        intent.putExtra("server", items.get(position) + "&&" +G.nickname );
+                    Intent intent = new Intent(context, Chatting_Activity.class);
+                    int pos = getAdapterPosition();
+                    if (serverNum.get(pos) == 1) {
+                        intent.putExtra("server", G.nickname + "&&" + items.get(pos));
+                        //Toast.makeText(context, "if o", Toast.LENGTH_SHORT).show();
+
+                    } else {
+                        intent.putExtra("server", items.get(pos) + "&&" + G.nickname);
+//                        Toast.makeText(context, "if x", Toast.LENGTH_SHORT).show();
                     }
+
                     context.startActivity(intent);
+
                 }
             });
-
         }
     }
 }
+
