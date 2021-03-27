@@ -53,7 +53,7 @@
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:layout_marginLeft="24dp"
-                        android:text="캠핑장"
+                        android:text="야영장"
                         android:textStyle="bold"
                         android:textColor="@color/white"
                         android:background="@drawable/campingjangicon"

@@ -33,6 +33,7 @@ public class Home_First_Fragment extends Fragment {
     TextView more;
     Button Btncaraban;
     Button Btnglamping;
+    Button Btncamping;
 
     ArrayList<CampingApi_RecyclerItem> items2=new ArrayList<>();
     RecyclerView recyclerView2;
@@ -85,6 +86,15 @@ public class Home_First_Fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(),CampingApi_Glamping_Main.class));
+            }
+        });
+
+        Btncamping=view.findViewById(R.id.btncamping);
+        Btncamping.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Toast.makeText(getActivity(), "클릭됨", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getActivity(),CampingApi_General_Main.class));
             }
         });
 
