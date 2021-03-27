@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,7 +24,6 @@ import retrofit2.Retrofit;
 
 public class Home_First_Fragment extends Fragment {
 
-    Context context;
     ArrayList<ReviewRecyclerItem> items=new ArrayList<>();
 
     RecyclerView recyclerView;
@@ -32,6 +32,7 @@ public class Home_First_Fragment extends Fragment {
     Button Btnmountain;
     TextView more;
     Button Btncaraban;
+    Button Btnglamping;
 
     ArrayList<CampingApi_RecyclerItem> items2=new ArrayList<>();
     RecyclerView recyclerView2;
@@ -79,11 +80,19 @@ public class Home_First_Fragment extends Fragment {
             }
         });
 
+        Btnglamping=view.findViewById(R.id.btnglam);
+        Btnglamping.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(),CampingApi_Glamping_Main.class));
+            }
+        });
+
         more=view.findViewById(R.id.more);
         more.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              //todo : 인텐트하깅
+              Intent intent=new Intent(getActivity(),ReviewFragment.class);
             }
         });
         return view;

@@ -61,7 +61,7 @@
                         android:layout_toRightOf="@+id/btnall"/>
 
                     <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/btnglamping"
+                        android:id="@+id/btnglam"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:layout_marginLeft="24dp"
