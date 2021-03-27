@@ -3,7 +3,9 @@ package com.hi1122.campinggo;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -18,31 +20,26 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CampingApi_Main extends AppCompatActivity {
+public class CampingApi_Mountain_Main extends AppCompatActivity {
 
-    ArrayList<CampingApi_RecyclerItem> items=new ArrayList<>();
+    ArrayList<CampingApi_Mountain_RecyclerItem> items=new ArrayList<>();
     RecyclerView recyclerView;
-    CampingApi_Adapter adapter;
+    CampingApi_Mountain_Adapter adapter;
     String tagName;
     String img;
 
-    CampingApi_RecyclerItem item= null;
+    CampingApi_Mountain_RecyclerItem item= null;
 
     String apiKey="fPVCaLqlpYv1liNHjyn0aYOBfnyVvPtLiyXQO%2BHXpfaNP2SHBHzZjjZ8SQgYsxtxiVti1V6j4YmjHkf8O4mzQw%3D%3D";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.camping_api_main);
-//
-//        items.add(new CampingApiRecyclerItem("왕십리 캠핑장","우와 신기해","https://newsimg.hankookilbo.com/cms/articlerelease/2020/12/30/60bbf7df-dc71-47f9-a31c-f2d61e0b97b8.jpg"));
-//        items.add(new CampingApiRecyclerItem("성수 캠핑장","우와 신기해","https://newsimg.hankookilbo.com/cms/articlerelease/2020/12/30/60bbf7df-dc71-47f9-a31c-f2d61e0b97b8.jpg"));
-//        items.add(new CampingApiRecyclerItem("춘의역 캠핑장","우와 신기해","https://newsimg.hankookilbo.com/cms/articlerelease/2020/12/30/60bbf7df-dc71-47f9-a31c-f2d61e0b97b8.jpg"));
-//        items.add(new CampingApiRecyclerItem("광주광역시 캠핑장","우와 신기해","https://newsimg.hankookilbo.com/cms/articlerelease/2020/12/30/60bbf7df-dc71-47f9-a31c-f2d61e0b97b8.jpg"));
-//        items.add(new CampingApiRecyclerItem("상왕십리 캠핑장","우와 신기해","https://newsimg.hankookilbo.com/cms/articlerelease/2020/12/30/60bbf7df-dc71-47f9-a31c-f2d61e0b97b8.jpg"));
+        setContentView(R.layout.camping_api_mountain_main);
 
-        recyclerView = findViewById(R.id.recyclercampingapi);
-        adapter = new CampingApi_Adapter(this, items);
+
+        recyclerView = findViewById(R.id.recyclercampingapimo);
+        adapter = new CampingApi_Mountain_Adapter(this, items);
         recyclerView.setAdapter(adapter);
 
         Thread t = new Thread() {
@@ -66,7 +63,7 @@ public class CampingApi_Main extends AppCompatActivity {
                     int eventType = xpp.getEventType();
 
                     //StringBuffer buffer=null;
-                    Map<String, String> dataPart= new HashMap<>();
+//                    Map<String, String> dataPart= new HashMap<>();
 
 
                     while (eventType != XmlPullParser.END_DOCUMENT) {
@@ -78,7 +75,7 @@ public class CampingApi_Main extends AppCompatActivity {
                             case XmlPullParser.START_TAG:
                                 tagName = xpp.getName();
                                 if (tagName.equals("item")) {
-                                    item = new CampingApi_RecyclerItem();
+                                    item = new CampingApi_Mountain_RecyclerItem();
 
                                 } else if (tagName.equals("firstImageUrl")) {
                                     xpp.next();
@@ -156,7 +153,9 @@ public class CampingApi_Main extends AppCompatActivity {
                                     if (item != null) item.lctCl = text;
                                 }
 
+
                                 break;
+
 
                             case XmlPullParser.TEXT:
                                 break;
@@ -164,11 +163,10 @@ public class CampingApi_Main extends AppCompatActivity {
                             case XmlPullParser.END_TAG:
                                 String tagName2 = xpp.getName();
                                 if (tagName2.equals("item")) {
-                                    if (item.campingimg!=null ){
+                                    if (item.campingimg!=null){
                                         items.add(item);
                                     }
-
-//                                    if (item.campingimg !=null && item.addr1=="강원"){
+//                                    if (item.lctCl.equals("산")) {
 //                                        items.add(item);
 //                                    }
 
@@ -212,5 +210,4 @@ public class CampingApi_Main extends AppCompatActivity {
 
 
     }
-
 }

@@ -6,7 +6,6 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
-import android.util.Log;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,12 +28,12 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class CampingApiAdapter extends RecyclerView.Adapter{
+public class CampingApi_Adapter extends RecyclerView.Adapter{
     Context context;
-    ArrayList<CampingApiRecyclerItem> items;
+    ArrayList<CampingApi_RecyclerItem> items;
     ProgressDialog progressDialog;
 
-    public CampingApiAdapter(Context context, ArrayList<CampingApiRecyclerItem> items) {
+    public CampingApi_Adapter(Context context, ArrayList<CampingApi_RecyclerItem> items) {
         this.context = context;
         this.items = items;
     }
@@ -44,7 +43,7 @@ public class CampingApiAdapter extends RecyclerView.Adapter{
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater=LayoutInflater.from(context);
 
-        View itemView=inflater.inflate(R.layout.activity_campingapi_recycler_item,parent,false);
+        View itemView=inflater.inflate(R.layout.camping_api_recycler_item,parent,false);
         VH holder=new VH(itemView);
 
 
@@ -56,7 +55,7 @@ public class CampingApiAdapter extends RecyclerView.Adapter{
 
         VH vh=(VH)holder;
 
-        CampingApiRecyclerItem item=items.get(position);
+        CampingApi_RecyclerItem item=items.get(position);
         vh.name.setText(item.name+"");
         if (item.lineintro !=null) vh.lineintro.setText(item.lineintro+"");
         else vh.lineintro.setText(" ");
@@ -117,6 +116,7 @@ public class CampingApiAdapter extends RecyclerView.Adapter{
                     String resveUrlId=items.get(position).resveUrl;
                     String mapX=items.get(position).mapX;
                     String mapY=items.get(position).mapY;
+                    String lctCl=items.get(position).lctCl;
 
                     Intent intent=new Intent(context,CampingApi_DetailActivity.class);
                     intent.putExtra("nameId",nameId);
@@ -134,6 +134,7 @@ public class CampingApiAdapter extends RecyclerView.Adapter{
                     intent.putExtra("resveUrlId",resveUrlId);
                     intent.putExtra("mapX",mapX);
                     intent.putExtra("mapY",mapY);
+                    intent.putExtra("lctCl",lctCl);
 
 
 
@@ -153,7 +154,7 @@ public class CampingApiAdapter extends RecyclerView.Adapter{
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     int position=getLayoutPosition();
-                    CampingApiRecyclerItem item=items.get(position);
+                    CampingApi_RecyclerItem item=items.get(position);
                     item.favor=isChecked? 1:0; //변수 값 변경
 
                     if (item.favor==1){
@@ -200,7 +201,7 @@ public class CampingApiAdapter extends RecyclerView.Adapter{
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     int position=getLayoutPosition();
-                    CampingApiRecyclerItem item=items.get(position);
+                    CampingApi_RecyclerItem item=items.get(position);
                     item.favor=isChecked? 1:0; //변수 값 변경
 
                     Retrofit retrofit=RetrofitHelper.getRetrofitInstanceScalars();

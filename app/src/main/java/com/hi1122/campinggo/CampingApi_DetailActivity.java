@@ -7,24 +7,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
 public class CampingApi_DetailActivity extends AppCompatActivity {
 
     Context context;
-    ArrayList<CampingApiRecyclerItem> items;
+    ArrayList<CampingApi_RecyclerItem> items;
 
 
     ImageView detailiv;
@@ -40,20 +35,22 @@ public class CampingApi_DetailActivity extends AppCompatActivity {
     TextView detailtel;
     TextView detailhomepage;
     TextView detailresveUrl;
+    TextView dlctCl;
 
     TextView detailmax;
     TextView detailmay;
 
     String mapx;
     String mapy;
+    String nameId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_camping_api__detail);
+        setContentView(R.layout.camping_api_detail);
 
         Intent intent=getIntent();
-        String nameId=intent.getStringExtra("nameId");
+        nameId=intent.getStringExtra("nameId");
         String lineintroId=intent.getStringExtra("lineintroId");
         String campingimgId=intent.getStringExtra("campingimgId");
         String introId=intent.getStringExtra("introId");
@@ -69,7 +66,7 @@ public class CampingApi_DetailActivity extends AppCompatActivity {
         mapx=intent.getStringExtra("mapX");
         mapy=intent.getStringExtra("mapY");
         String detailcontenId=intent.getStringExtra("contentID");
-
+        String lctCl=intent.getStringExtra("lctCl");
 
 
 //        getSupportActionBar().setTitle(titleId+"");
@@ -90,7 +87,7 @@ public class CampingApi_DetailActivity extends AppCompatActivity {
         detailtel=findViewById(R.id.detailtel);
         detailhomepage=findViewById(R.id.detailhompage);
         detailresveUrl=findViewById(R.id.detailresveUrl);
-
+        dlctCl=findViewById(R.id.lctCl);
 
 
         if (campingimgId==null) Glide.with(this).load(R.drawable.noimage).into(detailiv);
@@ -112,11 +109,9 @@ public class CampingApi_DetailActivity extends AppCompatActivity {
 //        Glide.with(this).load(detailhomepageId).into(detailhomepage);
         detailhomepage.setText("홈페이지 주소 : "+detailhomepageId);
         detailresveUrl.setText("예약 사이트 : "+detailresveUrlId);
+        dlctCl.setText("입지:"+lctCl);
 
-        Log.i(mapx,"maxxxx");
 
-        detailmax.setText("mapx"+mapx);
-        detailmay.setText("mapx"+mapy);
 
 
         if (Build.VERSION.SDK_INT>Build.VERSION_CODES.LOLLIPOP){
@@ -130,7 +125,7 @@ public class CampingApi_DetailActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
-        if (item.getItemId() == R.layout.activity_camping_a_p_i_main){
+        if (item.getItemId() == R.layout.camping_api_main){
             super.onBackPressed();
         }
 
@@ -142,6 +137,8 @@ public class CampingApi_DetailActivity extends AppCompatActivity {
         Intent intent=new Intent(CampingApi_DetailActivity.this,CampingApi_Detailmap.class);
         intent.putExtra("mapx",mapx);
         intent.putExtra("mapy",mapy);
+        intent.putExtra("nameId",nameId);
+
         startActivity(intent);
 
 

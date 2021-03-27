@@ -5,18 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Home_First_Tab_mountainbtn">
+    tools:context=".CampingApi_Mountain_Main">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/logintoolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         style="@style/MyToolbar"
-        app:title="산"
+        app:title="카라반"
         android:theme="@style/ToolbarTheme"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclercampingapi"
+        android:id="@+id/recyclercampingapica"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

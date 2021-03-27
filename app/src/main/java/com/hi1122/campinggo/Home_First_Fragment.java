@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -32,10 +31,11 @@ public class Home_First_Fragment extends Fragment {
     Button Btnall;
     Button Btnmountain;
     TextView more;
+    Button Btncaraban;
 
-    ArrayList<CampingApiRecyclerItem> items2=new ArrayList<>();
+    ArrayList<CampingApi_RecyclerItem> items2=new ArrayList<>();
     RecyclerView recyclerView2;
-    CampingApiAdapter recyclerAdpter2;
+    CampingApi_Adapter recyclerAdpter2;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -64,7 +64,18 @@ public class Home_First_Fragment extends Fragment {
         Btnmountain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(),Home_First_Tab_mountainbtn.class));
+
+                startActivity(new Intent(getActivity(), CampingApi_Mountain_Main.class));
+            }
+        });
+
+
+        Btncaraban=view.findViewById(R.id.btncaraban);
+        Btncaraban.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(getActivity(), CampingApi_Caraban_Main.class));
             }
         });
 
@@ -90,7 +101,7 @@ public class Home_First_Fragment extends Fragment {
         recyclerView.setAdapter(recyclerAdpter);
 
         recyclerView2=view.findViewById(R.id.recycler2);
-        recyclerAdpter2=new CampingApiAdapter(getActivity(),items2);
+        recyclerAdpter2=new CampingApi_Adapter(getActivity(),items2);
         recyclerView2.setAdapter(recyclerAdpter2);
     }
 
@@ -130,22 +141,22 @@ public class Home_First_Fragment extends Fragment {
         });
 
        RetrofitService retrofitService=retrofit.create(RetrofitService.class);
-       Call<ArrayList<CampingApiRecyclerItem>> call2=retrofitService.loadDataFromServerapi1();
-       call2.enqueue(new Callback<ArrayList<CampingApiRecyclerItem>>() {
+       Call<ArrayList<CampingApi_RecyclerItem>> call2=retrofitService.loadDataFromServerapi1();
+       call2.enqueue(new Callback<ArrayList<CampingApi_RecyclerItem>>() {
            @Override
-           public void onResponse(Call<ArrayList<CampingApiRecyclerItem>> call, Response<ArrayList<CampingApiRecyclerItem>> response) {
+           public void onResponse(Call<ArrayList<CampingApi_RecyclerItem>> call, Response<ArrayList<CampingApi_RecyclerItem>> response) {
                items2.clear();
                recyclerAdpter2.notifyDataSetChanged();
 
-               ArrayList<CampingApiRecyclerItem> list=response.body();
-               for (CampingApiRecyclerItem item:list){
+               ArrayList<CampingApi_RecyclerItem> list=response.body();
+               for (CampingApi_RecyclerItem item:list){
                    items2.add(0,item);
                    recyclerAdpter2.notifyItemInserted(0);
                }
            }
 
            @Override
-           public void onFailure(Call<ArrayList<CampingApiRecyclerItem>> call, Throwable t) {
+           public void onFailure(Call<ArrayList<CampingApi_RecyclerItem>> call, Throwable t) {
 
            }
        });

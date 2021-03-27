@@ -51,10 +51,10 @@ public interface RetrofitService {
 //
 //
     @GET("/CampinggoApi/loadDB.php")
-    Call<ArrayList<CampingApiRecyclerItem>> loadDataFromServerapi();
+    Call<ArrayList<CampingApi_RecyclerItem>> loadDataFromServerapi();
 
     @GET("/CampinggoApiRecommend/loadDB.php")
-    Call<ArrayList<CampingApiRecyclerItem>> loadDataFromServerapi1();
+    Call<ArrayList<CampingApi_RecyclerItem>> loadDataFromServerapi1();
 
 //
 //

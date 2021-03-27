@@ -91,11 +91,11 @@
                 android:layout_alignParentBottom="true" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnriver"
+                android:id="@+id/btncaraban"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_marginLeft="24dp"
-                android:text="강"
+                android:text="카라반"
                 android:background="@drawable/trailericon"
                 android:textStyle="bold"
                 android:textColor="@color/white"
@@ -112,7 +112,7 @@
                     android:textColor="@color/white"
                     android:background="@drawable/seaicon"
                     android:layout_alignParentBottom="true"
-                    android:layout_toRightOf="@+id/btnriver"/>
+                    android:layout_toRightOf="@+id/btncaraban"/>
 
             </RelativeLayout>
 
