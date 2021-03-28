@@ -1,6 +1,6 @@
 package com.hi1122.campinggo;
 
-public class CampingApi_RecyclerItem {
+public class CampingApi_Search_RecyclerItem {
 
     public String name;   //facltNm
     public String lineintro; //한줄소개
@@ -18,18 +18,18 @@ public class CampingApi_RecyclerItem {
     public String mapX;//맵x
     public String mapY;//맵y
     public String contentId;//컨텐츠 id
-    public String lctCl; //입지
-    public String animalCmgCl;//애완동물 출입가능여부
-
+    public String lctCl; //입지구분
 
     int favor;
     int recommend;
     String userID;
 
-    public CampingApi_RecyclerItem() {
+    public static String keyword;
+
+    public CampingApi_Search_RecyclerItem() {
     }
 
-    public CampingApi_RecyclerItem(String name, String lineintro, String campingimg, String intro, String induty, String addr1, String addr2, String resveCl, String createdtime, String modifiedtime, String tel, String homepage, String resveUrl, String mapX, String mapY, String contentId, String lctCl, String animalCmgCl,int favor, int recommend, String userID) {
+    public CampingApi_Search_RecyclerItem(String name, String lineintro, String campingimg, String intro, String induty, String addr1, String addr2, String resveCl, String createdtime, String modifiedtime, String tel, String homepage, String resveUrl, String mapX, String mapY, String contentId, String lctCl, int favor, int recommend, String userID,String keyword) {
         this.name = name;
         this.lineintro = lineintro;
         this.campingimg = campingimg;
@@ -47,10 +47,11 @@ public class CampingApi_RecyclerItem {
         this.mapY = mapY;
         this.contentId = contentId;
         this.lctCl=lctCl;
-        this.animalCmgCl=animalCmgCl;
         this.favor = favor;
         this.recommend = recommend;
         this.userID = userID;
+
+        this.keyword=keyword;
     }
 
 }

@@ -28,12 +28,12 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class CampingApi_Adapter extends RecyclerView.Adapter{
+public class CampingApi_Search_Adapter extends RecyclerView.Adapter{
     Context context;
-    ArrayList<CampingApi_RecyclerItem> items;
+    ArrayList<CampingApi_Search_RecyclerItem> items;
     ProgressDialog progressDialog;
 
-    public CampingApi_Adapter(Context context, ArrayList<CampingApi_RecyclerItem> items) {
+    public CampingApi_Search_Adapter(Context context, ArrayList<CampingApi_Search_RecyclerItem> items) {
         this.context = context;
         this.items = items;
     }
@@ -47,6 +47,7 @@ public class CampingApi_Adapter extends RecyclerView.Adapter{
         VH holder=new VH(itemView);
 
 
+
         return holder;
     }
 
@@ -55,7 +56,10 @@ public class CampingApi_Adapter extends RecyclerView.Adapter{
 
         VH vh=(VH)holder;
 
-        CampingApi_RecyclerItem item=items.get(position);
+
+
+
+        CampingApi_Search_RecyclerItem item=items.get(position);
         vh.name.setText(item.name+"");
         if (item.lineintro !=null) vh.lineintro.setText(item.lineintro+"");
         else vh.lineintro.setText(" ");
@@ -69,6 +73,7 @@ public class CampingApi_Adapter extends RecyclerView.Adapter{
 //       else vh.campingimg.setVisibility(View.GONE);
 //        else vh.itemView.setVisibility(View.GONE);
 
+        Toast.makeText(context, "성공"+CampingApi_Search_RecyclerItem.keyword, Toast.LENGTH_SHORT).show();
 
     }
 
@@ -94,6 +99,7 @@ public class CampingApi_Adapter extends RecyclerView.Adapter{
             tbFavor=itemView.findViewById(R.id.tb_favor);
             tbRecommend=itemView.findViewById(R.id.tb_recommend);
 
+
             //아이템뷰 클릭
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -117,7 +123,6 @@ public class CampingApi_Adapter extends RecyclerView.Adapter{
                     String mapX=items.get(position).mapX;
                     String mapY=items.get(position).mapY;
                     String lctCl=items.get(position).lctCl;
-                    String animalCmgCl=items.get(position).animalCmgCl;
 
                     Intent intent=new Intent(context,CampingApi_DetailActivity.class);
                     intent.putExtra("nameId",nameId);
@@ -136,7 +141,6 @@ public class CampingApi_Adapter extends RecyclerView.Adapter{
                     intent.putExtra("mapX",mapX);
                     intent.putExtra("mapY",mapY);
                     intent.putExtra("lctCl",lctCl);
-                    intent.putExtra("dog",animalCmgCl);
 
 
 
@@ -156,7 +160,7 @@ public class CampingApi_Adapter extends RecyclerView.Adapter{
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     int position=getLayoutPosition();
-                    CampingApi_RecyclerItem item=items.get(position);
+                    CampingApi_Search_RecyclerItem item=items.get(position);
                     item.favor=isChecked? 1:0; //변수 값 변경
 
                     if (item.favor==1){
@@ -203,7 +207,7 @@ public class CampingApi_Adapter extends RecyclerView.Adapter{
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     int position=getLayoutPosition();
-                    CampingApi_RecyclerItem item=items.get(position);
+                    CampingApi_Search_RecyclerItem item=items.get(position);
                     item.favor=isChecked? 1:0; //변수 값 변경
 
                     Retrofit retrofit=RetrofitHelper.getRetrofitInstanceScalars();

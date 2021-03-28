@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +35,8 @@ public class Home_First_Fragment extends Fragment {
     Button Btncaraban;
     Button Btnglamping;
     Button Btncamping;
+    EditText searchet;
+    Button searchbtn;
 
     ArrayList<CampingApi_RecyclerItem> items2=new ArrayList<>();
     RecyclerView recyclerView2;
@@ -49,6 +52,7 @@ public class Home_First_Fragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.home_first_tab,container,false);
+
 
         //open api 전체 버튼
         Btnall=view.findViewById(R.id.btnall);
@@ -105,9 +109,21 @@ public class Home_First_Fragment extends Fragment {
               Intent intent=new Intent(getActivity(),ReviewFragment.class);
             }
         });
+
+        searchbtn=view.findViewById(R.id.searchbtn);
+        searchbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                searchet=view.findViewById(R.id.searchet);
+//               String Searchet= searchet.getText().toString();
+//               CampingApi_Search_RecyclerItem.keyword=Searchet;
+//                Intent intent=new Intent(getContext(),CampingApi_Search_Main.class);
+//                intent.putExtra("search",CampingApi_Search_RecyclerItem.keyword);
+//                startActivity(intent);
+                Toast.makeText(getActivity(), "준비중인 메뉴입니다.", Toast.LENGTH_SHORT).show();
+            }
+        });
         return view;
-
-
 
     }
 
@@ -122,6 +138,8 @@ public class Home_First_Fragment extends Fragment {
         recyclerView2=view.findViewById(R.id.recycler2);
         recyclerAdpter2=new CampingApi_Adapter(getActivity(),items2);
         recyclerView2.setAdapter(recyclerAdpter2);
+
+
     }
 
     @Override

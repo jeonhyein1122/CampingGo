@@ -36,6 +36,7 @@ public class CampingApi_DetailActivity extends AppCompatActivity {
     TextView detailhomepage;
     TextView detailresveUrl;
     TextView dlctCl;
+    ImageView animal;
 
     TextView detailmax;
     TextView detailmay;
@@ -67,6 +68,7 @@ public class CampingApi_DetailActivity extends AppCompatActivity {
         mapy=intent.getStringExtra("mapY");
         String detailcontenId=intent.getStringExtra("contentID");
         String lctCl=intent.getStringExtra("lctCl");
+        String animalCmgCl=intent.getStringExtra("dog");
 
 
 //        getSupportActionBar().setTitle(titleId+"");
@@ -75,11 +77,11 @@ public class CampingApi_DetailActivity extends AppCompatActivity {
 
         detailiv=findViewById(R.id.detailiv);
         detailname=findViewById(R.id.detailname);
-        detaillineintro=findViewById(R.id.detaillineintro);
+//        detaillineintro=findViewById(R.id.detaillineintro);
         detailintro=findViewById(R.id.detailintro);
         detailinduty=findViewById(R.id.detailinduty);
         detailaddr1=findViewById(R.id.detailaddr1);
-        detailaddr2=findViewById(R.id.detailaddr2);
+//        detailaddr2=findViewById(R.id.detailaddr2);
 
         detailresveCl=findViewById(R.id.detailresveCl);
         detailmodifiedtime=findViewById(R.id.detailmodifiedtime);
@@ -88,28 +90,45 @@ public class CampingApi_DetailActivity extends AppCompatActivity {
         detailhomepage=findViewById(R.id.detailhompage);
         detailresveUrl=findViewById(R.id.detailresveUrl);
         dlctCl=findViewById(R.id.lctCl);
+        animal=findViewById(R.id.dog);
 
 
         if (campingimgId==null) Glide.with(this).load(R.drawable.noimage).into(detailiv);
         else Glide.with(this).load(campingimgId).into(detailiv);
 //        Glide.with(this).load(campingimgId).into(detailiv);
         detailname.setText(nameId);
-        detaillineintro.setText(lineintroId);
+//        detaillineintro.setText(lineintroId);
         detailintro.setText(introId);
         detailinduty.setText(indutyId);
         detailaddr1.setText("주소 : "+addr1Id);
-        detailaddr2.setText(addr2Id);
+//        detailaddr2.setText(addr2Id);
 
         if (resveClId==null) detailresveCl.setText(resveClId);
         else detailresveCl.setText("예약방법 : "+resveClId);
 
-        detailmodifiedtime.setText("수정일 : "+detailmodifiedtimeId);
-        detailcreatedtime.setText("등록일 : "+detailcreatedtimeId);
-        detailtel.setText("☎ "+detailtelId);
+        if (detailmodifiedtimeId==null) detailmodifiedtime.setText(detailmodifiedtimeId);
+        else detailmodifiedtime.setText("수정일 : "+detailmodifiedtimeId);
+
+        if (detailcreatedtimeId==null)  detailcreatedtime.setText(detailcreatedtimeId);
+        else  detailcreatedtime.setText("등록일 : "+detailcreatedtimeId);
+
+        if (detailtelId==null) detailtel.setText(detailtelId);
+        else detailtel.setText("☎ : "+detailtelId);
+
+        if (detailhomepageId==null) detailhomepage.setText(detailhomepageId);
+        else detailhomepage.setText("홈페이지 주소 : "+detailhomepageId);
+
+        if (detailresveUrlId==null) detailresveUrl.setText(detailresveUrlId);
+        else detailresveUrl.setText("예약사이트 : "+detailresveUrlId);
+
+        if (lctCl==null) dlctCl.setText(lctCl);
+        else dlctCl.setText("홈페이지 주소 : "+lctCl);
+
 //        Glide.with(this).load(detailhomepageId).into(detailhomepage);
-        detailhomepage.setText("홈페이지 주소 : "+detailhomepageId);
-        detailresveUrl.setText("예약 사이트 : "+detailresveUrlId);
-        dlctCl.setText("입지:"+lctCl);
+
+        if (animalCmgCl !=null){
+            Glide.with(this).load("애완견 출입 가능"+R.drawable.dog).into(animal);
+        }else Glide.with(this).load(R.drawable.noimage).into(animal);
 
 
 

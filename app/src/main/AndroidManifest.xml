@@ -23,7 +23,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CampingGo"
         android:usesCleartextTraffic="true">
-        <activity android:name=".CampingApi_General_Main"></activity>
+        <activity android:name=".CampingApi_Search_Main"></activity>
+        <activity android:name=".CampingApi_General_Main" />
         <activity android:name=".CampingApi_Glamping_Main" />
         <activity android:name=".CampingApi_Caraban_Main" />
         <activity android:name=".CampingApi_Detailmap" />
