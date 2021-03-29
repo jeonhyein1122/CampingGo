@@ -41,7 +41,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="date"
-            android:textSize="26sp"
+            android:textSize="20sp"
             android:gravity="right"
             android:textColor="#6A6A6A"
             android:layout_marginRight="8dp"/>
@@ -52,6 +52,7 @@
             android:layout_height="match_parent"
             android:text="detail"
             android:textSize="20sp"
+            android:gravity="center"
             android:textColor="#ff333333"
             android:layout_marginLeft="12dp"
             android:layout_marginRight="8dp"/>

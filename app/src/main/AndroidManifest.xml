@@ -23,7 +23,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CampingGo"
         android:usesCleartextTraffic="true">
-        <activity android:name=".CampingApi_Search_Main"></activity>
+        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".CampingApi_Search_Main" />
         <activity android:name=".CampingApi_General_Main" />
         <activity android:name=".CampingApi_Glamping_Main" />
         <activity android:name=".CampingApi_Caraban_Main" />
@@ -45,7 +46,8 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".Review_add_Activity" />
         <activity android:name=".Shopping_add_Activity" />
-        <activity android:name=".MainActivity">
+
+            <activity android:name=".IntroActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

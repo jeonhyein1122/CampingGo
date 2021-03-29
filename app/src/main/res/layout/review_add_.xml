@@ -30,25 +30,27 @@
             android:layout_toRightOf="@+id/review_add_iv"
             android:layout_marginBottom="6dp"
             android:onClick="clickSelctImage"
+            android:backgroundTint="#B5B5B5"
+            android:textColor="@color/black"
             android:layout_marginTop="50dp"
             android:layout_marginLeft="12dp"/>
 
 
     </RelativeLayout>
 
-    <EditText
-       android:id="@+id/review_add_date"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="여행 다녀온 날짜"
-        android:layout_marginLeft="4dp"
-        android:background="@drawable/bg_edit_review"
-        android:inputType="text"
-        android:maxEms="15"
-        android:textSize="16sp"
-        android:textColor="@color/black"
-        android:padding="8dp"
-        android:gravity="start"/>
+<!--    <EditText-->
+<!--       android:id="@+id/review_add_date"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:hint="여행 다녀온 날짜"-->
+<!--        android:layout_marginLeft="4dp"-->
+<!--        android:background="@drawable/bg_edit_review"-->
+<!--        android:inputType="text"-->
+<!--        android:maxEms="15"-->
+<!--        android:textSize="16sp"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:padding="8dp"-->
+<!--        android:gravity="start"/>-->
 
     <EditText
         android:id="@+id/review_add_ettitle"

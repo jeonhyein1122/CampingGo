@@ -120,7 +120,7 @@ public class Home_First_Fragment extends Fragment {
 //                Intent intent=new Intent(getContext(),CampingApi_Search_Main.class);
 //                intent.putExtra("search",CampingApi_Search_RecyclerItem.keyword);
 //                startActivity(intent);
-                Toast.makeText(getActivity(), "준비중인 메뉴입니다.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "준비중인 서비스입니다.", Toast.LENGTH_SHORT).show();
             }
         });
         return view;

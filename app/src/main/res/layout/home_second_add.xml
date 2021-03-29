@@ -40,11 +40,17 @@
             android:textColor="@color/black"
             android:inputType="text"/>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
         <EditText
             android:id="@+id/tip_add_etsubtitle"
-            android:layout_width="match_parent"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:hint="#태그 #태그 # 태그"
+            android:hint="#태그 #태그"
+            android:gravity="center"
             android:maxEms="20"
             android:textSize="14sp"
             android:textColor="@color/black"
@@ -52,6 +58,37 @@
             android:padding="8dp"
             android:layout_margin="4dp"
             android:inputType="text"/>
+
+
+        <EditText
+            android:id="@+id/tip_add_etsubtitle2"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:hint="#태그 #태그"
+            android:gravity="center"
+            android:maxEms="20"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:background="@drawable/bg_edit"
+            android:padding="8dp"
+            android:layout_margin="4dp"
+            android:inputType="text"/>
+
+        <EditText
+            android:id="@+id/tip_add_etsubtitle3"
+            android:layout_width="115dp"
+            android:layout_height="wrap_content"
+            android:hint="#태그 #태그"
+            android:gravity="center"
+            android:maxEms="20"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:background="@drawable/bg_edit"
+            android:padding="8dp"
+            android:layout_margin="4dp"
+            android:inputType="text"/>
+
+    </LinearLayout>
 
         <EditText
             android:id="@+id/tip_add_etdetail"
@@ -69,6 +106,19 @@
             android:hint="내용을 입력해주세요."
             android:inputType="textMultiLine"/>
 
+    <EditText
+        android:id="@+id/tip_add_etyoutube"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="http://  입력"
+        android:background="@drawable/bg_edit"
+        android:maxEms="16"
+        android:textSize="16sp"
+        android:padding="8dp"
+        android:layout_margin="4dp"
+        android:textColor="@color/black"
+        android:inputType="text"/>
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -82,8 +132,9 @@
                 android:text="취소"
                 android:layout_weight="1"
                 android:layout_margin="4dp"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:background="@drawable/btn_bg_select"
+                app:backgroundTint="@null"
                 android:onClick="clickcancle"/>
 
             <Button
@@ -91,10 +142,11 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="확인"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:layout_weight="1"
                 android:layout_margin="4dp"
                 android:background="@drawable/btn_bg_select"
+                app:backgroundTint="@null"
                 android:onClick="clickok"/>
 
 

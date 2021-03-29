@@ -79,4 +79,7 @@ dependencies {
 
 //    cloud messaging
     implementation 'com.google.firebase:firebase-messaging'
+
+    //youtubeplayer API .jar 적용
+    implementation files('libs/YouTubeAndroidPlayerApi.jar')
 }
