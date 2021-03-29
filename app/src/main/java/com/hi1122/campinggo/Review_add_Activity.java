@@ -50,7 +50,7 @@ public class Review_add_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.review_add_);
 
-        etdate=findViewById(R.id.review_add_date);
+//        etdate=findViewById(R.id.review_add_date);
         ettitle=findViewById(R.id.review_add_ettitle);
         etdetail=findViewById(R.id.review_add_etdetail);
         iv=findViewById(R.id.review_add_iv);

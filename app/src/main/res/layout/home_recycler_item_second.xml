@@ -13,6 +13,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <com.google.android.youtube.player.YouTubeThumbnailView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/youtubeThumbnail"/>
+
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/homesecond_img"
             android:layout_width="100dp"

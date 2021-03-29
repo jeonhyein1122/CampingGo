@@ -110,7 +110,7 @@
         android:id="@+id/tip_add_etyoutube"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="http://  입력"
+        android:hint="https://youtu.be/ *** 입력"
         android:background="@drawable/bg_edit"
         android:maxEms="16"
         android:textSize="16sp"

@@ -48,13 +48,14 @@ public class Home_Second_RecyclerAdpter extends RecyclerView.Adapter {
         Home_Second_RecyclerItem item=items.get(position);
 
         ((VH) holder).Title.setText(item.title);
-        ((VH) holder).Subtitle.setText("#"+item.subtitle);
+        ((VH) holder).Subtitle.setText("#"+item.subtitle+" #"+item.subtitle2+" #"+item.subtitle3);
 
 
         String imgUrl="http://jhyein1122.dothome.co.kr/Campinggotip/"+item.file;
 //        Log.i("tagshad",imgUrl);
 
-        Glide.with(context).load(imgUrl).into(((VH) holder).iv);
+       Glide.with(context).load(imgUrl).into(((VH) holder).iv);
+//       else Glide.with(context).load(R.drawable.noimage).into(((VH) holder).iv);
 
 
     }
@@ -88,14 +89,22 @@ public class Home_Second_RecyclerAdpter extends RecyclerView.Adapter {
                     String tipiv=items.get(position).file;
                     String title=items.get(position).title;
                     String subtitle=items.get(position).subtitle;
+                    String subtitle2=items.get(position).subtitle2;
+                    String subtitle3=items.get(position).subtitle3;
                     String detail=items.get(position).detail;
+                    String nickname=items.get(position).nickname;
+                    String youtubeurl=items.get(position).youtubeurl;
 
                     Intent intent=new Intent(context,Home_Second_Detail.class);
                     intent.putExtra("tipiv",tipiv);
 //                    Log.i("tag1",shoppingiv+"");
                     intent.putExtra("title",title);
                     intent.putExtra("subtitle",subtitle);
+                    intent.putExtra("subtitle2",subtitle2);
+                    intent.putExtra("subtitle3",subtitle3);
                     intent.putExtra("detail",detail);
+                    intent.putExtra("nickname",nickname);
+                    intent.putExtra("youtubeurl",youtubeurl);
 
                     if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP){
                         ActivityOptions options=ActivityOptions.makeSceneTransitionAnimation((Activity)context,new Pair<View,String>(iv,"tipimg"));

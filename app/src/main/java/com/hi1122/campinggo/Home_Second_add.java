@@ -37,7 +37,7 @@ import retrofit2.Retrofit;
 
 public class Home_Second_add extends AppCompatActivity {
 
-    EditText ettitle,etsubtitle,etdetail;
+    EditText ettitle,etsubtitle,etsubtitle2,etsubtitle3,etdetail,edyoutubeurl;
     ImageView iv;
     TextView dialogtv;
     String imgPath;
@@ -49,8 +49,13 @@ public class Home_Second_add extends AppCompatActivity {
 
        ettitle=findViewById(R.id.tip_add_ettitle);
        etsubtitle=findViewById(R.id.tip_add_etsubtitle);
+       etsubtitle2=findViewById(R.id.tip_add_etsubtitle2);
+       etsubtitle3=findViewById(R.id.tip_add_etsubtitle3);
        etdetail=findViewById(R.id.tip_add_etdetail);
        iv=findViewById(R.id.tip_add_iv);
+       edyoutubeurl=findViewById(R.id.tip_add_etyoutube);
+
+
     }
 
     public void clickSelctImagebtn(View view) {
@@ -95,9 +100,13 @@ public class Home_Second_add extends AppCompatActivity {
 
         String title=ettitle.getText().toString();
         String subtitle=etsubtitle.getText().toString();
+        String subtitle2=etsubtitle2.getText().toString();
+        String subtitle3=etsubtitle3.getText().toString();
         String detail=etdetail.getText().toString();
+        String youtubeurl=edyoutubeurl.getText().toString();
         String nickname= G.nickname;
-//        String profile= G.profile;
+        
+
 
 
 
@@ -114,9 +123,11 @@ public class Home_Second_add extends AppCompatActivity {
         Map<String, String> dataPart= new HashMap<>();
         dataPart.put("title", title);
         dataPart.put("subtitle",subtitle);
+        dataPart.put("subtitle2",subtitle2);
+        dataPart.put("subtitle3",subtitle3);
         dataPart.put("detail", detail);
+        dataPart.put("youtubeurl", youtubeurl);
         dataPart.put("nickname",nickname);
-//        dataPart.put("profile",profile);
 
 
         Call<String> call= retrofitServicetip.postDataToServer(dataPart, filePart);
