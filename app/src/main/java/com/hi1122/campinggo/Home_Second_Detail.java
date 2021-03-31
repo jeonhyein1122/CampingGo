@@ -30,6 +30,7 @@ public class Home_Second_Detail extends AppCompatActivity {
     TextView detailSubtitle;
     TextView detailDetail;
 
+
     CircleImageView userprofile;
     TextView nickname;
     String detailyoutubeurl;
@@ -74,6 +75,7 @@ public class Home_Second_Detail extends AppCompatActivity {
         detailTitle=findViewById(R.id.tip_detail_title);
         detailSubtitle=findViewById(R.id.tip_detail_subtitle);
         detailDetail=findViewById(R.id.tip_detail_detail);
+        nickname=findViewById(R.id.tip_nick);
 
 //        userprofile=findViewById(R.id.shopping_profile);
 
@@ -87,6 +89,7 @@ public class Home_Second_Detail extends AppCompatActivity {
         detailTitle.setText(detailtitle);
         detailSubtitle.setText("#"+detailsubtitle+"#"+detailsubtitle2+"#"+detailsubtitle3);
         detailDetail.setText(detaildetail);
+        nickname.setText("꿀팁 제공자 : "+detailnickname +" 님 ");
 
 
 //        nickname.setText(detailnickname);

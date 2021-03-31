@@ -16,7 +16,7 @@
         <ImageView
             android:id="@+id/tip_detail_iv"
             android:layout_width="match_parent"
-            android:layout_height="200dp" />
+            android:layout_height="0dp" />
 
         <View
             android:layout_width="match_parent"
@@ -36,13 +36,21 @@
             android:textColor="@color/black"
             android:textStyle="bold"/>
 
+    <TextView
+        android:id="@+id/tip_nick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="nickname"
+        android:gravity="right"
+        android:layout_marginRight="16dp"/>
+
         <TextView
             android:id="@+id/tip_detail_subtitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="detail #태그"
             android:textSize="20sp"
-            android:textColor="#ff333333"
+            android:textColor="#9F9F9F"
             android:layout_marginLeft="8dp"/>
 
         <TextView
@@ -50,8 +58,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="detail"
-            android:textSize="20sp"
+            android:textSize="22sp"
             android:textColor="#ff333333"
+            android:layout_marginTop="16dp"
             android:layout_marginLeft="8dp"/>
 
     </LinearLayout>
