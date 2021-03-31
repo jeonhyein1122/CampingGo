@@ -59,6 +59,7 @@ public class Home_Second_add extends AppCompatActivity {
     }
 
     public void clickSelctImagebtn(View view) {
+        Toast.makeText(this, "대표사진을 선택해주세요", Toast.LENGTH_SHORT).show();
         Intent intent=new Intent(Intent.ACTION_PICK);
         intent.setType("image/*");
         startActivityForResult(intent,10);
@@ -66,6 +67,7 @@ public class Home_Second_add extends AppCompatActivity {
     }
 
     public void clickSelctImage(View view) {
+        Toast.makeText(this, "대표사진을 선택해주세요", Toast.LENGTH_SHORT).show();
         Intent intent=new Intent(Intent.ACTION_PICK);
         intent.setType("image/*");
         startActivityForResult(intent,10);
