@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -73,9 +74,13 @@ public class LoginActivity extends AppCompatActivity {
            @Override
            public void onClick(View v) {
 //               Toast.makeText(LoginActivity.this, "클릭됨", Toast.LENGTH_SHORT).show();
+//              SharedPreferences auto=getSharedPreferences("auto", Activity.MODE_PRIVATE);
+//
                String userID = login_id.getText().toString();
                String userPassword = login_password.getText().toString();
 
+//            userID=auto.getString("inputId",null);
+//            userPassword=auto.getString("inputPwd",null);
 
                Retrofit retrofit=RetrofitHelper.getRetrofitInstanceGson();
                RetrofitServiceSignup retrofitServicesignup=retrofit.create(RetrofitServiceSignup.class);

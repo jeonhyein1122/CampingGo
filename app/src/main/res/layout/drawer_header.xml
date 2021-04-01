@@ -27,9 +27,9 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/loginbtn"
-        android:layout_width="40dp"
+        android:layout_width="30dp"
         android:layout_height="40dp"
-        android:layout_marginLeft="8dp"
+        android:layout_marginLeft="12dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/btn_bg_select_login"
         android:backgroundTint="@null"
@@ -37,13 +37,13 @@
         android:layout_above="@+id/drawer_login"
         android:visibility="visible" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/logoutbtn"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_below="@+id/drawer_profile"
         android:layout_marginLeft="8dp"
-        android:background="@drawable/btn_bg_select_signup"
+        android:background="@drawable/btn_bg_select_logout"
         android:layout_marginTop="8dp"
         android:layout_marginRight="80dp"
         android:visibility="gone"

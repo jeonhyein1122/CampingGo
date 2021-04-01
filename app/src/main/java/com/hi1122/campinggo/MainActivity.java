@@ -159,14 +159,18 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public Unit invoke(Throwable throwable) {
                         if(throwable !=null) {
-                            logoutbtn.setEnabled(false);
+//                            logoutbtn.setEnabled(false);
                         } else {
                             Toast.makeText(MainActivity.this, "로그아웃", Toast.LENGTH_SHORT).show();
 
                             //로그인 회원정보 화면들 모두 초기화
                             usernickname.setText(" ");
                             Glide.with(headerView).load(G.profile).into(userprofile);
-                            startActivity(new Intent(MainActivity.this,MainActivity.class));
+
+                            drawer_login.setVisibility(View.VISIBLE);
+                            drawer_logout.setVisibility(View.GONE);
+                            logoutbtn.setVisibility(View.GONE);
+                            loginbtn.setVisibility(View.VISIBLE);
                         }
                         return null;
                     }
