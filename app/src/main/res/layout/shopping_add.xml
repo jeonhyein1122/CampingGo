@@ -92,7 +92,7 @@
             android:textColor="@color/white"
             android:layout_weight="1"
             android:layout_margin="4dp"
-            app:backgroundTint="@null"
+            app:backgroundTint="#ffffff"
             android:background="@drawable/btn_bg_select"
             android:onClick="clickok"/>
 

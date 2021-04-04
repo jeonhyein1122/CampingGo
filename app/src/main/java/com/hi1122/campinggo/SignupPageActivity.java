@@ -88,7 +88,7 @@ public class SignupPageActivity extends AppCompatActivity {
                     return;
                 }
                 if (userName.length()<=1 ){
-                    Toast.makeText(SignupPageActivity.this, "ID는 2글자 이상 가능합니다.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignupPageActivity.this, "닉네임은 2글자 이상 가능합니다.", Toast.LENGTH_SHORT).show();
                     return;
                 }
 

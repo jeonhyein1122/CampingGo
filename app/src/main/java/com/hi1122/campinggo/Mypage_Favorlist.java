@@ -26,6 +26,11 @@ public class Mypage_Favorlist extends AppCompatActivity {
     ArrayList<ShoppingRecyclerItem> items = new ArrayList<>();
     ShoppingRecyclerAdpter recyclerAdpter;
 
+
+    ArrayList<CampingApi_RecyclerItem> items2=new ArrayList<>();
+    RecyclerView recyclerView2;
+    CampingApi_Adapter recyclerAdpter2;
+
     Spinner spinner;
     ArrayAdapter adapter;
     Toolbar toolbar;
@@ -74,31 +79,52 @@ public class Mypage_Favorlist extends AppCompatActivity {
     void loadData() {
 
             Retrofit retrofit = RetrofitHelper.getRetrofitInstanceGson();
-            RetrofitService retrofitService = retrofit.create(RetrofitService.class);
-            Call<ArrayList<ShoppingRecyclerItem>> call = retrofitService.loadDataFromServershopping();
-            call.enqueue(new Callback<ArrayList<ShoppingRecyclerItem>>() {
-                @Override
-                public void onResponse(Call<ArrayList<ShoppingRecyclerItem>> call, Response<ArrayList<ShoppingRecyclerItem>> response) {
+//            RetrofitService retrofitService = retrofit.create(RetrofitService.class);
+//            Call<ArrayList<ShoppingRecyclerItem>> call = retrofitService.loadDataFromServershopping();
+//            call.enqueue(new Callback<ArrayList<ShoppingRecyclerItem>>() {
+//                @Override
+//                public void onResponse(Call<ArrayList<ShoppingRecyclerItem>> call, Response<ArrayList<ShoppingRecyclerItem>> response) {
+//
+//                    //기존데이터들 모두 제거
+//                    items.clear();
+//                    recyclerAdpter.notifyDataSetChanged();
+//
+//                    //결과로 받아온 ArrayList<MarketItem>을 items에 추가
+//                    ArrayList<ShoppingRecyclerItem> list = response.body();
+//                    for (ShoppingRecyclerItem item : list) {
+//                        items.add(0, item);
+//                        recyclerAdpter.notifyItemInserted(0);
+//                    }
+//
+//                }
+//
+//                @Override
+//                public void onFailure(Call<ArrayList<ShoppingRecyclerItem>> call, Throwable t) {
+////                Toast.makeText(getActivity(), "error: ReviewFrag--"+t.getMessage(), Toast.LENGTH_SHORT).show();
+//
+//                }
+//            });
 
-                    //기존데이터들 모두 제거
-                    items.clear();
-                    recyclerAdpter.notifyDataSetChanged();
 
-                    //결과로 받아온 ArrayList<MarketItem>을 items에 추가
-                    ArrayList<ShoppingRecyclerItem> list = response.body();
-                    for (ShoppingRecyclerItem item : list) {
-                        items.add(0, item);
-                        recyclerAdpter.notifyItemInserted(0);
-                    }
+        RetrofitService retrofitService=retrofit.create(RetrofitService.class);
+        Call<ArrayList<CampingApi_RecyclerItem>> call2=retrofitService.loadDataFromServerapi();
+        call2.enqueue(new Callback<ArrayList<CampingApi_RecyclerItem>>() {
+            @Override
+            public void onResponse(Call<ArrayList<CampingApi_RecyclerItem>> call, Response<ArrayList<CampingApi_RecyclerItem>> response) {
+                items2.clear();
+                recyclerAdpter2.notifyDataSetChanged();
 
+                ArrayList<CampingApi_RecyclerItem> list=response.body();
+                for (CampingApi_RecyclerItem item:list){
+                    items2.add(0,item);
+                    recyclerAdpter2.notifyItemInserted(0);
                 }
+            }
 
-                @Override
-                public void onFailure(Call<ArrayList<ShoppingRecyclerItem>> call, Throwable t) {
-//                Toast.makeText(getActivity(), "error: ReviewFrag--"+t.getMessage(), Toast.LENGTH_SHORT).show();
+            @Override
+            public void onFailure(Call<ArrayList<CampingApi_RecyclerItem>> call, Throwable t) {
 
-                }
-            });
-
+            }
+        });
     }
 }

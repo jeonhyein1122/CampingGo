@@ -68,13 +68,28 @@
                 android:padding="8dp"
                 android:layout_marginTop="8dp"/>
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/mapicon"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="4dp"
-                android:onClick="detailmap"/>
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="horizontal">
+
+
+               <androidx.appcompat.widget.AppCompatButton
+                   android:layout_width="30dp"
+                   android:layout_height="30dp"
+                   android:background="@drawable/mapicon"
+                   android:layout_marginLeft="16dp"
+                   android:layout_marginTop="4dp"
+                   android:onClick="detailmap"/>
+
+               <TextView
+                   android:id="@+id/lctCl"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="lctCl"
+                   android:textColor="@color/white"/>
+
+           </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -91,11 +106,7 @@
                 android:layout_marginTop="4dp"
                 android:textColor="#8C8888"/>
 
-            <TextView
-                android:id="@+id/lctCl"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="lctCl" />
+
 
         </LinearLayout>
 

@@ -101,10 +101,30 @@ public class MainActivity extends AppCompatActivity {
                         drawerLayout.closeDrawer(navigationView);
                         break;
 
-//                    case R.id.menu_mou :
-//                        bnv.setSelectedItemId(R.id.myaround);
-//                        drawerLayout.closeDrawer(navigationView);
-//                        break;
+                    case R.id.menu_mou :
+                        startActivity(new Intent(MainActivity.this,CampingApi_Mountain_Main.class));
+                        drawerLayout.closeDrawer(navigationView);
+                        break;
+
+                    case R.id.menu_cara :
+                        startActivity(new Intent(MainActivity.this,CampingApi_Caraban_Main.class));
+                        drawerLayout.closeDrawer(navigationView);
+                        break;
+
+                    case R.id.menu_glam :
+                        startActivity(new Intent(MainActivity.this,CampingApi_Glamping_Main.class));
+                        drawerLayout.closeDrawer(navigationView);
+                        break;
+
+                    case R.id.menu_sea :
+                        startActivity(new Intent(MainActivity.this,CampingApi_Mountain_Main.class));
+                        drawerLayout.closeDrawer(navigationView);
+                        break;
+
+                    case R.id.menu_ya :
+                        startActivity(new Intent(MainActivity.this,CampingApi_General_Main.class));
+                        drawerLayout.closeDrawer(navigationView);
+                        break;
 
                     case R.id.menu_mapicon :
                         bnv.setSelectedItemId(R.id.myaround);

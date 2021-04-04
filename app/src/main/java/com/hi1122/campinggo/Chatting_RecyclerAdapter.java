@@ -40,9 +40,10 @@ public class Chatting_RecyclerAdapter extends RecyclerView.Adapter<Chatting_Recy
     }
     @Override
     public void onBindViewHolder(@NonNull VH holder, int position) {
-        holder.chatnic.setText(items.get(position) + "님 과의 대화방");
-//        holder.chatdate.setText(items.get(position)+"에 채팅옴");
-
+        holder.chatnic.setText(items.get(position) + "님의 채팅이 도착했습니다.");
+//        holder.chatdate.setText(items.get(position)+"에 채팅이 도착했습니다.");
+////        holder.chatdate.setText(items.get(position)+"에 채팅옴");
+//
 //        Glide.with(context).load(items.get(position)).into(((VH)holder).chatprofile);
     }
     @Override
