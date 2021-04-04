@@ -140,5 +140,41 @@ public class Shopping_DetailActivity extends AppCompatActivity {
         }else Toast.makeText(Shopping_DetailActivity.this, "로그인이 필요한 서비스 입니다.", Toast.LENGTH_SHORT).show();
 
     }
+
+    public void clikcchat(View view) {
+        AlertDialog.Builder builder=new AlertDialog.Builder(this);
+
+        LayoutInflater inflater=getLayoutInflater();
+        LinearLayout layout=(LinearLayout)inflater.inflate(R.layout.dialogchatting,null);
+
+        dialogtv=layout.findViewById(R.id.dialogchat);
+
+        builder.setView(layout);
+        if (G.nickname!=null) {
+
+            builder.setPositiveButton("네", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+//                    if (isFirst|| isChanged){
+////                        saveData();
+//                    }else {
+                    Intent intent = new Intent(Shopping_DetailActivity.this, Chatting_Activity.class);
+                    startActivity(intent);
+//                    }
+
+                }
+            });
+            builder.setNegativeButton("아니오", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    finish();
+                }
+            });
+
+            dialog = builder.create();
+            dialog.setCanceledOnTouchOutside(false);
+            dialog.show();
+        }else Toast.makeText(Shopping_DetailActivity.this, "로그인이 필요한 서비스 입니다.", Toast.LENGTH_SHORT).show();
+    }
 }
 

@@ -50,7 +50,7 @@ public class Review_add_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.review_add_);
 
-//        etdate=findViewById(R.id.review_add_date);
+        etdate=findViewById(R.id.review_add_date);
         ettitle=findViewById(R.id.review_add_ettitle);
         etdetail=findViewById(R.id.review_add_etdetail);
         iv=findViewById(R.id.review_add_iv);
@@ -126,6 +126,7 @@ public class Review_add_Activity extends AppCompatActivity {
         String title=ettitle.getText().toString();
         String loaddate=etdate.getText().toString();
         String detail=etdetail.getText().toString();
+//        String datenow=ReviewRecyclerItem.datenow;
 
         Retrofit retrofit= RetrofitHelper.getRetrofitInstanceScalars();
         RetrofitServiceReview retrofitServicereview= retrofit.create(RetrofitServiceReview.class);
@@ -141,6 +142,7 @@ public class Review_add_Activity extends AppCompatActivity {
         dataPart.put("title", title);
         dataPart.put("loaddate",loaddate);
         dataPart.put("detail", detail);
+
 
         Call<String> call= retrofitServicereview.postDataToServer(dataPart, filePart);
         call.enqueue(new Callback<String>() {

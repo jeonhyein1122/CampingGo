@@ -55,7 +55,7 @@ public class ReviewRecyclerAdpter extends RecyclerView.Adapter {
         ReviewRecyclerItem item=items.get(position);
 
         ((VH) holder).tvTitle.setText(item.title);
-        ((VH) holder).tvdate.setText("등록일 : "+item.loaddate);
+        ((VH) holder).tvdate.setText("여행일 : "+item.loaddate);
         ((VH) holder).tvdetail.setText(item.detail);
 
         String imgUrl="http://jhyein1122.dothome.co.kr/Campinggoreview/"+item.file;
@@ -103,6 +103,7 @@ public class ReviewRecyclerAdpter extends RecyclerView.Adapter {
                     String title=items.get(position).title;
                     String loaddate=items.get(position).loaddate;
                     String detail=items.get(position).detail;
+//                    String datenow=ReviewRecyclerItem.datenow;
 
                     Intent intent=new Intent(context,Review_DetailActivity.class);
                     intent.putExtra("reviewiv",reviewiv);

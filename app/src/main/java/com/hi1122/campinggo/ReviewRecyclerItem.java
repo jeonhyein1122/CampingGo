@@ -10,10 +10,14 @@ public class ReviewRecyclerItem {
     int favor;
     String file;
 
+    String datenow1;
+
+    public static String datenow;
+
     public ReviewRecyclerItem() {
     }
 
-    public ReviewRecyclerItem(int no, String reviewiv, String loaddate, String title, String detail, int favor, String file) {
+    public ReviewRecyclerItem(int no, String reviewiv, String loaddate, String title, String detail, int favor, String file,String datenow1,String datenow) {
         this.no = no;
         this.reviewiv = reviewiv;
         this.loaddate = loaddate;
@@ -21,6 +25,8 @@ public class ReviewRecyclerItem {
         this.detail = detail;
         this.favor = favor;
         this.file = file;
+        this.datenow1=datenow1;
+        this.datenow=datenow;
     }
 }
 

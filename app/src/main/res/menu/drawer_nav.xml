@@ -7,9 +7,29 @@
             android:icon="@drawable/campingicon"
             android:title="모든 캠핑장" />
 
+
+        <item android:id="@+id/menu_ya"
+            android:title="야영장"
+            android:icon="@drawable/campingjangicon"/>
+
+        <item android:id="@+id/menu_glam"
+            android:title="글램핑"
+            android:icon="@drawable/glampingicon"/>
+
         <item android:id="@+id/menu_mou"
             android:title="산"
             android:icon="@drawable/mountainicon"/>
+
+
+        <item android:id="@+id/menu_cara"
+            android:title="카라반"
+            android:icon="@drawable/trailericon"/>
+
+        <item android:id="@+id/menu_sea"
+            android:title="바다"
+            android:icon="@drawable/seaicon"/>
+
+
     </group>
 
     <item android:id="@+id/menu_mapicon"
