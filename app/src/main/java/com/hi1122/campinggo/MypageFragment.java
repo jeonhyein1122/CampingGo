@@ -75,7 +75,7 @@ public class MypageFragment extends Fragment {
                     @Override
                     public Unit invoke(Throwable throwable) {
                         if(throwable !=null) {
-                            logout.setEnabled(false);
+
                         } else {
                             Toast.makeText(getActivity(), "로그아웃", Toast.LENGTH_SHORT).show();
 
